@@ -15,7 +15,7 @@ export const darkMode = {
                 xl: '2px',
         },
         colors: {
-                textBase: '#1D1D1D',
+                textBase: '#FFFFFF',
                 textSupport: '#8C8C8C',
 
                 body: '#1D1D1D',
@@ -33,6 +33,7 @@ export const darkMode = {
                 transparent: 'transparent',
         },
         radii: ['0px', '10px', '30px'],
+        transition: 'all 0.7s ease',
 };
 
 export const ligthMode = {
@@ -52,7 +53,7 @@ export const ligthMode = {
                 xl: '2px',
         },
         colors: {
-                textBase: '#FFFFFF',
+                textBase: '#1D1D1D',
                 textSupport: '#8C8C8C',
 
                 body: '#F8F8F7',
@@ -70,4 +71,5 @@ export const ligthMode = {
                 transparent: 'transparent',
         },
         radii: ['0px', '10px', '30px'],
+        transition: 'all 0.7s ease-in-out',
 };
