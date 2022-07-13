@@ -1,8 +1,9 @@
 import { useMode } from '../context/ModeProvider';
-import { Button, NavButton } from '../theme/buttons.styled';
+import { Button } from '../theme/buttons.styled';
 import { Heading, SubHeading } from '../theme/typography.styled';
-import vote from '../image/main/vote-table.webp';
 import NavButtons from '../components/UI/NavButtons';
+import smile from '../image/icons/like-30.svg';
+import LikeLink from '../components/UI/Nav/Like';
 
 const Home = () => {
         const { toggleTheme } = useMode();
@@ -18,6 +19,8 @@ const Home = () => {
                                 CHANGE
                         </Button>
                         <NavButtons />
+
+                        <LikeLink dislike />
                 </>
         );
 };

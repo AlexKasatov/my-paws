@@ -31,8 +31,15 @@ export const Button = styled.button`
 
         &:hover {
                 /* type */
+                background-color: ${({ theme }) => theme.colors.secondary};
+                color: ${({ theme }) => theme.colors.primary};
+        }
+
+        &:active {
+                /* type */
                 background-color: ${({ theme }) => theme.colors.primary};
                 color: ${({ theme }) => theme.colors.white};
+                transition: none;
         }
 `;
 
@@ -67,5 +74,24 @@ export const NavButton = styled.button`
                 width: 130px;
                 height: 100%;
                 /* vertical-align: center; */
+        }
+`;
+
+// Button nav link
+
+export const NavBtnLink = styled.button`
+        background-color: ${({ theme }) => theme.colors.pageMain};
+        width: 60px;
+        height: 60px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+                background-color: ${({ theme }) => theme.colors.secondary};
+        }
+
+        &:active {
+                background-color: ${({ theme }) => theme.colors.primary};
         }
 `;
