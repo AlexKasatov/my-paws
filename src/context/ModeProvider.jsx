@@ -1,0 +1,30 @@
+/* eslint-disable react/prop-types */
+import { createContext, useState, useEffect, useMemo, useContext } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { darkMode, ligthMode } from '../theme/theme';
+
+export const ContextMode = createContext();
+
+export const useMode = () => useContext(ContextMode);
+
+const ModeProvider = ({ children }) => {
+        const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'light');
+
+        useEffect(() => {
+                localStorage.setItem('mode', mode);
+        }, [mode]);
+
+        const toggleTheme = () => {
+                setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+        };
+
+        const value = useMemo(() => ({ mode, setMode, toggleTheme }), [mode]);
+
+        return (
+                <ContextMode.Provider value={value}>
+                        <ThemeProvider theme={mode === 'light' ? ligthMode : darkMode}>{children}</ThemeProvider>
+                </ContextMode.Provider>
+        );
+};
+
+export default ModeProvider;
