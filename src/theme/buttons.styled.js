@@ -136,3 +136,12 @@ export const BtnIcon = styled.button`
                 background-color: ${({ theme }) => theme.colors.primary};
         }
 `;
+
+// Btn for sort icons
+export const BtnSort = styled(BtnIcon)`
+        background-color: ${({ theme }) => theme.colors.body};
+        &:hover {
+                border: 2px solid ${({ theme }) => theme.colors.secondary};
+                background-color: ${({ theme }) => theme.colors.body};
+        }
+`;

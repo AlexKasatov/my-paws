@@ -6,6 +6,8 @@ import PageLink from '../components/UI/Navigation/PageLink';
 import IconButton from '../components/UI/Buttons/IconButton';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import Spiner from '../animation/Spiner';
+import SortButton from '../components/UI/Buttons/SortButton';
+import ThemeSwitcher from '../components/UI/Buttons/ThemeSwitcher';
 
 const Home = () => {
         const { toggleTheme } = useMode();
@@ -30,6 +32,9 @@ const Home = () => {
                         <IconButton update />
                         <TextIconButton>UPLOAD</TextIconButton>
                         <Spiner />
+                        <SortButton up />
+                        <SortButton down />
+                        <ThemeSwitcher />
                 </>
         );
 };
