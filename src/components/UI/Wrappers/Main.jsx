@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Wrapper } from './Wrapper';
 
-const Main = ({ children }) => <div>{children}</div>;
+// HERE RENDERS ALL CONTENT (OUTLET)
+const Main = ({ children }) => <Wrapper>{children}</Wrapper>;
 
 export default Main;

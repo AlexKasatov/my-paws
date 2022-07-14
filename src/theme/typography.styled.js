@@ -5,6 +5,7 @@ import { border, color, compose, flexbox, layout, position, space, typography, w
 // MAIN HERO HEADING
 export const Heading = styled.h1`
         ${typography}
+        ${space}
         color: ${({ theme }) => theme.colors.textBase};
         line-height: ${({ theme }) => theme.lineHeights.subheading};
 `;
