@@ -48,6 +48,7 @@ export const Btn = styled.button`
 `;
 // Btn with secondary background color
 export const BtnSecondary = styled(Btn)`
+        line-height: ${({ theme }) => theme.lineHeights.button};
         background-color: ${({ theme }) => theme.colors.secondary};
         &:hover {
                 /* type */

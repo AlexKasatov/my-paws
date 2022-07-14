@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import Spiner from '../../../animation/Spiner';
 import { BtnIcon } from '../../../theme/buttons.styled';
 
 const ArrowBack = ({ fill }) => (
@@ -65,7 +66,7 @@ const Update = ({ fill }) => (
         </svg>
 );
 
-const IconButton = ({ back, search, close, likeOut, likeFill, update }) => {
+const IconButton = ({ back, search, close, likeOut, likeFill, update, loading }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 // TODO - add router Links
@@ -76,6 +77,7 @@ const IconButton = ({ back, search, close, likeOut, likeFill, update }) => {
                         {likeOut && <LikeOutline fill={fill} />}
                         {likeFill && <LikeFill fill={fill} />}
                         {update && <Update fill={fill} />}
+                        {loading && <Spiner />}
                 </BtnIcon>
         );
 };

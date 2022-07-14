@@ -8,6 +8,7 @@ import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import Spiner from '../animation/Spiner';
 import SortButton from '../components/UI/Buttons/SortButton';
 import ThemeSwitcher from '../components/UI/Buttons/ThemeSwitcher';
+import ChoiceSection from '../components/UI/Buttons/ChoiceSection';
 
 const Home = () => {
         const { toggleTheme } = useMode();
@@ -30,11 +31,12 @@ const Home = () => {
                         <IconButton likeOut />
                         <IconButton likeFill />
                         <IconButton update />
-                        <TextIconButton>UPLOAD</TextIconButton>
+                        <TextIconButton loading>UPLOAD</TextIconButton>
                         <Spiner />
                         <SortButton up />
                         <SortButton down />
                         <ThemeSwitcher />
+                        <ChoiceSection />
                 </>
         );
 };

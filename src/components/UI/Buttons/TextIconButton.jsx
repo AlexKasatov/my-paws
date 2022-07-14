@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import Spiner from '../../../animation/Spiner';
 import { BtnSecondary } from '../../../theme/buttons.styled';
 
 const Upload = ({ fill }) => (
@@ -12,7 +13,7 @@ const Upload = ({ fill }) => (
         </svg>
 );
 
-const TextIconButton = ({ children }) => {
+const TextIconButton = ({ children, loading, upload }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 <BtnSecondary
@@ -22,7 +23,8 @@ const TextIconButton = ({ children }) => {
                         onMouseEnter={() => setFill('#FFFFFF')}
                         onMouseLeave={() => setFill('#FF868E')}
                 >
-                        <Upload fill={fill} />
+                        {upload && <Upload fill={fill} />}
+                        {loading && <Spiner fill={fill} />}
                         {children}
                 </BtnSecondary>
         );

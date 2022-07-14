@@ -26,8 +26,10 @@ export const darkMode = {
                 secondary: '#533B3C',
 
                 black: '#000',
-                teal: '#97EAB9', // when hover use 30% opacity
-                yellow: '#FFD280', // when hover use 30% opacity
+                teal: '#97EAB9',
+                teal30: '#E0F9EA', // when hover use 30% opacity
+                yellow: '#FFD280',
+                yellow30: '#FFF2D9', // when hover use 30% opacity
                 white: '#fff',
                 purple: '#B4B7FF',
                 transparent: 'transparent',
@@ -64,8 +66,10 @@ export const ligthMode = {
                 secondary: '#FBE0DC',
 
                 black: '#000',
-                teal: '#97EAB9', // when hover use 30% opacity
-                yellow: '#FFD280', // when hover use 30% opacity
+                teal: '#97EAB9',
+                teal30: '#E0F9EA', // when hover use 30% opacity
+                yellow: '#FFD280',
+                yellow30: '#FFF2D9', // when hover use 30% opacity
                 white: '#fff',
                 purple: '#B4B7FF',
                 transparent: 'transparent',
