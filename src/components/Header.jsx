@@ -25,7 +25,7 @@ const Header = () => (
                         </Flex>
 
                         {/* Main Headings */}
-                        <Separator mt={7} mb={5}>
+                        <Separator mt={6} mb={5}>
                                 <Heading fontSize={3} fontWeight={500} lineHeight="heading" color="primary">
                                         Hi intern!
                                 </Heading>

@@ -9,12 +9,15 @@ export const Flex = styled.div`
 `;
 
 export const FlexGapM = styled(Flex)`
-        display: flex;
         gap: 0.5rem;
 `;
 
-export const FlexGapXL = styled(Flex)`
+export const FlexGapL = styled(Flex)`
         display: flex;
+        gap: 1.5rem;
+`;
+
+export const FlexGapXL = styled(Flex)`
         gap: 8.5rem;
 `;
 

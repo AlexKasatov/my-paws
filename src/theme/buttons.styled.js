@@ -17,13 +17,14 @@ export const Btn = styled.button`
         cursor: pointer;
         background-color: ${({ theme }) => theme.colors.pageMain};
         border: none;
-        width: clamp(138px, 148px, 156px);
+        width: 100%;
+        /* max-width: 138px; */
+        /* width: clamp(138px, 148px, 156px); */
         height: 36px;
         border-radius: 10px;
         /* type */
         color: ${({ theme }) => theme.colors.primary};
         letter-spacing: ${({ theme }) => theme.letterSpacings.xl};
-        font-size: 0.75rem;
         line-height: ${({ theme }) => theme.lineHeights.normal};
         font-weight: bold;
 
@@ -73,8 +74,9 @@ export const BtnNav = styled.button`
         ${flexbox}
         transition: ${({ theme }) => theme.transition};
         cursor: pointer;
-        height: 198px;
-        width: 138px;
+        width: 100%;
+        height: 140px;
+        max-width: 138px;
         border-radius: 20px;
         /* style border with inline style */
 
@@ -88,9 +90,8 @@ export const BtnNav = styled.button`
         }
 
         img {
-                width: 130px;
+                max-width: 140px;
                 height: 100%;
-                /* vertical-align: center; */
         }
 `;
 
