@@ -1,9 +1,11 @@
 import { useMode } from '../context/ModeProvider';
-import { Button } from '../theme/buttons.styled';
+import { Btn } from '../theme/buttons.styled';
 import { Heading, SubHeading } from '../theme/typography.styled';
-import NavButtons from '../components/UI/NavButtons';
-import smile from '../image/icons/like-30.svg';
-import LikeLink from '../components/UI/Nav/Like';
+import NavButtons from '../components/UI/Navigation/NavButtons';
+import PageLink from '../components/UI/Navigation/PageLink';
+import IconButton from '../components/UI/Buttons/IconButton';
+import TextIconButton from '../components/UI/Buttons/TextIconButton';
+import Spiner from '../animation/Spiner';
 
 const Home = () => {
         const { toggleTheme } = useMode();
@@ -15,12 +17,19 @@ const Home = () => {
                         <SubHeading fontSize={2} fontWeight={400}>
                                 Welcome to MI 2022 Front-end test
                         </SubHeading>
-                        <Button m={5} onClick={toggleTheme} type="button">
+                        <Btn m={5} onClick={toggleTheme} type="button">
                                 CHANGE
-                        </Button>
+                        </Btn>
                         <NavButtons />
-
-                        <LikeLink dislike />
+                        <PageLink dislike />
+                        <IconButton search />
+                        <IconButton back />
+                        <IconButton close />
+                        <IconButton likeOut />
+                        <IconButton likeFill />
+                        <IconButton update />
+                        <TextIconButton>UPLOAD</TextIconButton>
+                        <Spiner />
                 </>
         );
 };

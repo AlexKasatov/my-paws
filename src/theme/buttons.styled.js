@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
 
 // MAIN BUTTON
-export const Button = styled.button`
+export const Btn = styled.button`
         ${border}
         ${space}
         ${layout}
@@ -41,10 +41,26 @@ export const Button = styled.button`
                 color: ${({ theme }) => theme.colors.white};
                 transition: none;
         }
+
+        svg {
+                margin-right: 10px;
+        }
+`;
+// Btn with secondary background color
+export const BtnSecondary = styled(Btn)`
+        background-color: ${({ theme }) => theme.colors.secondary};
+        &:hover {
+                /* type */
+                background-color: ${({ theme }) => theme.colors.primary};
+                color: ${({ theme }) => theme.colors.white};
+        }
+        svg {
+                transition: ${({ theme }) => theme.transition};
+        }
 `;
 
 // MAIN NAV BUTTON
-export const NavButton = styled.button`
+export const BtnNav = styled.button`
         ${border}
         ${space}
         ${layout}
@@ -77,9 +93,9 @@ export const NavButton = styled.button`
         }
 `;
 
-// Button nav link
+// Button (page link)
 
-export const NavBtnLink = styled.button`
+export const BtnPage = styled.button`
         background-color: ${({ theme }) => theme.colors.pageMain};
         width: 60px;
         height: 60px;
@@ -92,6 +108,31 @@ export const NavBtnLink = styled.button`
         }
 
         &:active {
+                background-color: ${({ theme }) => theme.colors.primary};
+        }
+`;
+
+// Button with icons ( search, back, close, like)
+
+export const BtnIcon = styled.button`
+        ${border}
+        ${space}
+        ${layout}
+        ${typography}
+        ${color}
+        ${width}
+        ${height}
+        ${position}
+        ${flexbox}
+
+        background-color: ${({ theme }) => theme.colors.pageMain};
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
                 background-color: ${({ theme }) => theme.colors.primary};
         }
 `;

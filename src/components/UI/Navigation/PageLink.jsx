@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { NavBtnLink } from '../../../theme/buttons.styled';
+import { BtnPage } from '../../../theme/buttons.styled';
 
 const Like = ({ fill }) => (
         <svg width="30" height="30" viewBox="0 0 30 30" fill={fill} xmlns="http://www.w3.org/2000/svg">
@@ -34,17 +34,17 @@ const Dislike = ({ fill }) => (
         </svg>
 );
 
-const LikeLink = ({ fav, like, dislike }) => {
+const PageLink = ({ fav, like, dislike }) => {
         const [fill, setFill] = useState('#FF868E');
 
         return (
                 // TODO Add Link
-                <NavBtnLink onMouseDown={() => setFill('#FFFFFF')} onMouseUp={() => setFill('#FF868E')}>
+                <BtnPage onMouseDown={() => setFill('#FFFFFF')} onMouseUp={() => setFill('#FF868E')}>
                         {like && <Like fill={fill} />}
                         {fav && <Fav fill={fill} />}
                         {dislike && <Dislike fill={fill} />}
-                </NavBtnLink>
+                </BtnPage>
         );
 };
 
-export default LikeLink;
+export default PageLink;
