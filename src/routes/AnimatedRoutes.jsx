@@ -11,6 +11,7 @@ function AnimatedRoutes() {
         const location = useLocation();
         return (
                 <AnimatePresence exitBeforeEnter>
+                        {/*  for animate presence we need unic ids */}
                         <Routes location={location} key={location.pathname}>
                                 <Route path="/" element={<Layout />}>
                                         {Children.toArray(

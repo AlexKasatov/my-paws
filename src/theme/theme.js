@@ -21,6 +21,7 @@ export const darkMode = {
                 body: '#1D1D1D',
                 pageMain: '#282828',
                 pageSecondary: '#333333',
+                pageColor: '#282828',
 
                 primary: '#FF868E',
                 secondary: '#533B3C',
@@ -61,6 +62,7 @@ export const ligthMode = {
                 body: '#F8F8F7',
                 pageMain: '#FFFFFF',
                 pageSecondary: '#F8F8F7',
+                pageColor: '#FBE0DC',
 
                 primary: '#FF868E',
                 secondary: '#FBE0DC',
