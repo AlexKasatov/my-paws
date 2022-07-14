@@ -1,17 +1,15 @@
-import ModeProvider, { useMode } from './context/ModeProvider';
+import ModeProvider from './context/ModeProvider';
 import Home from './pages/Home';
+import PageRouter from './routes/PageRouter';
 import MainHead from './SEO/MainHead';
 import { GlobalStyle } from './theme/GlobalStyle';
 
 function App() {
         return (
                 <ModeProvider>
-                        <div>
-                                <MainHead />
-                                <h1>MAIN PAGE HERE</h1>
-                                <Home />
-                                <GlobalStyle />
-                        </div>
+                        <MainHead />
+                        <GlobalStyle />
+                        <PageRouter />
                 </ModeProvider>
         );
 }
