@@ -18,7 +18,7 @@ export const FlexGapL = styled(Flex)`
 `;
 
 export const FlexGapXL = styled(Flex)`
-        gap: 8.5rem;
+        /* gap: 2.5rem; */
 `;
 
 export const Separator = styled.div`
@@ -30,13 +30,19 @@ export const Separator = styled.div`
 export const ImageGrid = styled.div`
         display: grid;
 
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(12, 0.5fr);
+        grid-template-columns: repeat(3, 1fr);
 
         gap: 16px;
         height: 100%;
 
+        section {
+                border-radius: 20px;
+                position: relative;
+        }
+
         img {
+                border-radius: 20px;
                 width: 100%;
                 object-fit: fill;
         }
@@ -45,8 +51,22 @@ export const ImageGrid = styled.div`
                 cursor: pointer;
                 opacity: 0.5;
         }
+
+        button {
+                width: 50%;
+                position: absolute;
+                display: none;
+                top: 105%;
+                left: 50%;
+                transform: translate(-50%, -210%);
+        }
+
+        img:hover + button,
+        button:hover {
+                display: block;
+        }
+
         * {
-                border-radius: 20px;
         }
 
         #item-0 {

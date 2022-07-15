@@ -34,16 +34,18 @@ const Dislike = ({ fill }) => (
         </svg>
 );
 
-const PageLink = ({ fav, like, dislike }) => {
+const PageLink = ({ fav, like, dislike, url }) => {
         const [fill, setFill] = useState('#FF868E');
 
         return (
                 // TODO Add Link
-                <BtnPage onMouseDown={() => setFill('#FFFFFF')} onMouseUp={() => setFill('#FF868E')}>
-                        {like && <Like fill={fill} />}
-                        {fav && <Fav fill={fill} />}
-                        {dislike && <Dislike fill={fill} />}
-                </BtnPage>
+                <Link to={url}>
+                        <BtnPage onMouseDown={() => setFill('#FFFFFF')} onMouseUp={() => setFill('#FF868E')}>
+                                {like && <Like fill={fill} />}
+                                {fav && <Fav fill={fill} />}
+                                {dislike && <Dislike fill={fill} />}
+                        </BtnPage>
+                </Link>
         );
 };
 

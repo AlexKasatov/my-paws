@@ -12,7 +12,7 @@ const NavButtons = () => (
                                 <BtnNav bg="purple" border="4px solid #E1E2FF">
                                         <img src={vote} alt="vote" />
                                 </BtnNav>
-                                <Btn mt={2} type="button" fontSize={0}>
+                                <Btn mt={2} type="button" fontSize={0} letterSpacing="xl">
                                         VOTING
                                 </Btn>
                         </Link>
@@ -23,7 +23,7 @@ const NavButtons = () => (
                                 <BtnNav bg="teal" border="4px solid #D5F7E3">
                                         <img src={cat} alt="vote" />
                                 </BtnNav>
-                                <Btn mt={2} type="button" fontSize={0}>
+                                <Btn mt={2} type="button" fontSize={0} letterSpacing="xl">
                                         BREEDS
                                 </Btn>
                         </Link>
@@ -39,7 +39,7 @@ const NavButtons = () => (
                                                 alt="vote"
                                         />
                                 </BtnNav>
-                                <Btn mt={2} type="button" fontSize={0}>
+                                <Btn mt={2} type="button" fontSize={0} letterSpacing="xl">
                                         GALLERY
                                 </Btn>
                         </Link>

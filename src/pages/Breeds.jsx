@@ -1,11 +1,16 @@
 /* eslint-disable no-console */
 import { useState, useEffect, Children } from 'react';
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
-import { HeadingSm } from '../theme/typography.styled';
 import Spiner from '../animation/Spiner';
-import { Flex, ImageGrid } from '../theme/layout.styled';
+import { Flex, FlexGapM, ImageGrid } from '../theme/layout.styled';
+import { BtnPrimary } from '../theme/buttons.styled';
+import ImageItem from '../components/ImageItem';
+import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
+import IconButton from '../components/UI/Buttons/IconButton';
+import PageLink from '../components/UI/Navigation/PageLink';
+import Nav from '../components/Nav';
 
 const Breeds = () => {
         const [breeds, setBreeds] = useState([]);
@@ -16,28 +21,38 @@ const Breeds = () => {
                 setBreeds(response);
         });
 
+        const navigate = useNavigate();
+        const handleGoBack = () => {
+                navigate(-1);
+        };
+
         useEffect(() => {
                 console.log('запрос отработал');
                 fetch();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
-        return isLoading ? (
-                <Spiner />
-        ) : (
-                <ImageGrid flexDirection="column">
-                        {Children.toArray(
-                                breeds.map((cat, index) => (
-                                        <div id={`item-${index}`}>
-                                                <img
-                                                        style={{ objectFit: 'cover', height: '100%' }}
-                                                        src={cat.image?.url}
-                                                        alt={cat?.name}
-                                                />
-                                        </div>
-                                ))
-                        )}
-                </ImageGrid>
+        return (
+                <>
+                        <Nav />
+                        <Wrapper>
+                                <FlexGapM alignItems="center" mt={2} mb={2}>
+                                        <IconButton onGoBack={handleGoBack} back />
+                                        <BtnPrimary>BREED</BtnPrimary>
+                                </FlexGapM>
+                                {isLoading ? (
+                                        <Spiner />
+                                ) : (
+                                        <ImageGrid flexDirection="column">
+                                                {Children.toArray(
+                                                        breeds.map(({ name, image }, index) => (
+                                                                <ImageItem name={name} image={image} index={index} />
+                                                        ))
+                                                )}
+                                        </ImageGrid>
+                                )}
+                        </Wrapper>
+                </>
         );
 };
 

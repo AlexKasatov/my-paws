@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
-import cat from '../image/main/pet-breeds.webp';
 
 // MAIN BUTTON
 export const Btn = styled.button`
@@ -53,6 +52,28 @@ export const Btn = styled.button`
                 margin-right: 10px;
         }
 `;
+
+// BUTTON WITH PRIMARY BACKGROUND COLOR WITH NO ACTION
+export const BtnPrimary = styled(Btn)`
+        background-color: ${({ theme }) => theme.colors.primary};
+        font-size: ${({ theme }) => theme.fontSizes[2]};
+        max-width: 143px;
+        color: ${({ theme }) => theme.colors.white};
+        cursor: auto;
+
+        /* disable hover effects */
+        pointer-events: none;
+`;
+
+// BUTTON FOR BREED NAME ON IMAGE
+export const BtnBreed = styled(Btn)`
+        width: 100%;
+        max-width: 200px;
+        min-width: 160px;
+        letter-spacing: ${({ theme }) => theme.letterSpacings.normal};
+        font-weight: regular;
+`;
+
 // Btn with secondary background color
 export const BtnSecondary = styled(Btn)`
         line-height: ${({ theme }) => theme.lineHeights.button};
@@ -116,7 +137,6 @@ export const BtnNav = styled.button`
 `;
 
 // Button (page link)
-
 export const BtnPage = styled.button`
         background-color: ${({ theme }) => theme.colors.pageMain};
         width: 60px;
@@ -134,9 +154,8 @@ export const BtnPage = styled.button`
         }
 `;
 
-// Button with icons ( search, back, close, like)
-
-export const BtnIcon = styled.button`
+// Button with icons (  close, like )
+export const BtnIconPrimary = styled.button`
         ${border}
         ${space}
         ${layout}
@@ -159,8 +178,13 @@ export const BtnIcon = styled.button`
         }
 `;
 
+// Button for search || back
+export const BtnIconSecondary = styled(BtnIconPrimary)`
+        background-color: ${({ theme }) => theme.colors.secondary};
+`;
+
 // Btn for sort icons
-export const BtnSort = styled(BtnIcon)`
+export const BtnSort = styled(BtnIconPrimary)`
         background-color: ${({ theme }) => theme.colors.body};
         &:hover {
                 border: 2px solid ${({ theme }) => theme.colors.secondary};

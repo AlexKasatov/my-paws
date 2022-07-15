@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import { Container } from '../components/UI/Wrappers/Container.styled';
 import Main from '../components/UI/Wrappers/Main';
-import { Wrapper } from '../components/UI/Wrappers/Wrapper';
 import { FlexGapXL } from '../theme/layout.styled';
 
 const Layout = () => (

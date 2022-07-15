@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import Spiner from '../../../animation/Spiner';
-import { BtnIcon } from '../../../theme/buttons.styled';
+import { BtnIconPrimary, BtnIconSecondary } from '../../../theme/buttons.styled';
 
 const ArrowBack = ({ fill }) => (
         <svg width="20" height="20" viewBox="0 0 20 20" fill={fill} xmlns="http://www.w3.org/2000/svg">
@@ -66,19 +66,28 @@ const Update = ({ fill }) => (
         </svg>
 );
 
-const IconButton = ({ back, search, close, likeOut, likeFill, update, loading }) => {
+const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, onGoBack }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 // TODO - add router Links
-                <BtnIcon onMouseEnter={() => setFill('#FFFFFF')} onMouseLeave={() => setFill('#FF868E')}>
-                        {back && <ArrowBack fill={fill} />}
-                        {search && <Search fill={fill} />}
-                        {close && <Close fill={fill} />}
-                        {likeOut && <LikeOutline fill={fill} />}
-                        {likeFill && <LikeFill fill={fill} />}
-                        {update && <Update fill={fill} />}
-                        {loading && <Spiner />}
-                </BtnIcon>
+                search || back ? (
+                        <BtnIconSecondary
+                                onClick={onGoBack}
+                                onMouseEnter={() => setFill('#FFFFFF')}
+                                onMouseLeave={() => setFill('#FF868E')}
+                        >
+                                {back && <ArrowBack fill={fill} />}
+                                {close && <Close fill={fill} />}
+                        </BtnIconSecondary>
+                ) : (
+                        <BtnIconPrimary onMouseEnter={() => setFill('#FFFFFF')} onMouseLeave={() => setFill('#FF868E')}>
+                                {search && <Search fill={fill} />}
+                                {likeOut && <LikeOutline fill={fill} />}
+                                {likeFill && <LikeFill fill={fill} />}
+                                {update && <Update fill={fill} />}
+                                {loading && <Spiner />}
+                        </BtnIconPrimary>
+                )
         );
 };
 
