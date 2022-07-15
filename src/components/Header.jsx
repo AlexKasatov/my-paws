@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Logo from './UI/Navigation/Logo';
 import { Heading, HeadingSm, SubHeading } from '../theme/typography.styled';
 import ThemeSwitcher from './UI/Buttons/ThemeSwitcher';
@@ -25,7 +26,7 @@ const Header = () => (
                         </Flex>
 
                         {/* Main Headings */}
-                        <Separator mt={6} mb={5}>
+                        <Separator mt={7} mb={7}>
                                 <Heading fontSize={3} fontWeight={500} lineHeight="heading" color="primary">
                                         Hi intern!
                                 </Heading>

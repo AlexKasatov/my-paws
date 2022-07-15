@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
+import cat from '../image/main/pet-breeds.webp';
 
 // MAIN BUTTON
 export const Btn = styled.button`
@@ -18,8 +18,6 @@ export const Btn = styled.button`
         background-color: ${({ theme }) => theme.colors.pageMain};
         border: none;
         width: 100%;
-        /* max-width: 138px; */
-        /* width: clamp(138px, 148px, 156px); */
         height: 36px;
         border-radius: 10px;
         /* type */
@@ -29,6 +27,14 @@ export const Btn = styled.button`
         font-weight: bold;
 
         transition: ${({ theme }) => theme.transition};
+
+        /* disable select */
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
 
         &:hover {
                 /* type */
@@ -74,11 +80,19 @@ export const BtnNav = styled.button`
         ${flexbox}
         transition: ${({ theme }) => theme.transition};
         cursor: pointer;
-        width: 100%;
-        height: 140px;
+        width: 138px;
+        height: 198px;
         max-width: 138px;
         border-radius: 20px;
-        /* style border with inline style */
+        z-index: 1;
+
+        /* disable select */
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
 
         &:hover {
                 border-color: white;
@@ -90,8 +104,14 @@ export const BtnNav = styled.button`
         }
 
         img {
-                max-width: 140px;
-                height: 100%;
+                max-width: 138px;
+                height: 198px;
+                user-drag: none;
+                -webkit-user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
         }
 `;
 
