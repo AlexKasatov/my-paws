@@ -11,6 +11,14 @@ export const InputWrapper = styled.label`
         border-radius: 20px;
         align-items: center;
         background-color: ${({ theme }) => theme.colors.pageMain};
+
+        cursor: pointer;
+        &:hover {
+                border: 2px solid #fbe0dc;
+        }
+        &:focus-within {
+                border: 2px solid #ff868e;
+        }
 `;
 export const InputSearch = styled.input.attrs({
         type: 'search',

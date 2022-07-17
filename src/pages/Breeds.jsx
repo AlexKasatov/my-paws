@@ -11,12 +11,22 @@ import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
+import { CustomSelect } from '../components/UI/Controls/CustomInput';
+
+const options = [
+        { value: 'Africa', label: 'Africa' },
+        { value: 'America', label: 'America' },
+        { value: 'Asia', label: 'Asia' },
+        { value: 'Europe', label: 'Europe' },
+        { value: 'Oceania', label: 'Oceania' },
+];
 
 const Breeds = () => {
         const navigate = useNavigate();
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
+        const [breedSelected, setBreedSelected] = useState(''); // selected breed
 
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getBreeds();
@@ -75,6 +85,15 @@ const Breeds = () => {
                                         <IconButton onGoBack={handleGoBack} back />
                                         <BtnPrimary>BREED</BtnPrimary>
 
+                                        {/* selects */}
+                                        <CustomSelect
+                                                options={options}
+                                                placeholder="Filter by Region"
+                                                isClearable
+                                                isSearchable={false}
+                                                value={breedSelected}
+                                                onChange={setBreedSelected}
+                                        />
                                         {/* sort buttons */}
                                         <SortButton onSort={handleSortUp} up />
                                         <SortButton onSort={handleSortDown} down />
