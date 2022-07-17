@@ -13,10 +13,10 @@ import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
 
 const Breeds = () => {
+        const navigate = useNavigate();
+
         const [breeds, setBreeds] = useState([]); // fetched breeds
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
-
-        // const [sort, setSort] = useState('asc'); // state for control sort button
 
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getBreeds();
@@ -24,28 +24,43 @@ const Breeds = () => {
                 setBreeds(response);
         });
 
-        // search breeds by name & filter asc/desc
+        // search breeds by name
         const handleSearch = (search) => {
                 let data = [...breeds];
 
                 if (search) {
-                        data = data.filter((breed) => breed?.name.toLowerCase().includes(search?.toLowerCase()));
+                        data = data.filter((breed) => breed.name.toLowerCase().includes(search.toLowerCase()));
                 }
 
                 setFiltredBreeds(data);
-                console.log(filtredBreeds);
         };
 
+        // sort Z to A
+        const handleSortUp = () => {
+                const data = [...filtredBreeds];
+                data.sort((a, b) => (a.name > b.name ? -1 : 1));
+                setFiltredBreeds(data);
+        };
+
+        // sort A to Z
+        const handleSortDown = () => {
+                const data = [...filtredBreeds];
+                data.sort((a, b) => (a.name > b.name ? 1 : -1));
+                setFiltredBreeds(data);
+        };
+
+        // invoke search handler
         useMemo(() => {
                 handleSearch();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [breeds]);
 
-        const navigate = useNavigate();
+        // navigate to prev page
         const handleGoBack = () => {
                 navigate(-1);
         };
 
+        // fetch data from API
         useEffect(() => {
                 fetch();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,11 +74,10 @@ const Breeds = () => {
                                         {/* go back button */}
                                         <IconButton onGoBack={handleGoBack} back />
                                         <BtnPrimary>BREED</BtnPrimary>
-                                        {/* input select breeds, values from API */}
 
                                         {/* sort buttons */}
-                                        <SortButton up />
-                                        <SortButton down />
+                                        <SortButton onSort={handleSortUp} up />
+                                        <SortButton onSort={handleSortDown} down />
                                 </FlexGapM>
                                 {isLoading ? (
                                         <Spiner />

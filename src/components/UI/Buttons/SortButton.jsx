@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { BtnSort } from '../../../theme/buttons.styled';
@@ -22,10 +23,15 @@ const DownSort = ({ fill }) => (
         </svg>
 );
 
-const SortButton = ({ up, down }) => {
+const SortButton = ({ up, down, onSort }) => {
         const [fill, setFill] = useState('#8C8C8C');
+
         return (
-                <BtnSort onMouseEnter={() => setFill('#FF868E')} onMouseLeave={() => setFill('#8C8C8C')}>
+                <BtnSort
+                        onClick={onSort}
+                        onMouseEnter={() => setFill('#FF868E')}
+                        onMouseLeave={() => setFill('#8C8C8C')}
+                >
                         {up && <UpSort fill={fill} />}
                         {down && <DownSort fill={fill} />}
                 </BtnSort>
