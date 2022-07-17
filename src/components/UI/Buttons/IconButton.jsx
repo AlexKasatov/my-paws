@@ -77,7 +77,7 @@ const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, o
                                 onMouseLeave={() => setFill('#FF868E')}
                         >
                                 {back && <ArrowBack fill={fill} />}
-                                {close && <Close fill={fill} />}
+                                {search && <Search fill={fill} />}
                         </BtnIconSecondary>
                 ) : (
                         <BtnIconPrimary onMouseEnter={() => setFill('#FFFFFF')} onMouseLeave={() => setFill('#FF868E')}>

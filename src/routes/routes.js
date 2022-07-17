@@ -15,7 +15,6 @@ import Spiner from '../animation/Spiner';
 
 const Info = loadable(() => import('../pages/Breeds/Info'));
 const Voting = lazy(() => import('../pages/Voting'));
-const Search = lazy(() => import('../pages/Search'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 const Likes = lazy(() => import('../pages/Likes'));
 const Gallery = lazy(() => import('../pages/Gallery'));
@@ -51,7 +50,7 @@ export const publicRoutes = [
         { index: false, path: '/breads/info/{id}', element: <Info />, replace: false },
         { index: false, path: '/dislike', element: <Dislikes />, replace: false },
         { index: false, path: '/fav', element: <Fav />, replace: false },
-        { index: false, path: '/search', element: <Search />, replace: false },
+
         { index: false, path: '/voting', element: <Voting />, replace: false },
         { index: false, path: '*', element: <NotFound />, replace: false },
 ];

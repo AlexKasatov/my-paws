@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const MainWrapper = styled.main`
-        max-width: 680px;
+        min-width: 680px;
 `;
 
 // HOC FOR  RENDERS ALL CONTENT (OUTLET)
