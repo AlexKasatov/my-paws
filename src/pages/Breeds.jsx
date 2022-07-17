@@ -13,12 +13,11 @@ import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
 import { CustomSelect } from '../components/UI/Controls/CustomInput';
 
-const options = [
-        { value: 'Africa', label: 'Africa' },
-        { value: 'America', label: 'America' },
-        { value: 'Asia', label: 'Asia' },
-        { value: 'Europe', label: 'Europe' },
-        { value: 'Oceania', label: 'Oceania' },
+const limits = [
+        { value: 5, label: 'Limit: 5' },
+        { value: 10, label: 'Limit: 10' },
+        { value: 15, label: 'Limit: 15' },
+        { value: 20, label: 'Limit: 20' },
 ];
 
 const Breeds = () => {
@@ -26,13 +25,22 @@ const Breeds = () => {
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
-        const [breedSelected, setBreedSelected] = useState(''); // selected breed
+
+        const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
+        const [limitBreeds, setLimitBreeds] = useState(''); // limit breeds
 
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getBreeds();
 
                 setBreeds(response);
         });
+
+        // * generate list of breeds name for select
+        const allBreeds = [];
+        // eslint-disable-next-line no-plusplus
+        for (let index = 0; index < breeds.length; index++) {
+                allBreeds.push({ value: breeds[index].name, label: breeds[index].name });
+        }
 
         // search breeds by name
         const handleSearch = (search) => {
@@ -86,13 +94,25 @@ const Breeds = () => {
                                         <BtnPrimary>BREED</BtnPrimary>
 
                                         {/* selects */}
+
+                                        {/* All Breeds */}
                                         <CustomSelect
-                                                options={options}
-                                                placeholder="Filter by Region"
+                                                options={allBreeds}
+                                                placeholder="All Breeds"
                                                 isClearable
                                                 isSearchable={false}
-                                                value={breedSelected}
-                                                onChange={setBreedSelected}
+                                                value={selectedBreeds}
+                                                onChange={setFiltredBreeds}
+                                        />
+
+                                        {/* Limit Breeds */}
+                                        <CustomSelect
+                                                options={limits}
+                                                placeholder="Limit Breeds"
+                                                isClearable
+                                                isSearchable={false}
+                                                value={limitBreeds}
+                                                onChange={setLimitBreeds}
                                         />
                                         {/* sort buttons */}
                                         <SortButton onSort={handleSortUp} up />
