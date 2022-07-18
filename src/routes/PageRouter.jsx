@@ -1,4 +1,4 @@
-import { HashRouter, BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { HashRouter, BrowserRouter as Router } from 'react-router-dom';
 import AnimatedRoutes from './AnimatedRoutes';
 
 const PageRouter = () => (

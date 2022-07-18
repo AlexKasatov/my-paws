@@ -12,6 +12,7 @@ import IconButton from '../components/UI/Buttons/IconButton';
 import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
 import Controls from '../components/UI/Controls/Controls';
+import useGoBack from '../hooks/useGoBack';
 
 const limits = [
         { value: 5, label: 'Limit: 5' },
@@ -22,6 +23,7 @@ const limits = [
 
 const Breeds = () => {
         const navigate = useNavigate();
+        const goBack = useGoBack();
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
         console.log('🚀 ~ file: Breeds.jsx ~ line 27 ~ Breeds ~ breeds', breeds);
@@ -91,7 +93,12 @@ const Breeds = () => {
 
         // navigate to prev page
         const handleGoBack = () => {
-                navigate(-1);
+                goBack();
+        };
+
+        // open breed info page
+        const handleOpenInfo = (id) => {
+                navigate(`info/${id}`);
         };
 
         // fetch data from API
@@ -112,29 +119,13 @@ const Breeds = () => {
                                         {/* selects */}
 
                                         {/* All Breeds */}
-                                        {/* <CustomSelect
-                                                options={allBreeds}
-                                                placeholder="All Breeds"
-                                                isClearable
-                                                isSearchable={false}
-                                                value={selectedBreeds}
-                                                onChange={setFiltredBreeds}
-                                        /> */}
+                                        {/* Limit Breeds */}
                                         <Controls
                                                 breedOptions={allBreeds}
                                                 limitOptions={limits}
                                                 onSearch={handleSearch}
                                         />
 
-                                        {/* Limit Breeds */}
-                                        {/* <CustomSelect
-                                                options={limits}
-                                                placeholder="Limit Breeds"
-                                                isClearable
-                                                isSearchable={false}
-                                                value={limitBreeds}
-                                                onChange={setLimitBreeds}
-                                        /> */}
                                         {/* sort buttons */}
                                         <SortButton onSort={handleSortUp} up />
                                         <SortButton onSort={handleSortDown} down />
@@ -145,7 +136,12 @@ const Breeds = () => {
                                         <ImageGrid flexDirection="column">
                                                 {Children.toArray(
                                                         filtredBreeds.map(({ name, image, id }, index) => (
-                                                                <ImageItem name={name} image={image} index={index} />
+                                                                <ImageItem
+                                                                        name={name}
+                                                                        image={image}
+                                                                        index={index}
+                                                                        onOpenInfo={() => handleOpenInfo(id)}
+                                                                />
                                                         ))
                                                 )}
                                         </ImageGrid>
