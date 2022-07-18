@@ -11,7 +11,7 @@ import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
-import { CustomSelect } from '../components/UI/Controls/CustomInput';
+import Controls from '../components/UI/Controls/Controls';
 
 const limits = [
         { value: 5, label: 'Limit: 5' },
@@ -24,6 +24,7 @@ const Breeds = () => {
         const navigate = useNavigate();
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
+        console.log('🚀 ~ file: Breeds.jsx ~ line 27 ~ Breeds ~ breeds', breeds);
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
 
         const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
@@ -43,15 +44,30 @@ const Breeds = () => {
         }
 
         // search breeds by name
-        const handleSearch = (search) => {
+        const handleSearch = (search, breed) => {
                 let data = [...breeds];
 
                 if (search) {
-                        data = data.filter((breed) => breed.name.toLowerCase().includes(search.toLowerCase()));
+                        data = data.filter((i) => i.name.toLowerCase().includes(search.toLowerCase()));
+                }
+
+                if (breed) {
+                        data = data.filter((i) => i.name.toLowerCase().includes(breed.toLowerCase()));
                 }
 
                 setFiltredBreeds(data);
         };
+
+        // * limit breeds per page
+        // const handleSlice = (limit) => {
+        //         let data = [...breeds];
+        //         data = data.slice(0, limit);
+        //         setFiltredBreeds(data);
+
+        //         if (limit === null) {
+        //                 setFiltredBreeds(breeds);
+        //         }
+        // };
 
         // sort Z to A
         const handleSortUp = () => {
@@ -96,24 +112,29 @@ const Breeds = () => {
                                         {/* selects */}
 
                                         {/* All Breeds */}
-                                        <CustomSelect
+                                        {/* <CustomSelect
                                                 options={allBreeds}
                                                 placeholder="All Breeds"
                                                 isClearable
                                                 isSearchable={false}
                                                 value={selectedBreeds}
                                                 onChange={setFiltredBreeds}
+                                        /> */}
+                                        <Controls
+                                                breedOptions={allBreeds}
+                                                limitOptions={limits}
+                                                onSearch={handleSearch}
                                         />
 
                                         {/* Limit Breeds */}
-                                        <CustomSelect
+                                        {/* <CustomSelect
                                                 options={limits}
                                                 placeholder="Limit Breeds"
                                                 isClearable
                                                 isSearchable={false}
                                                 value={limitBreeds}
                                                 onChange={setLimitBreeds}
-                                        />
+                                        /> */}
                                         {/* sort buttons */}
                                         <SortButton onSort={handleSortUp} up />
                                         <SortButton onSort={handleSortDown} down />
@@ -123,7 +144,7 @@ const Breeds = () => {
                                 ) : (
                                         <ImageGrid flexDirection="column">
                                                 {Children.toArray(
-                                                        filtredBreeds.map(({ name, image }, index) => (
+                                                        filtredBreeds.map(({ name, image, id }, index) => (
                                                                 <ImageItem name={name} image={image} index={index} />
                                                         ))
                                                 )}
