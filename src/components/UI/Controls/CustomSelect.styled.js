@@ -33,6 +33,10 @@ export const CustomSelect = styled(Select).attrs((props) => ({
         font-size: 16px;
         line-height: 24px;
 
+        & * {
+                transition: none !important;
+        }
+
         & input {
                 padding-left: 0 0.25rem;
         }

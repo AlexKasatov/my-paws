@@ -25,8 +25,6 @@ export const Btn = styled.button`
         line-height: ${({ theme }) => theme.lineHeights.normal};
         font-weight: bold;
 
-        transition: ${({ theme }) => theme.transition};
-
         /* disable select */
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */

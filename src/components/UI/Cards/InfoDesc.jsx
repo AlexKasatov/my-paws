@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
-import { Children } from 'react';
 import styled from 'styled-components';
 import { Flex } from '../../../theme/layout.styled';
-import { Heading, HeadingSm, HeadingBase } from '../../../theme/typography.styled';
+import { HeadingSm, HeadingBase } from '../../../theme/typography.styled';
 
 const InfoDescWrapper = styled.div`
-        margin-top: 7rem;
+        margin-top: 3rem;
         background-color: transparent;
         border-radius: 20px;
         border: 2px solid ${({ theme }) => theme.colors.secondary};
@@ -17,6 +16,7 @@ const InfoDescWrapper = styled.div`
 `;
 
 const InfoHeadingWrapper = styled.div`
+        margin-top: 3rem;
         background-color: ${({ theme }) => theme.colors.pageMain};
         width: 100%;
         position: absoute;

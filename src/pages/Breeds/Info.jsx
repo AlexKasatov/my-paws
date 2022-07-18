@@ -44,7 +44,11 @@ const Info = () => {
                                         {/* go back button */}
                                         <IconButton back onGoBack={handleGoBack} />
                                         <BtnPrimary fontSize="20px">BREEDS</BtnPrimary>
-                                        <BtnPrimary fontSize="20px">28</BtnPrimary>
+                                        {breed && (
+                                                <BtnPrimary fontSize="20px">
+                                                        {breed[0].breeds[0].id.toUpperCase()}
+                                                </BtnPrimary>
+                                        )}
 
                                         {/* selects */}
                                 </FlexGapM>

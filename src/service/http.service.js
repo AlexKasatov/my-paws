@@ -19,6 +19,11 @@ export default class HttpService {
                 });
                 return res.data;
         }
+
+        static async getImages() {
+                const res = await axios(`images/search`);
+                return res.data;
+        }
 }
 
 // https://api.thecatapi.com/v1/images/search?breed_ids=abys&limit=5
