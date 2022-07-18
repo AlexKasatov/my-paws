@@ -57,6 +57,7 @@ export const Btn = styled.button`
 export const BtnPrimary = styled(Btn)`
         background-color: ${({ theme }) => theme.colors.primary};
         font-size: ${({ theme }) => theme.fontSizes[2]};
+        font-weight: medium;
         max-width: 143px;
         color: ${({ theme }) => theme.colors.white};
         cursor: auto;

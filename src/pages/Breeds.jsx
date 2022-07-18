@@ -114,7 +114,7 @@ const Breeds = () => {
                                 <FlexGapM alignItems="center" mt={2} mb={2}>
                                         {/* go back button */}
                                         <IconButton onGoBack={handleGoBack} back />
-                                        <BtnPrimary>BREED</BtnPrimary>
+                                        <BtnPrimary fontSize="20px">BREEDS</BtnPrimary>
 
                                         {/* selects */}
 
