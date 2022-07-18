@@ -230,3 +230,19 @@ export const ImageGrid = styled.div`
                 grid-column-end: 2;
         }
 `;
+
+export const ImageGallery = styled(ImageGrid)`
+        button {
+                position: absolute;
+                width: 60px;
+                display: none;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -100%);
+        }
+
+        img:hover + button,
+        button:hover {
+                display: block;
+        }
+`;

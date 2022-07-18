@@ -1,6 +1,6 @@
 import { Children, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FlexGapM, ImageGrid } from '../theme/layout.styled';
+import { FlexGapM, ImageGrid, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -11,6 +11,7 @@ import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
+import ChoiceSection from '../components/UI/Buttons/ChoiceSection';
 
 const Gallery = () => {
         const navigate = useNavigate();
@@ -71,13 +72,13 @@ const Gallery = () => {
                                 {isLoading ? (
                                         <Spiner />
                                 ) : (
-                                        <ImageGrid flexDirection="column">
+                                        <ImageGallery flexDirection="column">
                                                 {Children.toArray(
                                                         breeds.map(({ url }, index) => (
                                                                 <ImageItem image={url} index={index} />
                                                         ))
                                                 )}
-                                        </ImageGrid>
+                                        </ImageGallery>
                                 )}
                         </Wrapper>
                 </>
