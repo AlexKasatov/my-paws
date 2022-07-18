@@ -66,7 +66,7 @@ const Update = ({ fill }) => (
         </svg>
 );
 
-const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, onGoBack }) => {
+const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, onGoBack, onLoadMoreCats }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 // TODO - add router Links
@@ -80,7 +80,11 @@ const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, o
                                 {search && <Search fill={fill} />}
                         </BtnIconSecondary>
                 ) : (
-                        <BtnIconPrimary onMouseEnter={() => setFill('#FFFFFF')} onMouseLeave={() => setFill('#FF868E')}>
+                        <BtnIconPrimary
+                                onClick={onLoadMoreCats && onLoadMoreCats}
+                                onMouseEnter={() => setFill('#FFFFFF')}
+                                onMouseLeave={() => setFill('#FF868E')}
+                        >
                                 {search && <Search fill={fill} />}
                                 {likeOut && <LikeOutline fill={fill} />}
                                 {likeFill && <LikeFill fill={fill} />}

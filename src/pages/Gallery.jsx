@@ -1,12 +1,16 @@
-import { useState, useEffect, useMemo } from 'react';
+import { Children, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FlexGapM } from '../theme/layout.styled';
+import { FlexGapM, ImageGrid } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import { BtnPrimary } from '../theme/buttons.styled';
 import useGoBack from '../hooks/useGoBack';
 import ControlsGallery from '../components/UI/Controls/ControlsGallery';
+import useFetch from '../hooks/useFetch';
+import HttpService from '../service/http.service';
+import Spiner from '../animation/Spiner';
+import ImageItem from '../components/ImageItem';
 
 const Gallery = () => {
         const navigate = useNavigate();
@@ -14,6 +18,14 @@ const Gallery = () => {
 
         const [breeds, setBreeds] = useState([]);
         const [filtredBreeds, setFiltredBreeds] = useState([]);
+        const [fetch, isLoading, isError] = useFetch(async () => {
+                const response = await HttpService.getImages();
+                console.log(
+                        '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                        response
+                );
+                setBreeds(response);
+        });
 
         const handleSearch = (search, breed) => {
                 let data = [...breeds];
@@ -35,6 +47,11 @@ const Gallery = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
+        const handlerLoadMoreCats = () => {
+                fetch();
+                console.log('LOOOOADER MOOOORE CATZZZ');
+        };
+
         const handleGoBack = () => {
                 goBack();
         };
@@ -49,7 +66,19 @@ const Gallery = () => {
                                         <BtnPrimary fontSize="20px">GALLERY</BtnPrimary>
                                 </FlexGapM>
 
-                                <ControlsGallery />
+                                <ControlsGallery onLoadMoreCats={handlerLoadMoreCats} />
+
+                                {isLoading ? (
+                                        <Spiner />
+                                ) : (
+                                        <ImageGrid flexDirection="column">
+                                                {Children.toArray(
+                                                        breeds.map(({ url }, index) => (
+                                                                <ImageItem image={url} index={index} />
+                                                        ))
+                                                )}
+                                        </ImageGrid>
+                                )}
                         </Wrapper>
                 </>
         );

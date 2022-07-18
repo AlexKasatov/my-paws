@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { CustomSelect } from './CustomSelect.styled';
@@ -15,7 +16,7 @@ export const ControlsWrapper = styled.div`
         gap: 2rem;
 `;
 
-const ControlsGallery = () => {
+const ControlsGallery = ({ onLoadMoreCats }) => {
         const [breed, setBreed] = useState('');
         const [limit, setLimits] = useState('');
         const [order, setOrder] = useState('');
@@ -28,7 +29,7 @@ const ControlsGallery = () => {
                         <CustomSelect />
                         <FlexGapM alignItems="center">
                                 <CustomSelect />
-                                <IconButton update />
+                                <IconButton update onLoadMoreCats={onLoadMoreCats} />
                         </FlexGapM>
                 </ControlsWrapper>
         );

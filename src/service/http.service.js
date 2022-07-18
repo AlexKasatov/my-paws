@@ -20,8 +20,12 @@ export default class HttpService {
                 return res.data;
         }
 
-        static async getImages() {
-                const res = await axios(`images/search`);
+        static async getImages(limit = 5) {
+                const res = await axios(`images/search`, {
+                        params: {
+                                limit,
+                        },
+                });
                 return res.data;
         }
 }

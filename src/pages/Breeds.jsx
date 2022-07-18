@@ -26,7 +26,7 @@ const Breeds = () => {
         const goBack = useGoBack();
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
-        console.log('🚀 ~ file: Breeds.jsx ~ line 27 ~ Breeds ~ breeds', breeds);
+
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
 
         const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
