@@ -59,7 +59,6 @@ const Gallery = () => {
 
         return (
                 <>
-                        {' '}
                         <Nav onSearch={handleSearch} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" mt={2} mb={2}>
