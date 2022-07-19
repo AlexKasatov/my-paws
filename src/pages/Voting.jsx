@@ -1,4 +1,5 @@
 import { Children, useState, useEffect, useMemo } from 'react';
+import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageGallery } from '../theme/layout.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -48,13 +49,25 @@ const Voting = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [voteState]);
 
-        const handleVote = (id, value) => {
-                console.log('🚀 ~ file: Voting.jsx ~ line 52 ~ handleVote ~ id', id);
-                vote(id, value);
+        const handleVote = async (id, value) => {
+                await vote(id, value);
+
+                if (value) {
+                        toast.success('LIKE IT!', {
+                                icon: '😻',
+                        });
+                } else {
+                        toast.success('SORRRY!', {
+                                icon: '😿',
+                        });
+                }
         };
 
-        const handleFav = (id) => {
-                fav(id);
+        const handleFav = async (id) => {
+                await fav(id);
+                toast(' add to favourites', {
+                        icon: '❤️',
+                });
         };
 
         // TODO fix it later ( add to fetch function )
