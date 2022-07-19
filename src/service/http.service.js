@@ -50,7 +50,7 @@ export default class HttpService {
         }
 
         static async addFavourites(id) {
-                const res = await axios.post(`votes`, {
+                const res = await axios.post(`favourites`, {
                         image_id: id,
                 });
                 return res.data;

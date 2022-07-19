@@ -48,7 +48,7 @@ const FavClicked = () => (
         </svg>
 );
 
-const ChoiceSection = ({ cat, onVote }) => {
+const ChoiceSection = ({ cat, onVote, onFav }) => {
         const [like, setLike] = useState('#FFFFFF');
         const [fav, setFav] = useState('#FFFFFF');
         const [dislike, setDislike] = useState('#FFFFFF');
@@ -83,6 +83,7 @@ const ChoiceSection = ({ cat, onVote }) => {
                                 <Like fill={like} />
                         </ChoiceBtn>
                         <ChoiceBtn
+                                onClick={() => onFav(cat[0].id)}
                                 onMouseDown={(e) => handlePressFav(e)}
                                 onMouseEnter={() => setFav('#FF868E')}
                                 onMouseLeave={() => setFav('#FFFFFF')}

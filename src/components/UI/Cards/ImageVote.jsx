@@ -16,10 +16,10 @@ export const ImageVoteSection = styled.div`
         }
 `;
 
-const ImageVote = ({ cat, onVote }) => (
+const ImageVote = ({ cat, onVote, onFav }) => (
         <ImageVoteSection>
                 <img src={cat[0]?.url} alt="cat" />
-                <ChoiceSection cat={cat} onVote={onVote} />
+                <ChoiceSection cat={cat} onVote={onVote} onFav={onFav} />
         </ImageVoteSection>
 );
 

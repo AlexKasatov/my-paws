@@ -12,18 +12,33 @@ import HttpService from '../service/http.service';
 const Voting = () => {
         const [cat, setCat] = useState('');
         const [voteState, setVoteState] = useState('');
+
+        // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
                 const response = await HttpService.getImages(limit);
 
                 setCat(response);
         });
 
+        // Vote like or dislike
         const [vote, isVoteLoading, isVoteError] = useFetch(async (id, value) => {
                 const response = await HttpService.vote(id, value);
                 console.log(
-                        '🚀 ~ file: Voting.jsx ~ line 16 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                        '🚀 ~ file: Voting.jsx ~ line 26 ~ const[vote,isVoteLoading,isVoteError]=useFetch ~ response',
                         response
                 );
+
+                setVoteState(response);
+        });
+
+        // Add to favs
+        const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
+                const response = await HttpService.addFavourites(id);
+                console.log(
+                        '🚀 ~ file: Voting.jsx ~ line 33 ~ const[fav,isFavLoading,isFavError]=useFetch ~ response',
+                        response
+                );
+
                 setVoteState(response);
         });
 
@@ -34,9 +49,12 @@ const Voting = () => {
         }, [voteState]);
 
         const handleVote = (id, value) => {
-                console.log('🚀 ~ file: Voting.jsx ~ line 38 ~ handleVote ~ value', value);
-                console.log('🚀 ~ file: Voting.jsx ~ line 38 ~ handleVote ~ id', id);
+                console.log('🚀 ~ file: Voting.jsx ~ line 52 ~ handleVote ~ id', id);
                 vote(id, value);
+        };
+
+        const handleFav = (id) => {
+                fav(id);
         };
 
         // TODO fix it later ( add to fetch function )
@@ -59,7 +77,7 @@ const Voting = () => {
                                                 VOTING
                                         </BtnPrimary>
                                 </FlexGapM>
-                                <ImageVote cat={cat} onVote={handleVote} />
+                                <ImageVote cat={cat} onVote={handleVote} onFav={handleFav} />
                                 {/* user logs  */}
                         </Wrapper>
                 </>
