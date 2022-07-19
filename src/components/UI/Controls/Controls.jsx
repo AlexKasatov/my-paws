@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { CustomSelect } from './CustomSelect.styled';
+import { limits as limitOptions } from '../../../data/data';
 
-const Controls = ({ breedOptions, limitOptions, onSearch, onSlice }) => {
+const Controls = ({ breedOptions, onSearch, onSlice }) => {
         const [breed, setBreed] = useState('');
         const [limit, setLimits] = useState('');
 

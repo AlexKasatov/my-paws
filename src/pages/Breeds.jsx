@@ -14,12 +14,8 @@ import SortButton from '../components/UI/Buttons/SortButton';
 import Controls from '../components/UI/Controls/Controls';
 import useGoBack from '../hooks/useGoBack';
 
-export const limits = [
-        { value: 5, label: 'Limit: 5' },
-        { value: 10, label: 'Limit: 10' },
-        { value: 15, label: 'Limit: 15' },
-        { value: 20, label: 'Limit: 20' },
-];
+// TODO Design limit functionality from API
+// TODO Design pagination functionality from API
 
 const Breeds = () => {
         const navigate = useNavigate();
@@ -44,6 +40,7 @@ const Breeds = () => {
         for (let index = 0; index < breeds.length; index++) {
                 allBreeds.push({ value: breeds[index].name, label: breeds[index].name });
         }
+        console.log('🚀 ~ file: Breeds.jsx ~ line 43 ~ Breeds ~ allBreeds', allBreeds);
 
         // search breeds by name
         const handleSearch = (search, breed) => {
@@ -120,11 +117,7 @@ const Breeds = () => {
 
                                         {/* All Breeds */}
                                         {/* Limit Breeds */}
-                                        <Controls
-                                                breedOptions={allBreeds}
-                                                limitOptions={limits}
-                                                onSearch={handleSearch}
-                                        />
+                                        <Controls breedOptions={allBreeds} onSearch={handleSearch} />
 
                                         {/* sort buttons */}
                                         <SortButton onSort={handleSortUp} up />

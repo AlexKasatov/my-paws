@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import config from './config.json';
 
@@ -49,6 +50,12 @@ export default class HttpService {
                                 order,
                         },
                 });
+                return res.data;
+        }
+
+        // use for fetch data for Gallery page
+        static async getImagesForGallery(types = 'gif,jpg,png', order = 'RANDOM', limit = 10) {
+                const res = await axios(`images/search?limit=${limit}&mime_types=${types}&order=${order}`);
                 return res.data;
         }
 }

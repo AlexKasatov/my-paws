@@ -5,10 +5,10 @@ const useFetch = (cb) => {
         const [loader, setLoader] = useState(false);
         const [error, setError] = useState('');
 
-        const fetch = async (param) => {
+        const fetch = async (type, id, order, limit, breedId) => {
                 try {
                         setLoader(true);
-                        await cb(param); // wait axios req from ApiConfig
+                        await cb(type, id, order, limit, breedId); // wait axios req from ApiConfig
                 } catch (error) {
                         const expectedError =
                                 error.response && error.response.status >= 400 && error.response.status < 500;

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { Children, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FlexGapM, ImageGrid, ImageGallery } from '../theme/layout.styled';
@@ -17,22 +18,23 @@ const Gallery = () => {
         const navigate = useNavigate();
         const goBack = useGoBack();
 
+        // states for query params
+        const [breedId, setBreedId] = useState('acur');
+        const [limit, setLimit] = useState('');
+        const [order, setOrder] = useState('');
+        const [type, setType] = useState('');
+
+        // states for fetching data
         const [breeds, setBreeds] = useState([]);
         const [filtredBreeds, setFiltredBreeds] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async (type) => {
-                if (type) {
-                        const res = await HttpService.getImagesByType(type);
-                        setBreeds(res);
-                }
+        const [fetch, isLoading, isError] = useFetch(async (type, id, order, limit, breedId) => {
+                const response = await HttpService.getImagesForGallery(type, id, order, limit, breedId);
 
-                if (!breeds.length) {
-                        const response = await HttpService.getImages();
-                        console.log(
-                                '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                                response
-                        );
-                        setBreeds(response);
-                }
+                console.log(
+                        '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                        response
+                );
+                setBreeds(response);
         });
 
         // const [changeType, isTypeLoading, isTypeError] = useFetch(async (type) => {
@@ -40,6 +42,7 @@ const Gallery = () => {
         //         setBreeds(response);
         // });
 
+        // ? fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {
                 let data = [...breeds];
 
@@ -56,9 +59,15 @@ const Gallery = () => {
 
         // fetch data from API
         useEffect(() => {
-                fetch();
+                const typeValue = type?.value || 'gif,jpg,png';
+                const limitValue = limit?.value || '10';
+                const orderValue = order?.value || 'RANDOM';
+                const breedIdValue = breedId?.value || '';
+
+                fetch(typeValue, orderValue, limitValue);
+
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []);
+        }, [type, order, limit, breedId]);
 
         // Load more cat images
         const handleLoadMoreCats = () => {
@@ -66,9 +75,9 @@ const Gallery = () => {
         };
 
         // Load images with selected type
-        const handleChangeType = (type) => {
-                fetch(type);
-        };
+        // const handleChangeType = (type) => {
+        //         fetch(type);
+        // };
 
         const handleGoBack = () => {
                 goBack();
@@ -83,7 +92,17 @@ const Gallery = () => {
                                         <BtnPrimary fontSize="20px">GALLERY</BtnPrimary>
                                 </FlexGapM>
 
-                                <ControlsGallery onChangeType={handleChangeType} onLoadMoreCats={handleLoadMoreCats} />
+                                <ControlsGallery
+                                        onLoadMoreCats={handleLoadMoreCats}
+                                        type={type}
+                                        setType={setType}
+                                        limit={limit}
+                                        setLimit={setLimit}
+                                        order={order}
+                                        setOrder={setOrder}
+                                        breed={breedId}
+                                        setBreed={setBreedId}
+                                />
 
                                 {isLoading ? (
                                         <Spiner />
