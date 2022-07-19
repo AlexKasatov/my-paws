@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import Spiner from '../animation/Spiner';
-import { FlexGapM, ImageGrid } from '../theme/layout.styled';
+import { FlexGapM, ImageGrid, Flex } from '../theme/layout.styled';
 import { BtnPrimary } from '../theme/buttons.styled';
 import ImageItem from '../components/ImageItem';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
@@ -120,8 +120,10 @@ const Breeds = () => {
                                         <Controls breedOptions={allBreeds} onSearch={handleSearch} />
 
                                         {/* sort buttons */}
-                                        <SortButton onSort={handleSortUp} up />
-                                        <SortButton onSort={handleSortDown} down />
+                                        <FlexGapM>
+                                                <SortButton onSort={handleSortUp} up />
+                                                <SortButton onSort={handleSortDown} down />
+                                        </FlexGapM>
                                 </FlexGapM>
                                 {isLoading ? (
                                         <Spiner />

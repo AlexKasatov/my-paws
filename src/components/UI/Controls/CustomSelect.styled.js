@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
 
 import Select from 'react-select';
 
 export const CustomSelect = styled(Select).attrs((props) => ({
         styles: {
-                control: (provided, state) => ({
+                control: (provided) => ({
                         ...provided,
                         backgroundColor: props.theme.colors.body,
                         color: props.theme.colors.textSupport,
@@ -25,7 +26,8 @@ export const CustomSelect = styled(Select).attrs((props) => ({
                 }),
         },
 }))`
-        width: 200px;
+        width: 100%;
+
         border-radius: 20px;
         font-family: 'Jost';
         font-style: normal;
@@ -47,6 +49,11 @@ export const CustomSelect = styled(Select).attrs((props) => ({
         & > div[id] {
                 background-color: ${({ theme }) => theme.colors.pageSecondary};
         }
+`;
+
+export const ControledSelect = styled(CustomSelect)`
+        ${space}
+        width: 100%;
 `;
 
 // export const CustomSelect = styled(Select).attrs({

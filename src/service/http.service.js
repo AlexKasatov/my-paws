@@ -54,8 +54,10 @@ export default class HttpService {
         }
 
         // use for fetch data for Gallery page
-        static async getImagesForGallery(types = 'gif,jpg,png', order = 'RANDOM', limit = 10) {
-                const res = await axios(`images/search?limit=${limit}&mime_types=${types}&order=${order}`);
+        static async getImagesForGallery(id, types = 'gif,jpg,png', order = 'RANDOM', limit = 10) {
+                const res = await axios(
+                        `images/search?limit=${limit}&mime_types=${types}&order=${order}&breed_id=${id}`
+                );
                 return res.data;
         }
 }

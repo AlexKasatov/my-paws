@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { CustomSelect } from './CustomSelect.styled';
 import IconButton from '../Buttons/IconButton';
 import { FlexGapM } from '../../../theme/layout.styled';
-
 import { limitOptions, orderOptions, typeOptions } from '../../../data/data'; // limits options
 import { useData } from '../../../context/DataProvider';
 
@@ -12,6 +11,7 @@ export const ControlsWrapper = styled.div`
         width: 100%;
         padding: 20px 30px;
         border-radius: 20px;
+        margin: 20px auto;
 
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -25,6 +25,8 @@ const ControlsGallery = ({ onLoadMoreCats, type, setType, limit, setLimit, order
                 <ControlsWrapper>
                         {/* Breed Select */}
                         <CustomSelect
+                                width="20px"
+                                marginRigjt="1rem"
                                 options={breedOptions}
                                 placeholder="Breed"
                                 isClearable

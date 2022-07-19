@@ -76,14 +76,13 @@ export const BtnBreed = styled(Btn)`
 // Btn with secondary background color
 export const BtnSecondary = styled(Btn)`
         line-height: ${({ theme }) => theme.lineHeights.button};
+        /* min-height: 40px;
+        max-width: 143px; */
         background-color: ${({ theme }) => theme.colors.secondary};
         &:hover {
                 /* type */
                 background-color: ${({ theme }) => theme.colors.primary};
                 color: ${({ theme }) => theme.colors.white};
-        }
-        svg {
-                transition: ${({ theme }) => theme.transition};
         }
 `;
 

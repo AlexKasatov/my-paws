@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import { Children, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FlexGapM, ImageGrid, ImageGallery } from '../theme/layout.styled';
+import { FlexGapM, Flex, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -13,6 +13,7 @@ import HttpService from '../service/http.service';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import ChoiceSection from '../components/UI/Buttons/ChoiceSection';
+import TextIconButton from '../components/UI/Buttons/TextIconButton';
 
 const Gallery = () => {
         const navigate = useNavigate();
@@ -27,20 +28,11 @@ const Gallery = () => {
         // states for fetching data
         const [breeds, setBreeds] = useState([]);
         const [filtredBreeds, setFiltredBreeds] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async (type, id, order, limit, breedId) => {
-                const response = await HttpService.getImagesForGallery(type, id, order, limit, breedId);
+        const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit, breedId) => {
+                const response = await HttpService.getImagesForGallery(id, type, order, limit);
 
-                console.log(
-                        '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
                 setBreeds(response);
         });
-
-        // const [changeType, isTypeLoading, isTypeError] = useFetch(async (type) => {
-        //         const response = await HttpService.getImagesByType(type);
-        //         setBreeds(response);
-        // });
 
         // ? fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {
@@ -64,20 +56,20 @@ const Gallery = () => {
                 const orderValue = order?.value || 'RANDOM';
                 const breedIdValue = breedId?.value || '';
 
-                fetch(typeValue, orderValue, limitValue);
+                fetch(breedIdValue, typeValue, orderValue, limitValue);
 
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [type, order, limit, breedId]);
 
         // Load more cat images
         const handleLoadMoreCats = () => {
-                fetch();
-        };
+                const typeValue = type?.value || 'gif,jpg,png';
+                const limitValue = limit?.value || '10';
+                const orderValue = order?.value || 'RANDOM';
+                const breedIdValue = breedId?.value || '';
 
-        // Load images with selected type
-        // const handleChangeType = (type) => {
-        //         fetch(type);
-        // };
+                fetch(breedIdValue, typeValue, orderValue, limitValue);
+        };
 
         const handleGoBack = () => {
                 goBack();
@@ -87,9 +79,13 @@ const Gallery = () => {
                 <>
                         <Nav onSearch={handleSearch} />
                         <Wrapper>
-                                <FlexGapM alignItems="center" mt={2} mb={2}>
+                                <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />
-                                        <BtnPrimary fontSize="20px">GALLERY</BtnPrimary>
+
+                                        <BtnPrimary fontSize="20px" mr="48%">
+                                                GALLERY
+                                        </BtnPrimary>
+                                        <TextIconButton upload>UPLOAD</TextIconButton>
                                 </FlexGapM>
 
                                 <ControlsGallery
