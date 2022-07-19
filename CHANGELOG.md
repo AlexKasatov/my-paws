@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/AlexKasatov/pets-paw/compare/v0.1.3...v0.1.4) (2022-07-19)
+
+
+### Features
+
+* add data context ([d0cb5b8](https://github.com/AlexKasatov/pets-paw/commit/d0cb5b867e3d1ad0f15ce8a4f71898f414c29bc6))
+* add fetch controls ([2b74de6](https://github.com/AlexKasatov/pets-paw/commit/2b74de6ce96f5e70c96e829ff45b9df7f22cb71e))
+* gallery page ready ([e48a72d](https://github.com/AlexKasatov/pets-paw/commit/e48a72dc6a4464620675a1b3c01a173eea84c6fb))
+* update http service ([565cb86](https://github.com/AlexKasatov/pets-paw/commit/565cb86fdf3688240c2e114b5eb2253ab5707ee0))
+
+
+### Bug Fixes
+
+* fetch data for gallery ([e7fbdce](https://github.com/AlexKasatov/pets-paw/commit/e7fbdced4bbddee1629202a5d636514e2ec270be))
+* gallery styles, https service bugs ([eaa8cf4](https://github.com/AlexKasatov/pets-paw/commit/eaa8cf4c67ebaf9596d3568d9221f8b129377db6))
+
 ### [0.1.3](https://github.com/AlexKasatov/pets-paw/compare/v0.1.2...v0.1.3) (2022-07-19)
 
 
