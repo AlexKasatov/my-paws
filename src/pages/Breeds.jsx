@@ -24,6 +24,7 @@ const Breeds = () => {
         const [breeds, setBreeds] = useState([]); // fetched breeds
 
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
+        console.log('🚀 ~ file: Breeds.jsx ~ line 27 ~ Breeds ~ filtredBreeds', filtredBreeds);
 
         const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
         const [limitBreeds, setLimitBreeds] = useState(''); // limit breeds
@@ -40,7 +41,6 @@ const Breeds = () => {
         for (let index = 0; index < breeds.length; index++) {
                 allBreeds.push({ value: breeds[index].name, label: breeds[index].name });
         }
-        console.log('🚀 ~ file: Breeds.jsx ~ line 43 ~ Breeds ~ allBreeds', allBreeds);
 
         // search breeds by name
         const handleSearch = (search, breed) => {

@@ -34,7 +34,6 @@ export const InputSearch = styled.input.attrs({
 // eslint-disable-next-line react/prop-types
 const Search = ({ onSearch }) => {
         const [search, setSearch] = useState('');
-        console.log('🚀 ~ file: Search.jsx ~ line 29 ~ Search ~ search', search);
 
         useEffect(() => {
                 onSearch(search);

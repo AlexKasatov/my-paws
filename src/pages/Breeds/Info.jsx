@@ -18,10 +18,8 @@ const Info = () => {
         const [breed, setBreed] = useState('');
 
         const { id } = useParams();
-        console.log('🚀 ~ file: Info.jsx ~ line 10 ~ Info ~ params', id);
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const res = await HttpService.getImageById(id, 5);
-                console.log('🚀 ~ file: Info.jsx ~ line 9 ~ const[fetch,isLoading,isError]=useFetch ~ res', res);
                 setBreed(res);
         });
 
