@@ -14,7 +14,7 @@ import SortButton from '../components/UI/Buttons/SortButton';
 import Controls from '../components/UI/Controls/Controls';
 import useGoBack from '../hooks/useGoBack';
 
-const limits = [
+export const limits = [
         { value: 5, label: 'Limit: 5' },
         { value: 10, label: 'Limit: 10' },
         { value: 15, label: 'Limit: 15' },

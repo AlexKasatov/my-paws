@@ -19,14 +19,26 @@ const Gallery = () => {
 
         const [breeds, setBreeds] = useState([]);
         const [filtredBreeds, setFiltredBreeds] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async () => {
-                const response = await HttpService.getImages();
-                console.log(
-                        '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
-                setBreeds(response);
+        const [fetch, isLoading, isError] = useFetch(async (type) => {
+                if (type) {
+                        const res = await HttpService.getImagesByType(type);
+                        setBreeds(res);
+                }
+
+                if (!breeds.length) {
+                        const response = await HttpService.getImages();
+                        console.log(
+                                '🚀 ~ file: Gallery.jsx ~ line 23 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                                response
+                        );
+                        setBreeds(response);
+                }
         });
+
+        // const [changeType, isTypeLoading, isTypeError] = useFetch(async (type) => {
+        //         const response = await HttpService.getImagesByType(type);
+        //         setBreeds(response);
+        // });
 
         const handleSearch = (search, breed) => {
                 let data = [...breeds];
@@ -48,9 +60,14 @@ const Gallery = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
-        const handlerLoadMoreCats = () => {
+        // Load more cat images
+        const handleLoadMoreCats = () => {
                 fetch();
-                console.log('LOOOOADER MOOOORE CATZZZ');
+        };
+
+        // Load images with selected type
+        const handleChangeType = (type) => {
+                fetch(type);
         };
 
         const handleGoBack = () => {
@@ -66,7 +83,7 @@ const Gallery = () => {
                                         <BtnPrimary fontSize="20px">GALLERY</BtnPrimary>
                                 </FlexGapM>
 
-                                <ControlsGallery onLoadMoreCats={handlerLoadMoreCats} />
+                                <ControlsGallery onChangeType={handleChangeType} onLoadMoreCats={handleLoadMoreCats} />
 
                                 {isLoading ? (
                                         <Spiner />
