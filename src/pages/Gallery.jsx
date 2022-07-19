@@ -14,6 +14,7 @@ import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import ChoiceSection from '../components/UI/Buttons/ChoiceSection';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
+import { HeadingBase } from '../theme/typography.styled';
 
 const Gallery = () => {
         const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Gallery = () => {
         const [filtredBreeds, setFiltredBreeds] = useState([]);
         const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit, breedId) => {
                 const response = await HttpService.getImagesForGallery(id, type, order, limit);
+                console.log(
+                        '🚀 ~ file: Gallery.jsx ~ line 33 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                        response
+                );
 
                 setBreeds(response);
         });
@@ -111,6 +116,7 @@ const Gallery = () => {
                                                 )}
                                         </ImageGallery>
                                 )}
+                                {!breeds.length && <HeadingBase>😿😿😿 Nothing is found 😿😿😿</HeadingBase>}
                         </Wrapper>
                 </>
         );
