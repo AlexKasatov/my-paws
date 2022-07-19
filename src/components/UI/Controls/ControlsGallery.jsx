@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { CustomSelect } from './CustomSelect.styled';
 import IconButton from '../Buttons/IconButton';
 import { FlexGapM } from '../../../theme/layout.styled';
-import { limitOptions, orderOptions, typeOptions } from '../../../data/data'; // limits options
+import { limitOptions2, orderOptions, typeOptions } from '../../../data/data'; // limits options
 import { useData } from '../../../context/DataProvider';
+
+import { Label } from '../../../theme/typography.styled';
 
 export const ControlsWrapper = styled.div`
         background-color: ${({ theme }) => theme.colors.pageSecondary};
@@ -24,48 +26,60 @@ const ControlsGallery = ({ onLoadMoreCats, type, setType, limit, setLimit, order
         return (
                 <ControlsWrapper>
                         {/* Breed Select */}
-                        <CustomSelect
-                                width="20px"
-                                marginRigjt="1rem"
-                                options={breedOptions}
-                                placeholder="Breed"
-                                isClearable
-                                isSearchable={false}
-                                value={breed}
-                                onChange={setBreed}
-                        />
-
-                        {/* Type Select */}
-                        <CustomSelect
-                                options={typeOptions}
-                                placeholder="Image Types"
-                                isClearable
-                                isSearchable={false}
-                                value={type}
-                                onChange={setType}
-                        />
-
-                        {/* Order Select */}
-                        <CustomSelect
-                                options={orderOptions}
-                                placeholder="Order"
-                                isClearable
-                                isSearchable={false}
-                                value={order}
-                                onChange={setOrder}
-                        />
-                        <FlexGapM alignItems="center">
-                                {/* Limit Select */}
+                        <div>
+                                <Label>BREED</Label>
                                 <CustomSelect
-                                        options={limitOptions}
-                                        placeholder="Image per page"
+                                        color="primary"
+                                        width="20px"
+                                        marginRigjt="1rem"
+                                        options={breedOptions}
+                                        placeholder="None"
                                         isClearable
                                         isSearchable={false}
-                                        value={limit}
-                                        onChange={setLimit}
+                                        value={breed}
+                                        onChange={setBreed}
                                 />
-                                <IconButton update onLoadMoreCats={onLoadMoreCats} />
-                        </FlexGapM>
+                        </div>
+                        {/* Type Select */}
+                        <div>
+                                <Label>TYPE</Label>
+                                <CustomSelect
+                                        options={typeOptions}
+                                        placeholder="None"
+                                        isClearable
+                                        isSearchable={false}
+                                        value={type}
+                                        onChange={setType}
+                                />
+                        </div>
+                        {/* Order Select */}
+                        <div>
+                                <Label>ORDER</Label>
+                                <CustomSelect
+                                        options={orderOptions}
+                                        placeholder="None"
+                                        isClearable
+                                        isSearchable={false}
+                                        value={order}
+                                        onChange={setOrder}
+                                />
+                        </div>
+                        {/* Limit Select */}
+                        <div>
+                                <Label>LIMIT</Label>
+                                <FlexGapM alignItems="center">
+                                        {/* Limit Select */}
+                                        <CustomSelect
+                                                options={limitOptions2}
+                                                placeholder="None"
+                                                isClearable
+                                                isSearchable={false}
+                                                value={limit}
+                                                onChange={setLimit}
+                                        />
+                                        <IconButton update onLoadMoreCats={onLoadMoreCats} />
+                                </FlexGapM>
+                        </div>
                 </ControlsWrapper>
         );
 };

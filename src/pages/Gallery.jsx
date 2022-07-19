@@ -82,7 +82,7 @@ const Gallery = () => {
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />
 
-                                        <BtnPrimary fontSize="20px" mr="48%">
+                                        <BtnPrimary fontSize="20px" mr="46%">
                                                 GALLERY
                                         </BtnPrimary>
                                         <TextIconButton upload>UPLOAD</TextIconButton>

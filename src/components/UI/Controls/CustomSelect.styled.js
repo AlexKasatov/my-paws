@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
-
 import Select from 'react-select';
 
 export const CustomSelect = styled(Select).attrs((props) => ({
         styles: {
                 control: (provided) => ({
                         ...provided,
-                        backgroundColor: props.theme.colors.body,
+                        backgroundColor: props.theme.colors.pageMain,
                         color: props.theme.colors.textSupport,
                         borderRadius: '10px',
                         padding: '0.25rem',
@@ -27,7 +26,6 @@ export const CustomSelect = styled(Select).attrs((props) => ({
         },
 }))`
         width: 100%;
-
         border-radius: 20px;
         font-family: 'Jost';
         font-style: normal;
@@ -50,55 +48,3 @@ export const CustomSelect = styled(Select).attrs((props) => ({
                 background-color: ${({ theme }) => theme.colors.pageSecondary};
         }
 `;
-
-export const ControledSelect = styled(CustomSelect)`
-        ${space}
-        width: 100%;
-`;
-
-// export const CustomSelect = styled(Select).attrs({
-//         styles: {
-//                 control: (provided) => ({
-//                         ...provided,
-//                         backgroundColor: '#1D1D1D',
-//                         color: `${({ theme }) => theme.colors.textSupport}`,
-//                         borderRadius: '10px',
-//                         padding: '0.25rem',
-//                         border: 'none',
-//                         height: '50px',
-//                         cursor: 'pointer',
-//                 }),
-//                 option: (provided, state) => ({
-//                         ...provided,
-//                         cursor: 'pointer',
-//                         color: `${({ theme }) => theme.colors.textSupport}`,
-//                 }),
-//         },
-// })`
-//         width: 200px;
-//         border-radius: 20px;
-//         font-family: 'Jost';
-//         font-style: normal;
-//         font-weight: 400;
-//         font-size: 16px;
-//         line-height: 24px;
-//         border: none;
-
-//         & input {
-//                 padding-left: 0 0.25rem;
-//         }
-
-//         /* placeholder's color */
-//         & * {
-//                 color: ${({ theme }) => theme.colors.textSupport} !important;
-//         }
-
-//         & > div[id] {
-//                 background-color: ${({ theme }) => theme.colors.pageSecondary};
-//         }
-
-//         /* placeholder's color with class */
-//         /* .css-qc6sy-singleValue {
-//                 color: var(--color-text);
-//         } */
-// `;

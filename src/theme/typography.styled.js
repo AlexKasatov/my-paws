@@ -38,3 +38,14 @@ export const TextInput = styled(PlaceHolder)`
         color: ${({ theme }) => theme.colors.textBase};
         line-height: ${({ theme }) => theme.lineHeights.input};
 `;
+
+export const Label = styled.span`
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 18px;
+        color: #8c8c8c;
+        /* margin-left: 1rem; */
+        padding: 1rem;
+`;

@@ -76,8 +76,8 @@ export const BtnBreed = styled(Btn)`
 // Btn with secondary background color
 export const BtnSecondary = styled(Btn)`
         line-height: ${({ theme }) => theme.lineHeights.button};
-        /* min-height: 40px;
-        max-width: 143px; */
+        min-height: 40px;
+        max-width: 143px;
         background-color: ${({ theme }) => theme.colors.secondary};
         &:hover {
                 /* type */
@@ -165,11 +165,16 @@ export const BtnIconPrimary = styled.button`
         ${flexbox}
 
         background-color: ${({ theme }) => theme.colors.pageMain};
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 50px;
+
         border-radius: 10px;
         border: none;
         cursor: pointer;
+
+        /* svg {
+                padding: 2px;
+        } */
 
         &:hover {
                 background-color: ${({ theme }) => theme.colors.primary};
@@ -179,6 +184,8 @@ export const BtnIconPrimary = styled.button`
 // Button for search || back
 export const BtnIconSecondary = styled(BtnIconPrimary)`
         background-color: ${({ theme }) => theme.colors.secondary};
+        width: 40px;
+        height: 40px;
 `;
 
 // Btn for sort icons
