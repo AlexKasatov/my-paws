@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 import { Children, useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FlexGapM, Flex, ImageGallery } from '../theme/layout.styled';
+import { FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -12,12 +11,10 @@ import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
-import ChoiceSection from '../components/UI/Buttons/ChoiceSection';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import { HeadingBase } from '../theme/typography.styled';
 
 const Gallery = () => {
-        const navigate = useNavigate();
         const goBack = useGoBack();
 
         // states for query params
@@ -39,7 +36,7 @@ const Gallery = () => {
                 setBreeds(response);
         });
 
-        // ? fix it later ( add to fetch function )
+        // TODO fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {
                 let data = [...breeds];
 

@@ -70,7 +70,7 @@ const ChoiceSection = () => {
         };
 
         return (
-                <>
+                <section>
                         <ChoiceBtn
                                 onMouseEnter={() => setLike('#97EAB9')}
                                 onMouseLeave={() => setLike('#FFFFFF')}
@@ -100,7 +100,7 @@ const ChoiceSection = () => {
                         >
                                 <Dislike fill={dislike} />
                         </ChoiceBtn>
-                </>
+                </section>
         );
 };
 
