@@ -11,20 +11,33 @@ import HttpService from '../service/http.service';
 
 const Voting = () => {
         const [cat, setCat] = useState('');
+        const [voteState, setVoteState] = useState('');
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
                 const response = await HttpService.getImages(limit);
+
+                setCat(response);
+        });
+
+        const [vote, isVoteLoading, isVoteError] = useFetch(async (id, value) => {
+                const response = await HttpService.vote(id, value);
                 console.log(
                         '🚀 ~ file: Voting.jsx ~ line 16 ~ const[fetch,isLoading,isError]=useFetch ~ response',
                         response
                 );
-                setCat(response);
+                setVoteState(response);
         });
 
         useEffect(() => {
                 const limit = 1;
                 fetch(limit);
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []);
+        }, [voteState]);
+
+        const handleVote = (id, value) => {
+                console.log('🚀 ~ file: Voting.jsx ~ line 38 ~ handleVote ~ value', value);
+                console.log('🚀 ~ file: Voting.jsx ~ line 38 ~ handleVote ~ id', id);
+                vote(id, value);
+        };
 
         // TODO fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {};
@@ -46,7 +59,7 @@ const Voting = () => {
                                                 VOTING
                                         </BtnPrimary>
                                 </FlexGapM>
-                                <ImageVote cat={cat[0]} />
+                                <ImageVote cat={cat} onVote={handleVote} />
                                 {/* user logs  */}
                         </Wrapper>
                 </>
