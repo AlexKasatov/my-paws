@@ -234,7 +234,9 @@ export const ImageGrid = styled.div`
 export const ImageGallery = styled(ImageGrid)`
         button {
                 position: absolute;
-                width: 60px;
+                width: 50px;
+                height: 50px;
+
                 display: none;
                 top: 50%;
                 left: 50%;
