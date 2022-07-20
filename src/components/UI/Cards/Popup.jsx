@@ -5,7 +5,7 @@ import IconButton from '../Buttons/IconButton';
 
 export const PopupWrapper = styled.div`
         position: fixed;
-        background: #00000050;
+        background-color: #00000050;
         width: 100%;
         height: 100vh;
         top: 0;

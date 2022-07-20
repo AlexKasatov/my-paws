@@ -26,6 +26,7 @@ export const darkMode = {
                 primary: '#FF868E',
                 secondary: '#533B3C',
 
+                popup: '#1D1D1D',
                 black: '#000',
                 teal: '#97EAB9',
                 teal30: '#E0F9EA', // when hover use 30% opacity
@@ -67,6 +68,7 @@ export const ligthMode = {
                 primary: '#FF868E',
                 secondary: '#FBE0DC',
 
+                popup: '#757574',
                 black: '#000',
                 teal: '#97EAB9',
                 teal30: '#E0F9EA', // when hover use 30% opacity
