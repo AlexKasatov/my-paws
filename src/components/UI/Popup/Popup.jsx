@@ -8,6 +8,7 @@ import { HeadingBase, SubHeading } from '../../../theme/typography.styled';
 
 const Popup = ({ onEvent }) => {
         const [value, setValue] = useState('');
+        const [imgUrl, setImgUrl] = useState('');
 
         return (
                 <PopupWrapper>
@@ -43,7 +44,12 @@ const Popup = ({ onEvent }) => {
                                         </SubHeading>
                                 </Flex>
 
-                                <ImagePlaceholder value={value} setValue={setValue} />
+                                <ImagePlaceholder
+                                        imgUrl={imgUrl}
+                                        setImgUrl={setImgUrl}
+                                        value={value}
+                                        setValue={setValue}
+                                />
                                 <Flex justifyContent="center" mt="20px">
                                         {value ? (
                                                 <SubHeading fontSize="20px">Image File Name: {value?.name}</SubHeading>

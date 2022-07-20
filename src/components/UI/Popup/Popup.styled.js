@@ -24,9 +24,10 @@ export const PopupBox = styled.div`
 
 export const PlaceholderWrapper = styled.section`
         background-color: ${({ theme }) => theme.colors.pageMain};
-        width: 100%;
-        border: 2px dashed ${({ theme }) => theme.colors.secondary};
+        max-width: 100%;
         height: 320px;
+        border: 2px dashed ${({ theme }) => theme.colors.secondary};
+        max-height: 320px;
         border-radius: 20px;
 
         svg {
@@ -44,4 +45,21 @@ export const PlaceholderWrapper = styled.section`
                 white-space: nowrap;
                 display: inline-block;
         }
+`;
+
+export const UserImage = styled.img`
+        position: absolute;
+        top: 240px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        opacity: 0.6;
+        border-radius: 30px;
+
+        max-width: 660px;
+        max-height: 320px;
+        object-fit: cover;
+        z-index: 0;
 `;

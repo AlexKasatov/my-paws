@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { HeadingBase } from '../../../theme/typography.styled';
-import { PlaceholderWrapper } from './Popup.styled';
+import { PlaceholderWrapper, UserImage } from './Popup.styled';
 import { Flex } from '../../../theme/layout.styled';
-import DonwloadInput from '../Buttons/DonwloadInput';
+import DownloadInput from '../Buttons/DownloadInput';
 import BackgroundImage from './BackgroundImage';
 
-const ImagePlaceholder = ({ value, setValue }) => (
+const ImagePlaceholder = ({ value, setValue, imgUrl, setImgUrl }) => (
         <PlaceholderWrapper>
                 <Flex justifyContent="center" alignItems="center">
                         <HeadingBase
@@ -20,13 +20,18 @@ const ImagePlaceholder = ({ value, setValue }) => (
                                 <HeadingBase color="textSupport" fontWeight="400" lineHeight="30px" as="span">
                                         your file or
                                 </HeadingBase>{' '}
-                                <DonwloadInput value={value} setValue={setValue} />{' '}
+                                <DownloadInput
+                                        imgUrl={imgUrl}
+                                        setImgUrl={setImgUrl}
+                                        value={value}
+                                        setValue={setValue}
+                                />{' '}
                                 <HeadingBase color="textSupport" fontWeight="400" lineHeight="30px" as="span">
                                         to upload
                                 </HeadingBase>
                         </HeadingBase>
                 </Flex>
-                <BackgroundImage />
+                {imgUrl ? <UserImage src={imgUrl} alt="cat" /> : <BackgroundImage />}
         </PlaceholderWrapper>
 );
 
