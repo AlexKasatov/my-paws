@@ -14,7 +14,7 @@ import ImageItem from '../components/ImageItem';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import { HeadingBase } from '../theme/typography.styled';
 import { useToggle } from '../hooks/useToggle';
-import Popup from '../components/UI/Cards/Popup';
+import Popup from '../components/UI/Popup/Popup';
 
 const Gallery = () => {
         const goBack = useGoBack();
