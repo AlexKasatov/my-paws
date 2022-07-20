@@ -19,7 +19,7 @@ const Info = () => {
 
         const { id } = useParams();
         const [fetch, isLoading, isError] = useFetch(async () => {
-                const res = await HttpService.getImageById(id, 5);
+                const res = await HttpService.getImageByBreedId(id, 5);
                 setBreed(res);
         });
 

@@ -13,7 +13,7 @@ export default class HttpService {
         }
 
         // get single breed data by ID
-        static async getImageById(id, limit) {
+        static async getImageByBreedId(id, limit) {
                 const res = await axios(`images/search`, {
                         params: {
                                 breed_id: id,
@@ -33,6 +33,21 @@ export default class HttpService {
                 return res.data;
         }
 
+        // get image by id
+        static async getImagesById(id) {
+                const res = await axios(`images/${id}`);
+                return res.data;
+        }
+
+        static async getVotedImages() {
+                const res = await axios(`images/search`, {
+                        params: {
+                                include_votes: true,
+                        },
+                });
+                return res.data;
+        }
+
         // use for fetch data for Gallery page
         static async getImagesForGallery(id, types = 'gif,jpg,png', order = 'RANDOM', limit = 10) {
                 const res = await axios(
@@ -41,6 +56,7 @@ export default class HttpService {
                 return res.data;
         }
 
+        // like or dislike image
         static async vote(id, value) {
                 const res = await axios.post(`votes`, {
                         image_id: id,
@@ -49,6 +65,13 @@ export default class HttpService {
                 return res.data;
         }
 
+        // get voted data  likes & dislikes (images aren't included)
+        static async getVotes() {
+                const res = await axios(`votes`);
+                return res.data;
+        }
+
+        // add to favourites
         static async addFavourites(id) {
                 const res = await axios.post(`favourites`, {
                         image_id: id,
@@ -56,6 +79,7 @@ export default class HttpService {
                 return res.data;
         }
 
+        // get favourites data (images included)
         static async getFavourites() {
                 const res = await axios('favourites');
                 return res.data;
