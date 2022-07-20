@@ -13,10 +13,11 @@ const Upload = ({ fill }) => (
         </svg>
 );
 
-const TextIconButton = ({ children, loading, upload }) => {
+const TextIconButton = ({ children, loading, upload, onEvent }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 <BtnSecondary
+                        onClick={onEvent}
                         display="flexbox"
                         alignItems="center"
                         justifyContent="center"

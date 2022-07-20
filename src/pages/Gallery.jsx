@@ -13,9 +13,12 @@ import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import { HeadingBase } from '../theme/typography.styled';
+import { useToggle } from '../hooks/useToggle';
+import Popup from '../components/UI/Cards/Popup';
 
 const Gallery = () => {
         const goBack = useGoBack();
+        const [popup, handlePopup] = useToggle();
 
         // states for query params
         const [breedId, setBreedId] = useState('acur');
@@ -87,7 +90,9 @@ const Gallery = () => {
                                         <BtnPrimary fontSize="20px" mr="46%">
                                                 GALLERY
                                         </BtnPrimary>
-                                        <TextIconButton upload>UPLOAD</TextIconButton>
+                                        <TextIconButton onEvent={handlePopup} upload>
+                                                UPLOAD
+                                        </TextIconButton>
                                 </FlexGapM>
 
                                 <ControlsGallery
@@ -114,6 +119,7 @@ const Gallery = () => {
                                         </ImageGallery>
                                 )}
                                 {!breeds.length && <HeadingBase>😿😿😿 Nothing is found 😿😿😿</HeadingBase>}
+                                {popup && <Popup onPopup={handlePopup} />}
                         </Wrapper>
                 </>
         );
