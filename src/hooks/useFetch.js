@@ -14,11 +14,11 @@ const useFetch = (cb) => {
                                 error.response && error.response.status >= 400 && error.response.status < 500;
 
                         if (!expectedError) {
-                                toast.info('Something was wrong', error.message, {
+                                toast.error('Something was wrong', error.message, {
                                         position: 'bottom-center',
                                 });
                         } else {
-                                toast('expected error', error.message);
+                                toast.error(' Seems to be server is down ', error.message);
                         }
 
                         setError(error);

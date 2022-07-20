@@ -84,6 +84,13 @@ export default class HttpService {
                 const res = await axios('favourites');
                 return res.data;
         }
+
+        static async uploadImage(formData) {
+                const res = await axios.post('images/upload', formData, {
+                        headers: { 'Content-Type': 'multipart/form-data' },
+                });
+                return res.data;
+        }
 }
 
 // https://api.thecatapi.com/v1/images/search?breed_ids=abys&limit=5
