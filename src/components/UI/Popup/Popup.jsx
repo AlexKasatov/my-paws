@@ -5,6 +5,7 @@ import IconButton from '../Buttons/IconButton';
 import { PopupWrapper, PopupBox } from './Popup.styled';
 import ImagePlaceholder from './ImagePlaceholder';
 import { HeadingBase, SubHeading } from '../../../theme/typography.styled';
+import { BtnPrimaryActive } from '../../../theme/buttons.styled';
 
 const Popup = ({ onEvent }) => {
         const [value, setValue] = useState('');
@@ -50,12 +51,13 @@ const Popup = ({ onEvent }) => {
                                         value={value}
                                         setValue={setValue}
                                 />
-                                <Flex justifyContent="center" mt="20px">
+                                <Flex alignItems="center" justifyContent="center" mt="20px" flexDirection="column">
                                         {value ? (
                                                 <SubHeading fontSize="20px">Image File Name: {value?.name}</SubHeading>
                                         ) : (
                                                 <SubHeading fontSize="20px">No file selected</SubHeading>
                                         )}
+                                        {imgUrl && <BtnPrimaryActive mt="1rem">DOWNLOAD</BtnPrimaryActive>}
                                 </Flex>
                         </PopupBox>
                 </PopupWrapper>

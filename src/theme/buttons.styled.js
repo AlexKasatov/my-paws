@@ -64,6 +64,11 @@ export const BtnPrimary = styled(Btn)`
         pointer-events: none;
 `;
 
+export const BtnPrimaryActive = styled(BtnPrimary)`
+        pointer-events: auto;
+        cursor: pointer;
+`;
+
 // BUTTON FOR BREED NAME ON IMAGE
 export const BtnBreed = styled(Btn)`
         width: 100%;

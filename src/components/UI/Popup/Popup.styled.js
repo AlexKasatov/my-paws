@@ -20,6 +20,10 @@ export const PopupBox = styled.div`
         padding: 20px;
         border: none;
         overflow: auto;
+        * a {
+                text-decoration: none;
+                color: ${({ theme }) => theme.colors.primary};
+        }
 `;
 
 export const PlaceholderWrapper = styled.section`
