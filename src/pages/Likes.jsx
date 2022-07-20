@@ -29,21 +29,10 @@ const Likes = () => {
                 setLikes(response);
         });
 
-        // const [fetchImgs, isImgsLoading, isImgsError] = useFetch(async (id) => {
-        //         const response = await HttpService.getImagesById(id);
-        //         console.log(
-        //                 '🚀 ~ file: Fav.jsx ~ line 15 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-        //                 response
-        //         );
-        //         setLiked(response);
-        // });
-
         // return filtred array of liked images
         useMemo(() => {
                 setFiltredLikes(likes.filter(({ value }) => value === 1));
         }, [likes]);
-
-        console.log(filtredLikes[0]?.image_id);
 
         // fetch vote histroy ( likes, dislikes, image_id )
         useEffect(() => {
@@ -110,8 +99,8 @@ const Likes = () => {
                                                 )}
                                         </ImageGallery>
                                 )}
-                                {/* user logs  */}
                                 {!likedImagesPromises.length && <Spiner />}
+                                {/* TODO no liked image found  */}
                         </Wrapper>
                 </>
         );
