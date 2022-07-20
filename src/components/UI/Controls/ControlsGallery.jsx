@@ -20,7 +20,7 @@ export const ControlsWrapper = styled.div`
         gap: 2rem;
 `;
 
-const ControlsGallery = ({ onLoadMoreCats, type, setType, limit, setLimit, order, setOrder, breed, setBreed }) => {
+const ControlsGallery = ({ onEvent, type, setType, limit, setLimit, order, setOrder, breed, setBreed }) => {
         const { breedOptions } = useData();
 
         return (
@@ -77,7 +77,7 @@ const ControlsGallery = ({ onLoadMoreCats, type, setType, limit, setLimit, order
                                                 value={limit}
                                                 onChange={setLimit}
                                         />
-                                        <IconButton update onLoadMoreCats={onLoadMoreCats} />
+                                        <IconButton update onEvent={onEvent} />
                                 </FlexGapM>
                         </div>
                 </ControlsWrapper>

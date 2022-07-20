@@ -96,7 +96,7 @@ const Gallery = () => {
                                 </FlexGapM>
 
                                 <ControlsGallery
-                                        onLoadMoreCats={handleLoadMoreCats}
+                                        onEvent={handleLoadMoreCats}
                                         type={type}
                                         setType={setType}
                                         limit={limit}
@@ -119,7 +119,7 @@ const Gallery = () => {
                                         </ImageGallery>
                                 )}
                                 {!breeds.length && <HeadingBase>😿😿😿 Nothing is found 😿😿😿</HeadingBase>}
-                                {popup && <Popup onPopup={handlePopup} />}
+                                {popup && <Popup onEvent={handlePopup} />}
                         </Wrapper>
                 </>
         );

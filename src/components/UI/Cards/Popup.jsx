@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import IconButton from '../Buttons/IconButton';
 
 export const PopupWrapper = styled.div`
         position: fixed;
@@ -13,13 +14,12 @@ export const PopupWrapper = styled.div`
 
 export const PopupBox = styled.div`
         position: relative;
-        width: 70%;
-        margin: 0 auto;
-        height: auto;
-        max-height: 70vh;
-        margin-top: calc(100vh - 85vh - 20px);
+        width: 680px;
+        height: 100%;
+        margin-left: 44vw;
+        margin-top: 20px;
         background: #fff;
-        border-radius: 4px;
+        border-radius: 20px;
         padding: 20px;
         border: 1px solid #999;
         overflow: auto;
@@ -37,14 +37,14 @@ export const ClosePoppupIcon = styled.span`
         border-radius: 50%;
         line-height: 20px;
         text-align: center;
-        border: 1px solid #999;
+        border: none;
         font-size: 20px;
 `;
 
-const Popup = ({ onPopup }) => (
+const Popup = ({ onEvent }) => (
         <PopupWrapper>
                 <PopupBox>
-                        <ClosePoppupIcon onClick={onPopup} />
+                        <IconButton close onEvent={onEvent} />
                 </PopupBox>
         </PopupWrapper>
 );
