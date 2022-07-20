@@ -14,7 +14,7 @@ const Popup = ({ onEvent }) => {
         const [imgUrl, setImgUrl] = useState('');
         const [upload, setUpload] = useState('');
 
-        const [fetch, isLoading, isError] = useFetch(async (formData) => {
+        const [uploadImage, isLoading, isError] = useFetch(async (formData) => {
                 const response = await HttpService.uploadImage(formData);
                 console.log(
                         '🚀UUUUPLOOOADED ~ file: Popup.jsx ~ line 19 ~ const[fetch,isLoading,isError]=useFetch ~ response',
@@ -27,7 +27,7 @@ const Popup = ({ onEvent }) => {
         const handleUploadImg = () => {
                 const formData = new FormData();
                 formData.append('file', value);
-                fetch(formData);
+                uploadImage(formData);
         };
 
         return (
@@ -65,6 +65,7 @@ const Popup = ({ onEvent }) => {
                                 </Flex>
 
                                 <ImagePlaceholder
+                                        isLoading={isLoading}
                                         imgUrl={imgUrl}
                                         setImgUrl={setImgUrl}
                                         value={value}

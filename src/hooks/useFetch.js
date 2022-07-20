@@ -18,7 +18,7 @@ const useFetch = (cb) => {
                                         position: 'bottom-center',
                                 });
                         } else {
-                                toast.error(' Seems to be server is down ', error.message);
+                                toast.error(' Something was very wrong ', error.message);
                         }
 
                         setError(error);
@@ -27,7 +27,31 @@ const useFetch = (cb) => {
                 }
         };
 
-        return [fetch, loader, error];
+        const uploadImage = async (formData) => {
+                try {
+                        setLoader(true);
+
+                        await toast.promise(cb(formData), {
+                                pending: '😼 Checking for a catzz...',
+                                success: `🙀 Cat is detected! 👌`,
+                        });
+                } catch (error) {
+                        const expectedError =
+                                error.response && error.response.status >= 400 && error.response.status < 500;
+
+                        if (!expectedError) {
+                                toast.error(`😿 Something went wrong`, error.message);
+                        } else {
+                                toast.error(`🙈 Oopz, no cat's found!`, error.message);
+                        }
+
+                        setError(error);
+                } finally {
+                        setLoader(false);
+                }
+        };
+
+        return [uploadImage, fetch, loader, error];
 };
 
 export default useFetch;
