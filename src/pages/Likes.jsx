@@ -1,5 +1,7 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable camelcase */
 import { useState, useEffect, Children, useMemo } from 'react';
+import axios from 'axios';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -14,6 +16,9 @@ import ImageItem from '../components/ImageItem';
 const Likes = () => {
         const [likes, setLikes] = useState([]);
         const [filtredLikes, setFiltredLikes] = useState([]);
+        const [likedImg, setLikedImg] = useState([]);
+        const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
+        const [isLikedImgError, setIsLikedImgError] = useState('');
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes();
                 console.log(
@@ -24,31 +29,55 @@ const Likes = () => {
                 setLikes(response);
         });
 
-        const [fetchImgs, isImgsLoading, isImgsError] = useFetch(async (id) => {
-                const response = await HttpService.getImagesById(id);
-                console.log(
-                        '🚀 ~ file: Fav.jsx ~ line 15 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
-                setLikes(response);
-        });
+        // const [fetchImgs, isImgsLoading, isImgsError] = useFetch(async (id) => {
+        //         const response = await HttpService.getImagesById(id);
+        //         console.log(
+        //                 '🚀 ~ file: Fav.jsx ~ line 15 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+        //                 response
+        //         );
+        //         setLiked(response);
+        // });
 
         // return filtred array of liked images
-
         useMemo(() => {
                 setFiltredLikes(likes.filter(({ value }) => value === 1));
         }, [likes]);
 
+        console.log(filtredLikes[0]?.image_id);
+
+        // fetch vote histroy ( likes, dislikes, image_id )
         useEffect(() => {
                 fetchLike();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
+        // create Promises array of  liked images
+        const likedImagesPromises = useMemo(() => {
+                const likeImagePromises2 = [];
+                if (filtredLikes.length > 0) {
+                        for (let index = 0; index < filtredLikes.length; index++) {
+                                likeImagePromises2.push(
+                                        axios(`https://api.thecatapi.com/v1/images/${filtredLikes[index].image_id}`)
+                                );
+                        }
+                }
+                return likeImagePromises2;
+        }, [filtredLikes]);
+
+        // resolve Promises array of  liked images & update likedImg state
         useEffect(() => {
-                const ID = 'C_tOfzlXz';
-                fetchImgs(ID);
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []);
+                Promise.all(likedImagesPromises)
+                        .then((res) => {
+                                setIsLikedImgLoading(true);
+                                setLikedImg(res.map((i) => i.data));
+                        })
+                        .catch((err) => {
+                                setIsLikedImgError(err);
+                        })
+                        .finally(() => {
+                                setIsLikedImgLoading(false);
+                        });
+        }, [likedImagesPromises]);
 
         // TODO fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {};
@@ -70,18 +99,19 @@ const Likes = () => {
                                                 LIKES
                                         </BtnPrimary>
                                 </FlexGapM>
-                                {/* {isLoading ? (
+                                {isLikedImgLoading ? (
                                         <Spiner />
                                 ) : (
-                                        // <ImageGallery flexDirection="column">
-                                        //         {Children.toArray(
-                                        //                 likes.map(
-                                        //                         ({ image, value }, index) => value && console.log(image)
-                                        //                 )
-                                        //         )}
-                                        // </ImageGallery>
-                                )} */}
+                                        <ImageGallery flexDirection="column">
+                                                {Children.toArray(
+                                                        likedImg.map((image, index) => (
+                                                                <ImageItem key={index} image={image} />
+                                                        ))
+                                                )}
+                                        </ImageGallery>
+                                )}
                                 {/* user logs  */}
+                                {!likedImagesPromises.length && <Spiner />}
                         </Wrapper>
                 </>
         );
