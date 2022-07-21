@@ -3,7 +3,6 @@ import { useState, useEffect, Children, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
-import Spiner from '../animation/Spiner';
 import { FlexGapM, ImageGrid, Flex } from '../theme/layout.styled';
 import { BtnPrimary } from '../theme/buttons.styled';
 import ImageItem from '../components/ImageItem';
@@ -13,6 +12,8 @@ import Nav from '../components/Nav';
 import SortButton from '../components/UI/Buttons/SortButton';
 import Controls from '../components/UI/Controls/Controls';
 import useGoBack from '../hooks/useGoBack';
+import { SpinnerHypnotic } from '../animation/Spinners.styled';
+import { NoUserLogs } from '../components/UserLogs';
 
 // TODO Design limit functionality from API
 // TODO Design pagination functionality from API
@@ -125,7 +126,9 @@ const Breeds = () => {
                                         </FlexGapM>
                                 </FlexGapM>
                                 {isLoading ? (
-                                        <Spiner />
+                                        <Flex justifyContent="center" mt="10rem" mb="10rem">
+                                                <SpinnerHypnotic />
+                                        </Flex>
                                 ) : (
                                         <ImageGrid flexDirection="column">
                                                 {Children.toArray(
@@ -140,6 +143,8 @@ const Breeds = () => {
                                                 )}
                                         </ImageGrid>
                                 )}
+                                {/* Check if no breeds were found */}
+                                {isLoading ? !breeds.length : <NoUserLogs />}
                         </Wrapper>
                 </>
         );
