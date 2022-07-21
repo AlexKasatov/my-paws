@@ -9,40 +9,38 @@ import useGoBack from '../hooks/useGoBack';
 import ImageVote from '../components/UI/Cards/ImageVote';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
+import { useData } from '../context/DataProvider';
+import like from '../image/icons/logs/like.svg';
+import dislike from '../image/icons/logs/dislike.svg';
+import favs from '../image/icons/logs/fav.svg';
 
 const Voting = () => {
+        // state for fetch 1 image per time
         const [cat, setCat] = useState('');
+        // state for save voting history
         const [voteState, setVoteState] = useState('');
+        // state from context to manage user logs
+        const { userLogs, setUserLogs } = useData();
 
         // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
                 const response = await HttpService.getImages(limit);
-
                 setCat(response);
         });
 
         // Vote like or dislike
         const [vote, isVoteLoading, isVoteError] = useFetch(async (id, value) => {
                 const response = await HttpService.vote(id, value);
-                console.log(
-                        '🚀 ~ file: Voting.jsx ~ line 26 ~ const[vote,isVoteLoading,isVoteError]=useFetch ~ response',
-                        response
-                );
-
                 setVoteState(response);
         });
 
         // Add to favs
         const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
                 const response = await HttpService.addFavourites(id);
-                console.log(
-                        '🚀 ~ file: Voting.jsx ~ line 33 ~ const[fav,isFavLoading,isFavError]=useFetch ~ response',
-                        response
-                );
-
                 setVoteState(response);
         });
 
+        // Update image state everytime user changes vote (load 1 image from API)
         useEffect(() => {
                 const limit = 1;
                 fetch(limit);
@@ -50,8 +48,10 @@ const Voting = () => {
         }, [voteState]);
 
         const handleVote = async (id, value) => {
-                await vote(id, value);
+                // ? id image_id
+                // ? value like or dislike ( 1 or 0 )
 
+                await vote(id, value);
                 if (value) {
                         toast.success('LIKE!', {
                                 icon: '👍',
@@ -61,13 +61,28 @@ const Voting = () => {
                                 icon: '👎',
                         });
                 }
+                // svg icons
+                const icon = value ? like : dislike;
+                // get current time
+                const time = new Date();
+                const currentTime = `${time.getHours()}:${time.getMinutes()}`;
+                // update user logs
+                setUserLogs((prev) => [...prev, { id, value, currentTime, icon }]);
         };
 
         const handleFav = async (id) => {
+                // ? id image_id
+
                 await fav(id);
                 toast('LOVE IT!', {
                         icon: '❤️',
                 });
+
+                // get current time
+                const time = new Date();
+                const currentTime = `${time.getHours()}:${time.getMinutes()}`;
+                // update user logs
+                setUserLogs((prev) => [...prev, { id, value: 'fav', currentTime, icon: favs }]);
         };
 
         // TODO fix it later ( add to fetch function )

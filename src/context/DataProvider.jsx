@@ -2,6 +2,7 @@
 import { createContext, useState, useEffect, useMemo, useContext } from 'react';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export const ContextData = createContext();
 
@@ -13,6 +14,8 @@ const DataProvider = ({ children }) => {
                 const response = await HttpService.getBreeds(parameters);
                 setBreeds(response);
         });
+        const [userLogs, setUserLogs] = useState([]);
+        const [userLocal, setUserLocal] = useLocalStorage('logs', 'userLogs');
 
         useEffect(() => {
                 fetch();
@@ -34,7 +37,10 @@ const DataProvider = ({ children }) => {
         }, [breeds]);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        const value = useMemo(() => ({ breeds, setBreeds, breedOptions }), [breeds]);
+        const value = useMemo(
+                () => ({ breeds, setBreeds, breedOptions, userLogs, setUserLogs, userLocal, setUserLocal }),
+                [breeds, userLogs, userLocal, setUserLocal, setUserLogs, breedOptions]
+        );
 
         return <ContextData.Provider value={value}>{children}</ContextData.Provider>;
 };
