@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { space } from 'styled-system';
+import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
 
 export const SpinnerHypnotic = styled.div`
-        ${space}
         --R: 28px;
         --g1: ${({ theme }) => theme.colors.primary} 96%, #0000;
         --g2: ${({ theme }) => theme.colors.secondary} 96%, #0000;
@@ -46,4 +45,13 @@ export const SpinnerHypnotic = styled.div`
                         transform: rotate(-1turn);
                 }
         }
+        ${border}
+        ${space}
+        ${layout}
+        ${typography}
+        ${color}
+        ${width}
+        ${height}
+        ${position}
+        ${flexbox}
 `;

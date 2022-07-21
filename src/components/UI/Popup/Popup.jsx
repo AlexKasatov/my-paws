@@ -12,19 +12,29 @@ import useUpload from '../../../hooks/useUpload';
 import { buttonSlide } from '../../../animation/page';
 
 const Popup = ({ onEvent }) => {
+        // state for uploaded image by user on frontend
         const [value, setValue] = useState('');
+        // state for preview image before upload on API side
         const [imgUrl, setImgUrl] = useState('');
+        // state for response from API
         const [upload, setUpload] = useState('');
         const [approved, setApproved] = useState(undefined);
 
         const [uploadImage, isLoading, isError] = useUpload(async (formData) => {
                 const response = await HttpService.uploadImage(formData);
+                console.log(
+                        '🚀 ~ file: Popup.jsx ~ line 25 ~ const[uploadImage,isLoading,isError]=useUpload ~ response',
+                        response
+                );
                 setUpload(response);
+                setApproved(isError);
         });
 
         const handleUploadImg = () => {
+                // create formData object to upload image to API
                 const formData = new FormData();
                 formData.append('file', value);
+                // API call to upload image
                 uploadImage(formData);
         };
 
@@ -70,16 +80,19 @@ const Popup = ({ onEvent }) => {
                                         setValue={setValue}
                                 />
                                 <Flex alignItems="center" justifyContent="center" mt="20px" flexDirection="column">
+                                        {/* Check if user upload image on frontend */}
                                         {value ? (
                                                 <SubHeading fontSize="20px">Image File Name: {value?.name}</SubHeading>
                                         ) : (
                                                 <SubHeading fontSize="20px">No file selected</SubHeading>
                                         )}
+                                        {/* If user upload image -> show button for uploading to API */}
                                         {imgUrl && (
-                                                <BtnPrimaryActive onClick={handleUploadImg} mt="1rem">
-                                                        DOWNLOAD
+                                                <BtnPrimaryActive maxWidth="220px" onClick={handleUploadImg} mt="1rem">
+                                                        UPLOAD PHOTO
                                                 </BtnPrimaryActive>
                                         )}
+                                        {/* Result of checking user's image ( cat or not cat) */}
                                 </Flex>
                         </PopupBox>
                 </PopupWrapper>

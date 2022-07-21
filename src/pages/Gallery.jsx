@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import { Children, useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
-import { FlexGapM, ImageGallery } from '../theme/layout.styled';
+import { Flex, FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -18,6 +18,8 @@ import { useToggle } from '../hooks/useToggle';
 import Popup from '../components/UI/Popup/Popup';
 import { useData } from '../context/DataProvider';
 import favs from '../image/icons/logs/fav.svg';
+import { NoUserLogs } from '../components/UserLogs';
+import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Gallery = () => {
         const goBack = useGoBack();
@@ -138,7 +140,9 @@ const Gallery = () => {
                                 />
 
                                 {isLoading ? (
-                                        <Spiner />
+                                        <Flex justifyContent="center" mt="10rem" mb="10rem">
+                                                <SpinnerHypnotic />
+                                        </Flex>
                                 ) : (
                                         <ImageGallery flexDirection="column">
                                                 {Children.toArray(
@@ -153,7 +157,7 @@ const Gallery = () => {
                                         </ImageGallery>
                                 )}
 
-                                {!breeds.length && <HeadingBase>😿😿😿 Nothing is found 😿😿😿</HeadingBase>}
+                                {isLoading ? !breeds.length : <NoUserLogs />}
 
                                 {popup && <Popup onEvent={handlePopup} />}
                         </Wrapper>

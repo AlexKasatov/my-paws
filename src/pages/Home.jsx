@@ -13,7 +13,7 @@ export const BackgroundBox = styled.div`
                 width: 895px;
                 height: 1024px;
                 margin-top: -110px;
-                margin-left: -110px;
+                margin-left: -50px;
                 /* position: absolute;
                 top: -50px;
                 right: -10px; */
