@@ -1,5 +1,6 @@
 /* eslint-disable no-shadow */
 import { Children, useState, useEffect, useMemo } from 'react';
+import { toast } from 'react-toastify';
 import { FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
@@ -15,6 +16,8 @@ import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import { HeadingBase } from '../theme/typography.styled';
 import { useToggle } from '../hooks/useToggle';
 import Popup from '../components/UI/Popup/Popup';
+import { useData } from '../context/DataProvider';
+import favs from '../image/icons/logs/fav.svg';
 
 const Gallery = () => {
         const goBack = useGoBack();
@@ -38,6 +41,14 @@ const Gallery = () => {
 
                 setBreeds(response);
         });
+
+        // Add to favs
+        const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
+                await HttpService.addFavourites(id);
+        });
+
+        // state from context to manage user logs
+        const { userLogs, setUserLogs } = useData();
 
         // TODO fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {
@@ -76,6 +87,25 @@ const Gallery = () => {
                 fetch(breedIdValue, typeValue, orderValue, limitValue);
         };
 
+        // Add to favs handler
+        const handleFav = async (id) => {
+                // ? id image_id
+
+                await fav(id);
+                toast('LOVE IT!', {
+                        icon: '❤️',
+                });
+
+                // get current time
+                const time = new Date();
+                const currentTime = `${time.getHours()}:${time.getMinutes()}`;
+                // update user logs
+                setUserLogs((prev) => [
+                        ...prev,
+                        { id, type: 'fav', value: 'added to Favourites', currentTime, icon: favs },
+                ]);
+        };
+
         const handleGoBack = () => {
                 goBack();
         };
@@ -112,8 +142,12 @@ const Gallery = () => {
                                 ) : (
                                         <ImageGallery flexDirection="column">
                                                 {Children.toArray(
-                                                        breeds.map(({ url }, index) => (
-                                                                <ImageItem image={url} index={index} />
+                                                        breeds.map(({ url, id }, index) => (
+                                                                <ImageItem
+                                                                        image={url}
+                                                                        index={index}
+                                                                        onEvent={() => handleFav(id)}
+                                                                />
                                                         ))
                                                 )}
                                         </ImageGallery>

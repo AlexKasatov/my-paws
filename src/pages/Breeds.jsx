@@ -24,7 +24,6 @@ const Breeds = () => {
         const [breeds, setBreeds] = useState([]); // fetched breeds
 
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
-        console.log('🚀 ~ file: Breeds.jsx ~ line 27 ~ Breeds ~ filtredBreeds', filtredBreeds);
 
         const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
         const [limitBreeds, setLimitBreeds] = useState(''); // limit breeds

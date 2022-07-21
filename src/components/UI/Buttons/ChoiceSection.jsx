@@ -73,6 +73,7 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
         return (
                 <ChoiseWrapper>
                         <ChoiceBtn
+                                // onVote accept simple id as arg ( not image_id), ( 1 for likes, 0 for dislikes)
                                 onClick={() => onVote(cat[0].id, 1)}
                                 onMouseEnter={() => setLike('#97EAB9')}
                                 onMouseLeave={() => setLike('#FFFFFF')}
@@ -94,6 +95,7 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
                                 {favClicked ? <FavClicked /> : <Fav fill={fav} />}
                         </ChoiceBtn>
                         <ChoiceBtn
+                                // onVote accept simple id as arg  ( not image_id), ( 1 for likes, 0 for dislikes)
                                 onClick={() => onVote(cat[0].id, 0)}
                                 onMouseEnter={() => setDislike('#FFD280')}
                                 onMouseLeave={() => setDislike('#FFFFFF')}

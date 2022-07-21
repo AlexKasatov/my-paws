@@ -81,8 +81,9 @@ const Voting = () => {
                 setUserLogs((prev) => [...prev, { id, type, value: `added to ${valueString}`, currentTime, icon }]);
         };
 
+        // Add to favs handler
         const handleFav = async (id) => {
-                // ? id image_id
+                // ? simple id ( not image_id)
 
                 await fav(id);
                 toast('LOVE IT!', {
