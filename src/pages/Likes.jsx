@@ -12,6 +12,7 @@ import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
+import LogsType from '../components/LogsType';
 
 const Likes = () => {
         const [likes, setLikes] = useState([]);
@@ -102,6 +103,7 @@ const Likes = () => {
                                 {!likedImagesPromises.length && <Spiner />}
                                 {/* TODO no liked image found  */}
                         </Wrapper>
+                        <LogsType likes />
                 </>
         );
 };

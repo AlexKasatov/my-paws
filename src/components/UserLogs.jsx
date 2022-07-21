@@ -27,11 +27,17 @@ export const Data = styled.div`
         line-height: 24px;
 `;
 
+export const NoUserLogs = () => (
+        <UserLogsWrapper>
+                <SubHeading>No item found</SubHeading>
+        </UserLogsWrapper>
+);
+
 const UserLogs = ({ currentTime, id, value, icon }) => (
         <UserLogsWrapper>
                 <Data>{currentTime}</Data>
                 <SubHeading mr="1rem">
-                        Image:{' '}
+                        Image ID:{' '}
                         <SubHeading color="textBase" fontWeight="500" as="span">
                                 {id}{' '}
                         </SubHeading>

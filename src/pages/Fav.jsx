@@ -12,6 +12,7 @@ import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';
+import LogsType from '../components/LogsType';
 
 const Fav = () => {
         const [fav, setFav] = useState([]);
@@ -44,7 +45,7 @@ const Fav = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, value: 'remove', currentTime }]);
+                setUserLogs((prev) => [...prev, { id, type: 'fav', value: 'removed from Favourites', currentTime }]);
         };
 
         // TODO fix it later ( add to fetch function )
@@ -83,6 +84,7 @@ const Fav = () => {
                                         </ImageGallery>
                                 )}
                                 {/* user logs  */}
+                                <LogsType favs />
                         </Wrapper>
                 </>
         );

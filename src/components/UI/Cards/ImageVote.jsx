@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Spiner from '../../../animation/Spiner';
 import ChoiceSection from '../Buttons/ChoiceSection';
 import { SpinnerHypnotic } from '../../../animation/Spinners.styled';
+import { FlexGapL } from '../../../theme/layout.styled';
 
 export const ImageVoteSection = styled.div`
         display: flex;
@@ -26,7 +27,7 @@ export const ImageVoteSection = styled.div`
 
 const ImageVote = ({ cat, onVote, onFav, isLoading }) => (
         <ImageVoteSection>
-                {isLoading ? <SpinnerHypnotic mt="8rem" /> : <img src={cat[0]?.url} alt="cat" />}
+                {isLoading ? <SpinnerHypnotic mt="8rem" mb="14rem" /> : <img src={cat[0]?.url} alt="cat" />}
                 <ChoiceSection cat={cat} onVote={onVote} onFav={onFav} />
         </ImageVoteSection>
 );

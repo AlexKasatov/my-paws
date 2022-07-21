@@ -1,7 +1,7 @@
 import { Children, useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery } from '../theme/layout.styled';
+import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import { BtnPrimary } from '../theme/buttons.styled';
 import Nav from '../components/Nav';
@@ -13,7 +13,7 @@ import { useData } from '../context/DataProvider';
 import like from '../image/icons/logs/like.svg';
 import dislike from '../image/icons/logs/dislike.svg';
 import favs from '../image/icons/logs/fav.svg';
-import UserLogs from '../components/UserLogs';
+import UserLogs, { NoUserLogs } from '../components/UserLogs';
 
 const Voting = () => {
         // state for fetch 1 image per time
@@ -70,11 +70,15 @@ const Voting = () => {
                 }
                 // svg icons
                 const icon = value ? like : dislike;
+                // get string type of vote
+                const valueString = value ? 'Likes' : 'Dislikes';
+                // get type of vote
+                const type = value ? 'like' : 'dislike';
                 // get current time
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, value, currentTime, icon }]);
+                setUserLogs((prev) => [...prev, { id, type, value: `added to ${valueString}`, currentTime, icon }]);
         };
 
         const handleFav = async (id) => {
@@ -89,7 +93,10 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, value: 'add', currentTime, icon: favs }]);
+                setUserLogs((prev) => [
+                        ...prev,
+                        { id, type: 'fav', value: 'added to Favourites', currentTime, icon: favs },
+                ]);
         };
 
         // TODO fix it later ( add to fetch function )
@@ -120,6 +127,7 @@ const Voting = () => {
                                                 <UserLogs currentTime={currentTime} id={id} value={value} icon={icon} />
                                         ))
                                 )}
+                                {!userLogs.length && <NoUserLogs>No logs</NoUserLogs>}
                         </Wrapper>
                 </>
         );

@@ -12,6 +12,7 @@ import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
+import LogsType from '../components/LogsType';
 
 const Likes = () => {
         // state  for query dislikes
@@ -102,7 +103,8 @@ const Likes = () => {
                                         </ImageGallery>
                                 )}
                                 {!dislikedImagesPromises.length && <Spiner />}
-                                {/* TODO no liked image found  */}
+                                {/* User's logs */}
+                                <LogsType dislikes />
                         </Wrapper>
                 </>
         );
