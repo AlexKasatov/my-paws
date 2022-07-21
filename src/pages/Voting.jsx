@@ -53,19 +53,19 @@ const Voting = () => {
                 await vote(id, value);
 
                 if (value) {
-                        toast.success('LIKE IT!', {
-                                icon: '😻',
+                        toast.success('LIKE!', {
+                                icon: '👍',
                         });
                 } else {
-                        toast.success('SORRRY!', {
-                                icon: '😿',
+                        toast.error('NOPE!', {
+                                icon: '👎',
                         });
                 }
         };
 
         const handleFav = async (id) => {
                 await fav(id);
-                toast(' add to favourites', {
+                toast('LOVE IT!', {
                         icon: '❤️',
                 });
         };
@@ -90,7 +90,7 @@ const Voting = () => {
                                                 VOTING
                                         </BtnPrimary>
                                 </FlexGapM>
-                                <ImageVote cat={cat} onVote={handleVote} onFav={handleFav} />
+                                <ImageVote isLoading={isLoading} cat={cat} onVote={handleVote} onFav={handleFav} />
                                 {/* user logs  */}
                         </Wrapper>
                 </>

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import React from 'react';
-
 const SpinerStyled = styled.div`
         /*? 16px maybe */
         display: inline-block;

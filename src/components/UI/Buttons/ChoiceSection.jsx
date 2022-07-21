@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { border, color } from 'styled-system';
+import { ChoiseWrapper } from '../Wrappers/ChoiceWrapper.styled';
 
 const ChoiceBtn = styled.button`
         ${border}
@@ -70,7 +71,7 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
         };
 
         return (
-                <section>
+                <ChoiseWrapper>
                         <ChoiceBtn
                                 onClick={() => onVote(cat[0].id, 1)}
                                 onMouseEnter={() => setLike('#97EAB9')}
@@ -103,7 +104,7 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
                         >
                                 <Dislike fill={dislike} />
                         </ChoiceBtn>
-                </section>
+                </ChoiseWrapper>
         );
 };
 
