@@ -79,6 +79,12 @@ export default class HttpService {
                 return res.data;
         }
 
+        // delete from favourites
+        static async deleteFavourites(id) {
+                const res = await axios.delete(`favourites/${id}`);
+                return res.data;
+        }
+
         // get favourites data (images included)
         static async getFavourites() {
                 const res = await axios('favourites');

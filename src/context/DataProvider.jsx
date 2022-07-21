@@ -15,7 +15,7 @@ const DataProvider = ({ children }) => {
                 setBreeds(response);
         });
         const [userLogs, setUserLogs] = useState([]);
-        const [userLocal, setUserLocal] = useLocalStorage('logs', 'userLogs');
+        const [userLocal, setUserLocal] = useLocalStorage('logs', []);
 
         useEffect(() => {
                 fetch();

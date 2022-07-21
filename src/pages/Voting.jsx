@@ -20,7 +20,7 @@ const Voting = () => {
         // state for save voting history
         const [voteState, setVoteState] = useState('');
         // state from context to manage user logs
-        const { userLogs, setUserLogs } = useData();
+        const { userLogs, setUserLogs, setUserLocal } = useData();
 
         // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
@@ -67,7 +67,7 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, value, currentTime, icon }]);
+                setUserLocal((prev) => [...prev, { id, value, currentTime, icon }]);
         };
 
         const handleFav = async (id) => {
@@ -82,7 +82,7 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, value: 'fav', currentTime, icon: favs }]);
+                setUserLocal((prev) => [...prev, { id, value: 'fav', currentTime, icon: favs }]);
         };
 
         // TODO fix it later ( add to fetch function )

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useState, useEffect, Children } from 'react';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageGallery } from '../theme/layout.styled';
@@ -12,19 +13,31 @@ import ImageItem from '../components/ImageItem';
 
 const Fav = () => {
         const [fav, setFav] = useState([]);
+        console.log('🚀 ~ file: Fav.jsx ~ line 15 ~ Fav ~ fav', fav);
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getFavourites();
+
+                setFav(response);
+        });
+        // remove img from favs
+        const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
+                const response = await HttpService.deleteFavourites(id);
                 console.log(
-                        '🚀 ~ file: Fav.jsx ~ line 15 ~ const[fetch,isLoading,isError]=useFetch ~ response',
+                        '🚀 ~ file: Fav.jsx ~ line 24 ~ const[remove,isRemoveLoading,isremoveError]=useFetch ~ response',
                         response
                 );
-                setFav(response);
         });
 
         useEffect(() => {
                 fetch();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
+
+        const handleRemoveFav = (id) => {
+                // ? used simple it, not image_id
+
+                remove(id);
+        };
 
         // TODO fix it later ( add to fetch function )
         const handleSearch = (search, breed) => {};
@@ -51,8 +64,12 @@ const Fav = () => {
                                 ) : (
                                         <ImageGallery flexDirection="column">
                                                 {Children.toArray(
-                                                        fav.map(({ image }, index) => (
-                                                                <ImageItem image={image} index={index} />
+                                                        fav.map(({ image, id }, index) => (
+                                                                <ImageItem
+                                                                        onEvent={() => handleRemoveFav(id)}
+                                                                        image={image}
+                                                                        index={index}
+                                                                />
                                                         ))
                                                 )}
                                         </ImageGallery>
