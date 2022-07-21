@@ -21,7 +21,7 @@ const Voting = () => {
         // state for save voting history
         const [voteState, setVoteState] = useState('');
         // state from context to manage user logs
-        const { userLogs, setUserLogs, setUserLocal } = useData();
+        const { userLogs, setUserLogs } = useData();
 
         // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
@@ -48,6 +48,12 @@ const Voting = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [voteState]);
 
+        // Reverse array of user logs to show newest first
+        useMemo(() => {
+                setUserLogs(userLogs.reverse());
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [userLogs]);
+
         const handleVote = async (id, value) => {
                 // ? id image_id
                 // ? value like or dislike ( 1 or 0 )
@@ -68,7 +74,7 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLocal((prev) => [...prev, { id, value, currentTime, icon }]);
+                setUserLogs((prev) => [...prev, { id, value, currentTime, icon }]);
         };
 
         const handleFav = async (id) => {
@@ -83,7 +89,7 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLocal((prev) => [...prev, { id, value: 'add', currentTime, icon: favs }]);
+                setUserLogs((prev) => [...prev, { id, value: 'add', currentTime, icon: favs }]);
         };
 
         // TODO fix it later ( add to fetch function )
@@ -108,7 +114,12 @@ const Voting = () => {
                                 </FlexGapM>
                                 <ImageVote isLoading={isLoading} cat={cat} onVote={handleVote} onFav={handleFav} />
                                 {/* user logs  */}
-                                <UserLogs />
+
+                                {Children.toArray(
+                                        userLogs.map(({ currentTime, id, value, icon }) => (
+                                                <UserLogs currentTime={currentTime} id={id} value={value} icon={icon} />
+                                        ))
+                                )}
                         </Wrapper>
                 </>
         );

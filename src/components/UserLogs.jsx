@@ -1,8 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
+/* eslint-disable react/prop-types */
 import { SubHeading } from '../theme/typography.styled';
 
-export const LogsWrapper = styled.div`
+export const UserLogsWrapper = styled.div`
         background-color: ${({ theme }) => theme.colors.pageSecondary};
         width: 100%;
         padding: 1rem;
@@ -10,7 +10,7 @@ export const LogsWrapper = styled.div`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-top: 6rem;
+        margin-top: 10px;
         border-radius: 10px;
 `;
 
@@ -27,18 +27,18 @@ export const Data = styled.div`
         line-height: 24px;
 `;
 
-const UserLogs = () => (
-        <LogsWrapper>
-                <Data>20:30</Data>
+const UserLogs = ({ currentTime, id, value, icon }) => (
+        <UserLogsWrapper>
+                <Data>{currentTime}</Data>
                 <SubHeading mr="1rem">
                         Image:{' '}
                         <SubHeading color="textBase" fontWeight="500" as="span">
-                                ZKLSD333{' '}
+                                {id}{' '}
                         </SubHeading>
-                        was 'data from state'
+                        was {value}
                 </SubHeading>
-                <img src="src" alt="icon" />
-        </LogsWrapper>
+                <img src={icon} alt="icon" />
+        </UserLogsWrapper>
 );
 
 export default UserLogs;

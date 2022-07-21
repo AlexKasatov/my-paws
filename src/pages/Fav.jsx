@@ -25,7 +25,7 @@ const Fav = () => {
                 const response = await HttpService.deleteFavourites(id);
         });
 
-        const { userLocal, setUserLocal } = useData();
+        const { userLogs, setUserLogs } = useData();
 
         useEffect(() => {
                 fetch();
@@ -44,7 +44,7 @@ const Fav = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLocal((prev) => [...prev, { id, value: 'remove', currentTime }]);
+                setUserLogs((prev) => [...prev, { id, value: 'remove', currentTime }]);
         };
 
         // TODO fix it later ( add to fetch function )
