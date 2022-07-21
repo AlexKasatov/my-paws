@@ -57,6 +57,8 @@ export const BtnPrimary = styled(Btn)`
         font-size: ${({ theme }) => theme.fontSizes[2]};
         font-weight: medium;
         max-width: 143px;
+        ${width}
+        ${layout}
         color: ${({ theme }) => theme.colors.white};
         cursor: auto;
 

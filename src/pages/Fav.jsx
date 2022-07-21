@@ -64,7 +64,7 @@ const Fav = () => {
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />
 
-                                        <BtnPrimary fontSize="20px" mr="46%">
+                                        <BtnPrimary maxWidth="192px" fontSize="20px" mr="46%">
                                                 FAVOURITES
                                         </BtnPrimary>
                                 </FlexGapM>
