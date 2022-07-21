@@ -18,8 +18,10 @@ export const Heading = styled.h1`
 
 // MAIN APP SUB-HEADING
 export const SubHeading = styled.h2`
-        ${typography}
+        ${space}
         color: ${({ theme }) => theme.colors.textSupport};
+        ${color}
+        ${typography}
         line-height: ${({ theme }) => theme.lineHeights.subheading};
 `;
 

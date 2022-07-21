@@ -13,6 +13,7 @@ import { useData } from '../context/DataProvider';
 import like from '../image/icons/logs/like.svg';
 import dislike from '../image/icons/logs/dislike.svg';
 import favs from '../image/icons/logs/fav.svg';
+import UserLogs from '../components/UserLogs';
 
 const Voting = () => {
         // state for fetch 1 image per time
@@ -107,6 +108,7 @@ const Voting = () => {
                                 </FlexGapM>
                                 <ImageVote isLoading={isLoading} cat={cat} onVote={handleVote} onFav={handleFav} />
                                 {/* user logs  */}
+                                <UserLogs />
                         </Wrapper>
                 </>
         );
