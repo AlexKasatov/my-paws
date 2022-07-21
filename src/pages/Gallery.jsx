@@ -118,7 +118,9 @@ const Gallery = () => {
                                                 )}
                                         </ImageGallery>
                                 )}
+
                                 {!breeds.length && <HeadingBase>😿😿😿 Nothing is found 😿😿😿</HeadingBase>}
+
                                 {popup && <Popup onEvent={handlePopup} />}
                         </Wrapper>
                 </>

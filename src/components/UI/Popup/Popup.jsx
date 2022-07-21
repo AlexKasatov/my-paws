@@ -1,26 +1,24 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Flex } from '../../../theme/layout.styled';
 import IconButton from '../Buttons/IconButton';
 import { PopupWrapper, PopupBox } from './Popup.styled';
 import ImagePlaceholder from './ImagePlaceholder';
 import { HeadingBase, SubHeading } from '../../../theme/typography.styled';
 import { BtnPrimaryActive } from '../../../theme/buttons.styled';
-import useFetch from '../../../hooks/useFetch';
 import HttpService from '../../../service/http.service';
+import useUpload from '../../../hooks/useUpload';
+import { buttonSlide } from '../../../animation/page';
 
 const Popup = ({ onEvent }) => {
         const [value, setValue] = useState('');
         const [imgUrl, setImgUrl] = useState('');
         const [upload, setUpload] = useState('');
+        const [approved, setApproved] = useState(undefined);
 
-        const [uploadImage, isLoading, isError] = useFetch(async (formData) => {
+        const [uploadImage, isLoading, isError] = useUpload(async (formData) => {
                 const response = await HttpService.uploadImage(formData);
-                console.log(
-                        '🚀UUUUPLOOOADED ~ file: Popup.jsx ~ line 19 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
-
                 setUpload(response);
         });
 
