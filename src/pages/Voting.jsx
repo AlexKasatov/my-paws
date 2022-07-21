@@ -82,7 +82,7 @@ const Voting = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLocal((prev) => [...prev, { id, value: 'fav', currentTime, icon: favs }]);
+                setUserLocal((prev) => [...prev, { id, value: 'add', currentTime, icon: favs }]);
         };
 
         // TODO fix it later ( add to fetch function )

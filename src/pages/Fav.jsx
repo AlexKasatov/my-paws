@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { useState, useEffect, Children } from 'react';
+import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -10,10 +11,10 @@ import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
+import { useData } from '../context/DataProvider';
 
 const Fav = () => {
         const [fav, setFav] = useState([]);
-        console.log('🚀 ~ file: Fav.jsx ~ line 15 ~ Fav ~ fav', fav);
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getFavourites();
 
@@ -22,21 +23,28 @@ const Fav = () => {
         // remove img from favs
         const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
                 const response = await HttpService.deleteFavourites(id);
-                console.log(
-                        '🚀 ~ file: Fav.jsx ~ line 24 ~ const[remove,isRemoveLoading,isremoveError]=useFetch ~ response',
-                        response
-                );
         });
+
+        const { userLocal, setUserLocal } = useData();
 
         useEffect(() => {
                 fetch();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
-        const handleRemoveFav = (id) => {
+        const handleRemoveFav = async (id) => {
                 // ? used simple it, not image_id
+                // send delete req to API & remove img from favs
+                await remove(id);
+                toast.success('Image removed from favourites');
+                // remove img from fav state
+                setFav(fav.filter((item) => item.id !== id));
 
-                remove(id);
+                // get current time
+                const time = new Date();
+                const currentTime = `${time.getHours()}:${time.getMinutes()}`;
+                // update user logs
+                setUserLocal((prev) => [...prev, { id, value: 'remove', currentTime }]);
         };
 
         // TODO fix it later ( add to fetch function )
