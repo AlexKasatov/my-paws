@@ -128,7 +128,7 @@ const Voting = () => {
                                                 <UserLogs currentTime={currentTime} id={id} value={value} icon={icon} />
                                         ))
                                 )}
-                                {!userLogs.length && <NoUserLogs>No logs</NoUserLogs>}
+                                {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
                 </>
         );

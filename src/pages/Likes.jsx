@@ -12,7 +12,8 @@ import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
-import LogsType from '../components/LogsType';
+import UserLogs, { NoUserLogs } from '../components/UserLogs';
+import { useData } from '../context/DataProvider';
 
 const Likes = () => {
         const [likes, setLikes] = useState([]);
@@ -29,6 +30,8 @@ const Likes = () => {
 
                 setLikes(response);
         });
+        // state from context to manage user logs
+        const { userLogs, setUserLogs } = useData();
 
         // return filtred array of liked images
         useMemo(() => {
@@ -101,9 +104,21 @@ const Likes = () => {
                                         </ImageGallery>
                                 )}
                                 {!likedImagesPromises.length && <Spiner />}
-                                {/* TODO no liked image found  */}
+                                {/* TODO User logs */}
+                                {Children.toArray(
+                                        userLogs
+                                                .filter(({ type }) => type === 'like')
+                                                .map(({ currentTime, id, value, icon }) => (
+                                                        <UserLogs
+                                                                currentTime={currentTime}
+                                                                id={id}
+                                                                value={value}
+                                                                icon={icon}
+                                                        />
+                                                ))
+                                )}
+                                {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
-                        <LogsType likes />
                 </>
         );
 };

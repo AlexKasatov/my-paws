@@ -12,7 +12,7 @@ import useGoBack from '../hooks/useGoBack';
 import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';
-import LogsType from '../components/LogsType';
+import UserLogs, { NoUserLogs } from '../components/UserLogs';
 
 const Fav = () => {
         const [fav, setFav] = useState([]);
@@ -83,8 +83,20 @@ const Fav = () => {
                                                 )}
                                         </ImageGallery>
                                 )}
-                                {/* user logs  */}
-                                <LogsType favs />
+                                {/* TODO User logs */}
+                                {Children.toArray(
+                                        userLogs
+                                                .filter(({ type }) => type === 'fav')
+                                                .map(({ currentTime, id, value, icon }) => (
+                                                        <UserLogs
+                                                                currentTime={currentTime}
+                                                                id={id}
+                                                                value={value}
+                                                                icon={icon}
+                                                        />
+                                                ))
+                                )}
+                                {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
                 </>
         );
