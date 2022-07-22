@@ -122,7 +122,6 @@ const Voting = () => {
                                 </FlexGapM>
                                 <ImageVote isLoading={isLoading} cat={cat} onVote={handleVote} onFav={handleFav} />
                                 {/* user logs  */}
-
                                 {Children.toArray(
                                         userLogs.map(({ currentTime, id, value, icon }) => (
                                                 <UserLogs currentTime={currentTime} id={id} value={value} icon={icon} />

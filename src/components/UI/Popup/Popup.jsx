@@ -26,14 +26,9 @@ const Popup = ({ onEvent }) => {
         // drag state
         const [dragActive, setDragActive] = useState(false);
 
-        // * state for check if image is uploaded ( in development )
-        const [approved, setApproved] = useState(undefined);
-        // *
-
         const [uploadImage, isLoading, isError] = useUpload(async (formData) => {
                 const response = await HttpService.uploadImage(formData);
                 setUpload(response);
-                setApproved(isError);
         });
 
         const handleUploadImg = () => {
