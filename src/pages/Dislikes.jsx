@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, Flex, ImageSimpleGrid } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -17,6 +18,7 @@ import { useData } from '../context/DataProvider';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Likes = () => {
+        const [search, setSearch] = useState('');
         // state  for query dislikes
         const [dislikes, setDisLikes] = useState([]);
         const [filtredDisikes, setFiltredDisikes] = useState([]);
@@ -29,7 +31,9 @@ const Likes = () => {
                 setDisLikes(response);
         });
         // state from context to manage user logs
-        const { userLogs, setUserLogs } = useData();
+        const { userLogs } = useData();
+
+        const navigate = useNavigate();
 
         // return filtred array of liked images
         useMemo(() => {
@@ -70,9 +74,11 @@ const Likes = () => {
                         });
         }, [dislikedImagesPromises]);
 
-        // TODO fix it later ( add to fetch function )
-        const handleSearch = (search, breed) => {};
-        // ==========================================================
+        // go to search breed page
+        const handleSearchBreed = () => {
+                const searchValue = search?.value || '';
+                navigate(`/search/${searchValue}`);
+        };
 
         const goBack = useGoBack();
         const handleGoBack = () => {
@@ -81,7 +87,7 @@ const Likes = () => {
 
         return (
                 <>
-                        <Nav onSearch={handleSearch} />
+                        <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />

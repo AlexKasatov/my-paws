@@ -33,7 +33,6 @@ const Gallery = () => {
         const [breeds, setBreeds] = useState([]);
         const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit) => {
                 const response = await HttpService.getImagesForGallery(id, type, order, limit);
-
                 setBreeds(response);
         });
 
@@ -122,7 +121,7 @@ const Gallery = () => {
                                         breed={breedId}
                                         setBreed={setBreedId}
                                 />
-
+                                {/* IMAGE GRID */}
                                 {isLoading ? (
                                         <Flex justifyContent="center" mt="10rem" mb="10rem">
                                                 <SpinnerHypnotic />

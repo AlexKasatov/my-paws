@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect, Children } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageSimpleGrid, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -15,6 +16,7 @@ import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Fav = () => {
+        const [search, setSearch] = useState('');
         const [fav, setFav] = useState([]);
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getFavourites();
@@ -25,7 +27,7 @@ const Fav = () => {
         const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
                 const response = await HttpService.deleteFavourites(id);
         });
-
+        const navigate = useNavigate();
         const { userLogs, setUserLogs } = useData();
 
         useEffect(() => {
@@ -50,9 +52,11 @@ const Fav = () => {
                 setUserLogs((prev) => [...prev, { id, type: 'fav', value: 'removed from Favourites', currentTime }]);
         };
 
-        // TODO fix it later ( add to fetch function )
-        const handleSearch = (search, breed) => {};
-        // ==========================================================
+        // go to search breed page
+        const handleSearchBreed = () => {
+                const searchValue = search?.value || '';
+                navigate(`/search/${searchValue}`);
+        };
 
         const goBack = useGoBack();
         const handleGoBack = () => {
@@ -61,7 +65,7 @@ const Fav = () => {
 
         return (
                 <>
-                        <Nav onSearch={handleSearch} />
+                        <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />
