@@ -43,6 +43,7 @@ export const publicRoutes = [
         { index: false, path: '/dislike', element: <Dislikes />, replace: false },
         { index: false, path: '/fav', element: <Fav />, replace: false },
         { index: false, path: '/voting', element: <Voting />, replace: false },
+        { index: false, path: '/search/', element: <SearchBreed />, replace: false },
         { index: false, path: '/search/:id', element: <SearchBreed />, replace: false },
         { index: false, path: '*', element: <NotFound />, replace: false },
 ];
