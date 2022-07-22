@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable camelcase */
-import { useState, useEffect, Children, useMemo } from 'react';
+import { useState, useEffect, Children, useMemo, Suspense } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
