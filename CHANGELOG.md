@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/AlexKasatov/pets-paw/compare/v0.1.4...v0.1.5) (2022-07-22)
+
+
+### Features
+
+* add download popup ([9d19932](https://github.com/AlexKasatov/pets-paw/commit/9d19932c7704620bb5eebe9b610cbc5a4821f740))
+* add error handler ([807aee6](https://github.com/AlexKasatov/pets-paw/commit/807aee66dba1c6a1c58794caff8feb5dcf1e19e9))
+* add fav functionality ([f5ffca9](https://github.com/AlexKasatov/pets-paw/commit/f5ffca931fe3a7be3044c8ba9e313d557ddb82b2))
+* add favs page & update http service ([dc3538f](https://github.com/AlexKasatov/pets-paw/commit/dc3538fa00c15447819109a333dd3f4ebae8c3bf))
+* add img to favs from gallery page ([a87256b](https://github.com/AlexKasatov/pets-paw/commit/a87256b1f316f284a4c1d3d94219ebf22977d485))
+* add local storage hook & user logs state ([aaadd89](https://github.com/AlexKasatov/pets-paw/commit/aaadd89061422f8b698a82f061009ef814ad5a55))
+* add popup for download menu ([369c341](https://github.com/AlexKasatov/pets-paw/commit/369c341b190038ffc12dca99bac9b1bec3a3903d))
+* add remove from favs ([73cb9ca](https://github.com/AlexKasatov/pets-paw/commit/73cb9ca3bc46881583e3cec3a21973590ae4c0ad))
+* add to userLogs remove favs ([9a0750e](https://github.com/AlexKasatov/pets-paw/commit/9a0750e9fae219b90bc647ffbe461ddf445d3d73))
+* add toast for image upload promise ([6b23d04](https://github.com/AlexKasatov/pets-paw/commit/6b23d04c13da89876d2fc4c75ccfccaad3b5f299))
+* add toast for vote ([564854a](https://github.com/AlexKasatov/pets-paw/commit/564854a10a2aa48a923df3f569164382c155f2d5))
+* add user logs for fav, like, dislike pages ([bda9d5c](https://github.com/AlexKasatov/pets-paw/commit/bda9d5c9afd8fe44a5105bbda5340b265135e4a7))
+* add user logs UI ([762ba89](https://github.com/AlexKasatov/pets-paw/commit/762ba89dee87a8ba180cd89518bec76c0d58a74d))
+* add vote functionality ([fa50cb2](https://github.com/AlexKasatov/pets-paw/commit/fa50cb27624b8a6c4cc8e57d89f37ad9705edc64))
+* design base download func ([187fdc7](https://github.com/AlexKasatov/pets-paw/commit/187fdc789eca4c34950a11de1d9513c3553aa65f))
+* design basic dnd ([28fab4d](https://github.com/AlexKasatov/pets-paw/commit/28fab4d4e7c7fd005335ee1deb692c8ca068a419))
+* design like page ([a8daac7](https://github.com/AlexKasatov/pets-paw/commit/a8daac7cfb3a64eb647ce8782f4231301bfe7559))
+* design upload images ([a02f6c1](https://github.com/AlexKasatov/pets-paw/commit/a02f6c1832ea3bbee5aa79a5127770da2b7985f4))
+* display image from file input ([ba6fbba](https://github.com/AlexKasatov/pets-paw/commit/ba6fbbaf657651c3ba7e39fe16c56805fdeb69ca))
+* fetch image for voting ([20d33fa](https://github.com/AlexKasatov/pets-paw/commit/20d33fa919cc7cc8231b401a0c271a583f2838ed))
+* finish dislike page ([cb70671](https://github.com/AlexKasatov/pets-paw/commit/cb70671ba7cd43e5ef4ae69dee8d67b2d743dbd6))
+* finish drag&drop ([a381255](https://github.com/AlexKasatov/pets-paw/commit/a3812551e938b89f31759c81c8e52c9ee785af53))
+* finish like page ([4e22f5f](https://github.com/AlexKasatov/pets-paw/commit/4e22f5f66ed090d7b69c77a63394fc12fa3403b0))
+* finish popup ui ([a4a8a79](https://github.com/AlexKasatov/pets-paw/commit/a4a8a794ed1e92cee59f04f20a87e085615bfc4c))
+* user logs show newest first ([b7cfe8b](https://github.com/AlexKasatov/pets-paw/commit/b7cfe8ba79e711b659c6444f32d0b7f0aed17b99))
+
+
+### Bug Fixes
+
+* breeds page: loaders, check errors ([a075241](https://github.com/AlexKasatov/pets-paw/commit/a07524149355d8863e3f3f228ae1fa9a5235b22e))
+* display users logs ([b489a09](https://github.com/AlexKasatov/pets-paw/commit/b489a0921079924b2dc96141ba5ceab03a34d54b))
+* fix bugs with no items breeds & gallery page ([a8ee2c1](https://github.com/AlexKasatov/pets-paw/commit/a8ee2c1e32df281a63dc5b44ba8db5bfa4708f71))
+* fix gallery page: loaders, check errors ([caa9341](https://github.com/AlexKasatov/pets-paw/commit/caa93413f7b9767d03c69401005997d6dedeb9bd))
+* primary button resize behavior ([baef0fd](https://github.com/AlexKasatov/pets-paw/commit/baef0fd9e4ea6aebc1300f35b2a2e87270131eac))
+* refactor IconButton ([e078294](https://github.com/AlexKasatov/pets-paw/commit/e078294f76a4e3d4f5c361dbf3a10d2895ae24bf))
+* UI voting page ([b0a5b6d](https://github.com/AlexKasatov/pets-paw/commit/b0a5b6dba352070814c3b674879f77c62910746a))
+* useFetch hook ([89d1002](https://github.com/AlexKasatov/pets-paw/commit/89d1002368a7c16824c9718a9711035f6e52eb30))
+
 ### [0.1.4](https://github.com/AlexKasatov/pets-paw/compare/v0.1.3...v0.1.4) (2022-07-19)
 
 
