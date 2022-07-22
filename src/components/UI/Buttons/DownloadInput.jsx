@@ -12,7 +12,7 @@ export const Download = styled.input`
         display: none;
 `;
 
-const DownloadInput = ({ value, setValue, imgUrl, setImgUrl }) => {
+const DownloadInput = ({ setValue, setImgUrl }) => {
         const handleChange = (e) => {
                 // update the state with the file object for upload on API call
                 setValue(e.target.files[0]);
@@ -25,6 +25,7 @@ const DownloadInput = ({ value, setValue, imgUrl, setImgUrl }) => {
                 <>
                         <Label htmlFor="download-image">Chose File</Label>
                         <Download
+                                multiple={false}
                                 accept="image/*,.png,.jpg,.gif"
                                 onChange={handleChange}
                                 id="download-image"

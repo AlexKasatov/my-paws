@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color } from 'styled-system';
 
 export const PopupWrapper = styled.div`
         position: fixed;
@@ -11,6 +12,7 @@ export const PopupWrapper = styled.div`
 
 export const PopupBox = styled.div`
         background-color: ${({ theme }) => theme.colors.pageSecondary};
+
         position: relative;
         width: 680px;
         height: 100%;
@@ -49,6 +51,7 @@ export const PlaceholderWrapper = styled.section`
                 white-space: nowrap;
                 display: inline-block;
         }
+        ${color}
 `;
 
 export const UserImage = styled.img`

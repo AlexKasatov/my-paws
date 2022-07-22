@@ -11,9 +11,10 @@ import HttpService from '../../../service/http.service';
 import useUpload from '../../../hooks/useUpload';
 import { buttonSlide } from '../../../animation/page';
 
-function handleFile(files) {
-        alert(`Number of files: ${files.length}`);
-}
+// Open the alert window with message of numbers uploaded images
+// function handleFile(files) {
+//         alert(`Number of files: ${files.length}`);
+// }
 
 const Popup = ({ onEvent }) => {
         // state for uploaded image by user on frontend
@@ -61,7 +62,9 @@ const Popup = ({ onEvent }) => {
                 e.stopPropagation();
                 setDragActive(false);
                 if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                        handleFile(e.dataTransfer.files);
+                        // uncomment to show number of files uploaded
+                        // handleFile(e.dataTransfer.files);
+
                         // update the state with the file url for preview on UI before upload on API call
                         const [file] = e.dataTransfer.files;
                         setImgUrl(URL.createObjectURL(file));
@@ -103,7 +106,7 @@ const Popup = ({ onEvent }) => {
                                                 or face deletion.
                                         </SubHeading>
                                 </Flex>
-
+                                {/*  DND and upload file placeholder */}
                                 <ImagePlaceholder
                                         dragActive={dragActive}
                                         handleDrop={handleDrop}
