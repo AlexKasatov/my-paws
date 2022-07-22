@@ -15,10 +15,12 @@ const useFetch = (cb) => {
 
                         if (!expectedError) {
                                 toast.error('Something was wrong', error.message, {
-                                        position: 'bottom-center',
+                                        position: 'bottom-left',
                                 });
                         } else {
-                                toast.error(' Something was very wrong ', error.message);
+                                toast.error(' Something was very wrong ', error.message, {
+                                        position: 'bottom-left',
+                                });
                         }
 
                         setError(error);

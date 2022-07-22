@@ -2,17 +2,17 @@
 import { useState, useEffect, Children } from 'react';
 import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery } from '../theme/layout.styled';
+import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { BtnPrimary } from '../theme/buttons.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
-import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
+import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Fav = () => {
         const [fav, setFav] = useState([]);
@@ -37,7 +37,9 @@ const Fav = () => {
                 // ? used simple it, not image_id
                 // send delete req to API & remove img from favs
                 await remove(id);
-                toast.success('Image removed from favourites');
+                toast.success('Image removed from favourites', {
+                        position: 'bottom-left',
+                });
                 // remove img from fav state
                 setFav(fav.filter((item) => item.id !== id));
 
@@ -69,7 +71,9 @@ const Fav = () => {
                                         </BtnPrimary>
                                 </FlexGapM>
                                 {isLoading ? (
-                                        <Spiner />
+                                        <Flex justifyContent="center" mt="10rem" mb="10rem">
+                                                <SpinnerHypnotic />
+                                        </Flex>
                                 ) : (
                                         <ImageGallery flexDirection="column">
                                                 {Children.toArray(

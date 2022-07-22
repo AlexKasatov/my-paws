@@ -3,7 +3,7 @@
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery } from '../theme/layout.styled';
+import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { BtnPrimary } from '../theme/buttons.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -14,6 +14,7 @@ import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { useData } from '../context/DataProvider';
+import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Likes = () => {
         const [likes, setLikes] = useState([]);
@@ -93,7 +94,9 @@ const Likes = () => {
                                         </BtnPrimary>
                                 </FlexGapM>
                                 {isLikedImgLoading ? (
-                                        <Spiner />
+                                        <Flex justifyContent="center" mt="10rem" mb="10rem">
+                                                <SpinnerHypnotic />
+                                        </Flex>
                                 ) : (
                                         <ImageGallery flexDirection="column">
                                                 {Children.toArray(

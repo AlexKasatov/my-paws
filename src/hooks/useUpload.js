@@ -9,18 +9,28 @@ const useUpload = (cb) => {
                 try {
                         setLoader(true);
 
-                        await toast.promise(cb(formData), {
-                                pending: '😼 Checking for a catzz...',
-                                success: `🙀 Cat is detected! 👌`,
-                        });
+                        await toast.promise(
+                                cb(formData),
+                                {
+                                        pending: '😼 Checking for a catzz...',
+                                        success: `🙀 Cat is detected! 👌`,
+                                },
+                                {
+                                        position: 'bottom-left',
+                                }
+                        );
                 } catch (error) {
                         const expectedError =
                                 error.response && error.response.status >= 400 && error.response.status < 500;
 
                         if (!expectedError) {
-                                toast.error(`😿 Something went wrong`, error.message);
+                                toast.error(`😿 Something went wrong`, error.message, {
+                                        position: 'bottom-left',
+                                });
                         } else {
-                                toast.error(`🙈 Oopz, no cat's found!`, error.message);
+                                toast.error(`🙈 Oopz, no cat's found!`, error.message, {
+                                        position: 'bottom-left',
+                                });
                         }
 
                         setError(error);

@@ -62,10 +62,12 @@ const Voting = () => {
                 if (value) {
                         toast.success('LIKE!', {
                                 icon: '👍',
+                                position: 'bottom-left',
                         });
                 } else {
                         toast.error('NOPE!', {
                                 icon: '👎',
+                                position: 'bottom-left',
                         });
                 }
                 // svg icons
@@ -88,6 +90,7 @@ const Voting = () => {
                 await fav(id);
                 toast('LOVE IT!', {
                         icon: '❤️',
+                        position: 'bottom-left',
                 });
 
                 // get current time
