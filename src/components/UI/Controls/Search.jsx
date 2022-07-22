@@ -2,8 +2,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import IconButton from '../Buttons/IconButton';
-import { CustomSelectSearch } from './CustomSelect.styled';
-import { useData } from '../../../context/DataProvider';
 
 export const InputWrapper = styled.label`
         display: flex;
@@ -36,7 +34,6 @@ export const InputSearch = styled.input.attrs({
 // eslint-disable-next-line react/prop-types
 const Search = ({ onSearch }) => {
         const [search, setSearch] = useState('');
-        const { breedOptions } = useData();
 
         useEffect(() => {
                 onSearch(search);
@@ -45,19 +42,9 @@ const Search = ({ onSearch }) => {
 
         return (
                 <InputWrapper>
-                        {/* This old select ligit for breed page */}
+                        {/* Search for Breed page only */}
                         <InputSearch onChange={(e) => setSearch(e.target.value)} value={search} />
                         <IconButton search />
-                        {/* create CUSTOM SEARCH select */}
-                        {/* <CustomSelectSearch
-                                placeholder="Search for breeds by name"
-                                isSearchable
-                                options={breedOptions}
-                                onChange={setSearch}
-                                value={search}
-                                LoadingIndicator={false}
-                        />
-                        <IconButton search /> */}
                 </InputWrapper>
         );
 };

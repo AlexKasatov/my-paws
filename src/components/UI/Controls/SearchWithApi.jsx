@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
 import IconButton from '../Buttons/IconButton';
 import { CustomSelectSearch } from './CustomSelect.styled';
 import { useData } from '../../../context/DataProvider';
@@ -34,23 +33,18 @@ export const InputSearch = styled.input.attrs({
         color: ${({ theme }) => theme.colors.textSupport};
 `;
 // eslint-disable-next-line react/prop-types
-const SearchWithApi = ({ onSearchAPI, onSearch, setSearch, search }) => {
-        // const [search, setSearch] = useState('');
+const SearchWithApi = ({ onSearchAPI, setSearch, search }) => {
         const { breedOptions } = useData();
 
         return (
                 <InputWrapper>
-                        {/* This old select ligit for breed page */}
-                        {/* <InputSearch onChange={(e) => setSearch(e.target.value)} value={search} />
-                        <IconButton search /> */}
-                        {/* create CUSTOM SEARCH select */}
                         <CustomSelectSearch
                                 placeholder="Search for breeds by name"
                                 isSearchable
                                 options={breedOptions}
                                 onChange={setSearch}
                                 value={search}
-                                LoadingIndicator={false}
+                                isClearable
                         />
                         <IconButton onEvent={onSearchAPI} search />
                 </InputWrapper>

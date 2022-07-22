@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import { CustomSelect } from './CustomSelect.styled';
 import { limitOptions } from '../../../data/data';
 
-const Controls = ({ breedOptions, onSearch, onSlice }) => {
+const Controls = ({ breedOptions, onSearch, setLimt, limit }) => {
         const [breed, setBreed] = useState('');
-        const [limit, setLimits] = useState('');
 
         useEffect(() => {
                 const breedValue = breed?.value || '';
@@ -31,7 +30,7 @@ const Controls = ({ breedOptions, onSearch, onSlice }) => {
                                 isClearable
                                 isSearchable={false}
                                 value={limit}
-                                onChange={setLimits}
+                                onChange={setLimt}
                         />
                 </>
         );

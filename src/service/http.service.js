@@ -7,8 +7,12 @@ axios.defaults.headers.common['x-api-key'] = process.env.REACT_APP_API_KEY;
 
 export default class HttpService {
         // get all breeds data
-        static async getBreeds() {
-                const res = await axios('breeds');
+        static async getBreeds(limit) {
+                const res = await axios('breeds', {
+                        params: {
+                                limit,
+                        },
+                });
                 return res.data;
         }
 

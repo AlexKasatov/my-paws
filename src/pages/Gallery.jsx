@@ -50,21 +50,6 @@ const Gallery = () => {
         // state from context to manage user logs
         const { setUserLogs } = useData();
 
-        // // TODO fix it later ( add to fetch function )
-        // const handleSearch = (search, breed) => {
-        //         let data = [...breeds];
-
-        //         if (search) {
-        //                 data = data.filter((i) => i.name.toLowerCase().includes(search.toLowerCase()));
-        //         }
-
-        //         if (breed) {
-        //                 data = data.filter((i) => i.name.toLowerCase().includes(breed.toLowerCase()));
-        //         }
-
-        //         setFiltredBreeds(data);
-        // };
-
         const handleSearch = () => {
                 const searchValue = search?.value || '';
                 fetch(searchValue);

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState, useEffect, Children, useMemo } from 'react';
+import { useState, useEffect, Children, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
@@ -23,14 +23,11 @@ const Breeds = () => {
         const goBack = useGoBack();
 
         const [breeds, setBreeds] = useState([]); // fetched breeds
-
+        const [limit, setLimt] = useState(''); // limit of images per breed
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
 
-        const [selectedBreeds, setSelectedBreeds] = useState(''); // selected breed
-        const [limitBreeds, setLimitBreeds] = useState(''); // limit breeds
-
-        const [fetch, isLoading, isError] = useFetch(async () => {
-                const response = await HttpService.getBreeds();
+        const [fetch, isLoading, isError] = useFetch(async (limitArg) => {
+                const response = await HttpService.getBreeds(limitArg);
 
                 setBreeds(response);
         });
@@ -58,15 +55,13 @@ const Breeds = () => {
         };
 
         // * limit breeds per page
-        // const handleSlice = (limit) => {
-        //         let data = [...breeds];
-        //         data = data.slice(0, limit);
-        //         setFiltredBreeds(data);
+        useEffect(() => {
+                const limitValue = limit?.value || '10';
 
-        //         if (limit === null) {
-        //                 setFiltredBreeds(breeds);
-        //         }
-        // };
+                fetch(limitValue);
+
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [limit]);
 
         // sort Z to A
         const handleSortUp = () => {
@@ -117,7 +112,12 @@ const Breeds = () => {
 
                                         {/* All Breeds */}
                                         {/* Limit Breeds */}
-                                        <Controls breedOptions={allBreeds} onSearch={handleSearch} />
+                                        <Controls
+                                                breedOptions={allBreeds}
+                                                onSearch={handleSearch}
+                                                setLimt={setLimt}
+                                                limit={limit}
+                                        />
 
                                         {/* sort buttons */}
                                         <FlexGapM>
