@@ -10,15 +10,12 @@ import useGoBack from '../hooks/useGoBack';
 import ControlsGallery from '../components/UI/Controls/ControlsGallery';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
-import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import TextIconButton from '../components/UI/Buttons/TextIconButton';
-import { HeadingBase } from '../theme/typography.styled';
 import { useToggle } from '../hooks/useToggle';
 import Popup from '../components/UI/Popup/Popup';
 import { useData } from '../context/DataProvider';
 import favs from '../image/icons/logs/fav.svg';
-import { NoUserLogs } from '../components/UserLogs';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Gallery = () => {
@@ -30,6 +27,7 @@ const Gallery = () => {
         const [limit, setLimit] = useState('');
         const [order, setOrder] = useState('');
         const [type, setType] = useState('');
+        const [search, setSearch] = useState('');
 
         // states for fetching data
         const [breeds, setBreeds] = useState([]);
@@ -50,24 +48,29 @@ const Gallery = () => {
         });
 
         // state from context to manage user logs
-        const { userLogs, setUserLogs } = useData();
+        const { setUserLogs } = useData();
 
-        // TODO fix it later ( add to fetch function )
-        const handleSearch = (search, breed) => {
-                let data = [...breeds];
+        // // TODO fix it later ( add to fetch function )
+        // const handleSearch = (search, breed) => {
+        //         let data = [...breeds];
 
-                if (search) {
-                        data = data.filter((i) => i.name.toLowerCase().includes(search.toLowerCase()));
-                }
+        //         if (search) {
+        //                 data = data.filter((i) => i.name.toLowerCase().includes(search.toLowerCase()));
+        //         }
 
-                if (breed) {
-                        data = data.filter((i) => i.name.toLowerCase().includes(breed.toLowerCase()));
-                }
+        //         if (breed) {
+        //                 data = data.filter((i) => i.name.toLowerCase().includes(breed.toLowerCase()));
+        //         }
 
-                setFiltredBreeds(data);
+        //         setFiltredBreeds(data);
+        // };
+
+        const handleSearch = () => {
+                const searchValue = search?.value || '';
+                fetch(searchValue);
         };
 
-        // fetch data from API
+        // fetch data from API when clickn on filter
         useEffect(() => {
                 const typeValue = type?.value || 'gif,jpg,png';
                 const limitValue = limit?.value || '10';
@@ -114,7 +117,7 @@ const Gallery = () => {
 
         return (
                 <>
-                        <Nav onSearch={handleSearch} />
+                        <Nav onSearchAPI={handleSearch} search={search} setSearch={setSearch} api />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />

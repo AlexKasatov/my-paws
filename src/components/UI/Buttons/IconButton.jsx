@@ -72,7 +72,7 @@ const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, o
                 // TODO - add router Links
                 search || back ? (
                         <BtnIconSecondary
-                                onClick={onGoBack}
+                                onClick={onGoBack || onEvent}
                                 onMouseEnter={() => setFill('#FFFFFF')}
                                 onMouseLeave={() => setFill('#FF868E')}
                         >

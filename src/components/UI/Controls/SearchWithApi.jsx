@@ -34,22 +34,17 @@ export const InputSearch = styled.input.attrs({
         color: ${({ theme }) => theme.colors.textSupport};
 `;
 // eslint-disable-next-line react/prop-types
-const Search = ({ onSearch }) => {
-        const [search, setSearch] = useState('');
+const SearchWithApi = ({ onSearchAPI, onSearch, setSearch, search }) => {
+        // const [search, setSearch] = useState('');
         const { breedOptions } = useData();
-
-        useEffect(() => {
-                onSearch(search);
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [search]);
 
         return (
                 <InputWrapper>
                         {/* This old select ligit for breed page */}
-                        <InputSearch onChange={(e) => setSearch(e.target.value)} value={search} />
-                        <IconButton search />
+                        {/* <InputSearch onChange={(e) => setSearch(e.target.value)} value={search} />
+                        <IconButton search /> */}
                         {/* create CUSTOM SEARCH select */}
-                        {/* <CustomSelectSearch
+                        <CustomSelectSearch
                                 placeholder="Search for breeds by name"
                                 isSearchable
                                 options={breedOptions}
@@ -57,9 +52,8 @@ const Search = ({ onSearch }) => {
                                 value={search}
                                 LoadingIndicator={false}
                         />
-                        <IconButton search /> */}
+                        <IconButton onEvent={onSearchAPI} search />
                 </InputWrapper>
         );
 };
-
-export default Search;
+export default SearchWithApi;
