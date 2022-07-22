@@ -84,6 +84,7 @@ const Gallery = () => {
                 await fav(id);
                 toast('LOVE IT!', {
                         icon: '❤️',
+                        position: 'bottom-left',
                 });
 
                 // get current time

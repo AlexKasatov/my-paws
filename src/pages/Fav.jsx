@@ -2,7 +2,7 @@
 import { useState, useEffect, Children } from 'react';
 import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
+import { FlexGapM, ImageSimpleGrid, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { BtnPrimary } from '../theme/buttons.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -75,7 +75,7 @@ const Fav = () => {
                                                 <SpinnerHypnotic />
                                         </Flex>
                                 ) : (
-                                        <ImageGallery flexDirection="column">
+                                        <ImageSimpleGrid flexDirection="column">
                                                 {Children.toArray(
                                                         fav.map(({ image, id }, index) => (
                                                                 <ImageItem
@@ -85,7 +85,7 @@ const Fav = () => {
                                                                 />
                                                         ))
                                                 )}
-                                        </ImageGallery>
+                                        </ImageSimpleGrid>
                                 )}
                                 {/* TODO User logs */}
                                 {Children.toArray(

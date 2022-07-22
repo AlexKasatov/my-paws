@@ -3,7 +3,7 @@
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
+import { FlexGapM, ImageSimpleGrid, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { BtnPrimary } from '../theme/buttons.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -22,17 +22,13 @@ const Likes = () => {
         const [likedImg, setLikedImg] = useState([]);
         const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
         const [isLikedImgError, setIsLikedImgError] = useState('');
+
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes();
-                console.log(
-                        '🚀 ~ file: Likes.jsx ~ line 19 ~ const[fetchLike,isLikeLoading,isLikeError]=useFetch ~ response',
-                        response
-                );
-
                 setLikes(response);
         });
         // state from context to manage user logs
-        const { userLogs, setUserLogs } = useData();
+        const { userLogs } = useData();
 
         // return filtred array of liked images
         useMemo(() => {
@@ -93,18 +89,18 @@ const Likes = () => {
                                                 LIKES
                                         </BtnPrimary>
                                 </FlexGapM>
-                                {isLikedImgLoading ? (
+                                {isLikeLoading ? (
                                         <Flex justifyContent="center" mt="10rem" mb="10rem">
                                                 <SpinnerHypnotic />
                                         </Flex>
                                 ) : (
-                                        <ImageGallery flexDirection="column">
+                                        <ImageSimpleGrid flexDirection="column">
                                                 {Children.toArray(
                                                         likedImg.map((image, index) => (
                                                                 <ImageItem key={index} image={image} />
                                                         ))
                                                 )}
-                                        </ImageGallery>
+                                        </ImageSimpleGrid>
                                 )}
                                 {!likedImagesPromises.length && <Spiner />}
                                 {/* TODO User logs */}

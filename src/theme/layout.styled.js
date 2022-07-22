@@ -248,3 +248,44 @@ export const ImageGallery = styled(ImageGrid)`
                 display: block;
         }
 `;
+
+export const ImageSimpleGrid = styled.div`
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(auto, 1fr);
+        gap: 16px;
+        height: 100%;
+
+        section {
+                border-radius: 20px;
+                position: relative;
+        }
+
+        img {
+                border-radius: 20px;
+                width: 100%;
+                object-fit: fill;
+        }
+
+        img:hover {
+                cursor: pointer;
+                opacity: 0.5;
+        }
+
+        button {
+                width: 50%;
+                position: absolute;
+                display: none;
+                top: 105%;
+                left: 50%;
+                transform: translate(-50%, -210%);
+        }
+
+        img:hover + button,
+        button:hover {
+                display: block;
+        }
+
+        * {
+        }
+`;

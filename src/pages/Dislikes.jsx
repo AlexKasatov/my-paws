@@ -3,7 +3,7 @@
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
+import { FlexGapM, Flex, ImageSimpleGrid } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { BtnPrimary } from '../theme/buttons.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -25,7 +25,8 @@ const Likes = () => {
         const [isDisikedImgError, setIsDislikedImgError] = useState('');
         // hook for fetch vote history
         const [fetchDisLike, isDislikeLoading, isDisLikeError] = useFetch(async () => {
-                await HttpService.getVotes();
+                const response = await HttpService.getVotes();
+                setDisLikes(response);
         });
         // state from context to manage user logs
         const { userLogs, setUserLogs } = useData();
@@ -89,20 +90,20 @@ const Likes = () => {
                                                 DISLIKES
                                         </BtnPrimary>
                                 </FlexGapM>
-                                {isDisikedImgLoading ? (
+                                {isDislikeLoading ? (
                                         <Flex justifyContent="center" mt="10rem" mb="10rem">
                                                 <SpinnerHypnotic />
                                         </Flex>
                                 ) : (
-                                        <ImageGallery flexDirection="column">
+                                        <ImageSimpleGrid flexDirection="column">
                                                 {Children.toArray(
                                                         dislikedImg.map((image, index) => (
                                                                 <ImageItem key={index} image={image} />
                                                         ))
                                                 )}
-                                        </ImageGallery>
+                                        </ImageSimpleGrid>
                                 )}
-                                {!dislikedImagesPromises.length && <Spiner />}
+
                                 {/* TODO User logs */}
                                 {Children.toArray(
                                         userLogs
