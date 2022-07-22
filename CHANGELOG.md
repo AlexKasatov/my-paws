@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/AlexKasatov/pets-paw/compare/v0.1.5...v0.1.6) (2022-07-22)
+
+
+### Features
+
+* add animation to all outlet pages ([14dc01e](https://github.com/AlexKasatov/pets-paw/commit/14dc01e5c4cf4ae154f3bbc0f009c298d5e1a045))
+* add animation to hero img ([90a0ff2](https://github.com/AlexKasatov/pets-paw/commit/90a0ff26e21130db0eab9afd90e88e36ff3446b6))
+* add deployment settings ([37b7349](https://github.com/AlexKasatov/pets-paw/commit/37b7349e111d24867f2b6ce96aeb3e243705dec1))
+* add image slider pagination for info page ([da04b6d](https://github.com/AlexKasatov/pets-paw/commit/da04b6d215de760778909d8f87acb007f8684184))
+* add lazy loading for images ([8a7b805](https://github.com/AlexKasatov/pets-paw/commit/8a7b805a1e4cbfaae569275f9d1cff3fce2f2ec2))
+* add limit control for breed page ([c045e00](https://github.com/AlexKasatov/pets-paw/commit/c045e00834f2f0fd97f9a5ffa8136d23d4eff69b))
+* add search breed route & page ([747b901](https://github.com/AlexKasatov/pets-paw/commit/747b901d1fd97a1d0c1bd58a1b5b933d8dbb3230))
+* add search for all pages ([a6f7280](https://github.com/AlexKasatov/pets-paw/commit/a6f728003ceb2122a9b4e46ae01ac9204c6595cd))
+* add search for gallery page ([0eb2854](https://github.com/AlexKasatov/pets-paw/commit/0eb2854a8b4dfbf51319813771badf2e4b982beb))
+* add search for like page ([4bf3eed](https://github.com/AlexKasatov/pets-paw/commit/4bf3eeded494ddb5b21e97f7d4d2210dc0d5410a))
+* update 404-page UI ([1bf31c2](https://github.com/AlexKasatov/pets-paw/commit/1bf31c2723c0c703094d0289f389ea23937028dc))
+
+
+### Bug Fixes
+
+* add icon for deleted fav images ([64df657](https://github.com/AlexKasatov/pets-paw/commit/64df657dc9421fca196d8c9e9846c0ad534d0448))
+* change breed limits ([3d005ce](https://github.com/AlexKasatov/pets-paw/commit/3d005cef9ba30563cea9da2b389310100c34e52b))
+* fix grid image for like, favs, dislike pages ([38d0352](https://github.com/AlexKasatov/pets-paw/commit/38d03524184d76993975a822a3cb21a30da2f736))
+* fix icon button options (close || like) ([47efb2a](https://github.com/AlexKasatov/pets-paw/commit/47efb2a6f8c91e186c246e3fed0e6ef85513a7f4))
+* fix theme switcher bc-color ([ab5896a](https://github.com/AlexKasatov/pets-paw/commit/ab5896a1a71e131748f88083905e27b8fcfebb6a))
+* fix toasts position ([dba58c5](https://github.com/AlexKasatov/pets-paw/commit/dba58c598e68cb9ad5a9775e07ed6455d23a560d))
+* fix voting page UI ([92a7e43](https://github.com/AlexKasatov/pets-paw/commit/92a7e437f965830c87d43e01b10ccb7cb80bcc5b))
+
 ### [0.1.5](https://github.com/AlexKasatov/pets-paw/compare/v0.1.4...v0.1.5) (2022-07-22)
 
 

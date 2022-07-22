@@ -1,7 +1,7 @@
 {
   "homepage": "https://github.com/AlexKasatov/pets-paw",
   "name": "cat-app",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "dependencies": {
     "@loadable/component": "^5.15.2",
@@ -23,7 +23,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -31,7 +30,6 @@
     "release": "standard-version",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
-
   },
   "eslintConfig": {
     "extends": [
