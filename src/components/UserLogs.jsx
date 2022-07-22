@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 /* eslint-disable react/prop-types */
 import { SubHeading } from '../theme/typography.styled';
+import { Flex } from '../theme/layout.styled';
 
 export const UserLogsWrapper = styled.div`
         background-color: ${({ theme }) => theme.colors.pageSecondary};

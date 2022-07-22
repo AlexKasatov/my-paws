@@ -5,13 +5,11 @@ import { toast } from 'react-toastify';
 import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
 import useFetch from '../hooks/useFetch';
-
 import { Flex, FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import { BtnPrimary } from '../theme/buttons.styled';
-import TextIconButton from '../components/UI/Buttons/TextIconButton';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';

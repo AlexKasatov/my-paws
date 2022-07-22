@@ -14,6 +14,7 @@ import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
+import removeIcon from '../image/icons/logs/delete.svg';
 
 const Fav = () => {
         const [search, setSearch] = useState('');
@@ -49,7 +50,10 @@ const Fav = () => {
                 const time = new Date();
                 const currentTime = `${time.getHours()}:${time.getMinutes()}`;
                 // update user logs
-                setUserLogs((prev) => [...prev, { id, type: 'fav', value: 'removed from Favourites', currentTime }]);
+                setUserLogs((prev) => [
+                        ...prev,
+                        { id, type: 'fav', value: 'removed from Favourites', currentTime, icon: removeIcon },
+                ]);
         };
 
         // go to search breed page
