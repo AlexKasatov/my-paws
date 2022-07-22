@@ -56,8 +56,7 @@ const Breeds = () => {
 
         // * limit breeds per page
         useEffect(() => {
-                const limitValue = limit?.value || '10';
-
+                const limitValue = limit?.value || '';
                 fetch(limitValue);
 
                 // eslint-disable-next-line react-hooks/exhaustive-deps

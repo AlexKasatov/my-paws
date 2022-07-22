@@ -179,10 +179,6 @@ export const BtnIconPrimary = styled.button`
         border: none;
         cursor: pointer;
 
-        /* svg {
-                padding: 2px;
-        } */
-
         &:hover {
                 background-color: ${({ theme }) => theme.colors.primary};
         }
