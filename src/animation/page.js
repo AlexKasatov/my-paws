@@ -24,7 +24,7 @@ export const boxScale = {
         exit: { opacity: 0 },
 };
 
-export const buttonSlide = {
+export const slideUpDown = {
         hidden: { y: -50, opacity: 0, transition: { delay: 0.1, type: 'spring', stiffness: 100 } },
         enter: { y: 0, opacity: 1, transition: { delay: 0.1, type: 'spring', stiffness: 100 } },
         exit: { y: 50, opacity: 0, transition: { type: 'linear' } },

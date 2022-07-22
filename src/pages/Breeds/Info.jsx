@@ -12,6 +12,7 @@ import PageLink from '../../components/UI/Navigation/PageLink';
 import ImageCard from '../../components/UI/Cards/ImageCard';
 import InfoDesc from '../../components/UI/Cards/InfoDesc';
 import { SpinnerHypnotic } from '../../animation/Spinners.styled';
+import AnimationWrapper from '../../animation/AnimationWrapper';
 
 const Info = () => {
         const goBack = useGoBack();
@@ -44,7 +45,7 @@ const Info = () => {
         };
 
         return (
-                <>
+                <AnimationWrapper>
                         {/* NAV */}
                         <FlexGapM alignItems="center" mt="30px" mb="10px">
                                 <PageLink like url="/likes" />
@@ -128,7 +129,7 @@ const Info = () => {
                                 </button> */}
                                 {breed && <InfoDesc data={breed[0].breeds[0]} />}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import { Children, useState, useEffect, useMemo } from 'react';
+import { Children, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Flex, FlexGapM, ImageGallery } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -17,6 +17,7 @@ import Popup from '../components/UI/Popup/Popup';
 import { useData } from '../context/DataProvider';
 import favs from '../image/icons/logs/fav.svg';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Gallery = () => {
         const goBack = useGoBack();
@@ -96,7 +97,7 @@ const Gallery = () => {
         };
 
         return (
-                <>
+                <AnimationWrapper>
                         <Nav onSearchAPI={handleSearch} search={search} setSearch={setSearch} api />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
@@ -143,7 +144,7 @@ const Gallery = () => {
                                 {/* POPUP FOR UPLOAD IMAGES  */}
                                 {popup && <Popup onEvent={handlePopup} />}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

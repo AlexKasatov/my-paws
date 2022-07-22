@@ -15,6 +15,7 @@ import { useData } from '../context/DataProvider';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 import removeIcon from '../image/icons/logs/delete.svg';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Fav = () => {
         const [search, setSearch] = useState('');
@@ -26,7 +27,7 @@ const Fav = () => {
         });
         // remove img from favs
         const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
-                const response = await HttpService.deleteFavourites(id);
+                await HttpService.deleteFavourites(id);
         });
         const navigate = useNavigate();
         const { userLogs, setUserLogs } = useData();
@@ -68,7 +69,7 @@ const Fav = () => {
         };
 
         return (
-                <>
+                <AnimationWrapper>
                         <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
@@ -110,7 +111,7 @@ const Fav = () => {
                                 )}
                                 {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

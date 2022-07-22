@@ -9,7 +9,7 @@ import { HeadingBase, SubHeading } from '../../../theme/typography.styled';
 import { BtnPrimaryActive } from '../../../theme/buttons.styled';
 import HttpService from '../../../service/http.service';
 import useUpload from '../../../hooks/useUpload';
-import { buttonSlide } from '../../../animation/page';
+import { slideUpDown } from '../../../animation/page';
 
 // Open the alert window with message of numbers uploaded images
 // function handleFile(files) {
@@ -69,7 +69,7 @@ const Popup = ({ onEvent }) => {
         };
 
         return (
-                <PopupWrapper>
+                <PopupWrapper as={motion.div} initial="hidden" animate="enter" exit="exit" variants={slideUpDown}>
                         <PopupBox>
                                 <Flex justifyContent="flex-end">
                                         <IconButton close onEvent={onEvent} />

@@ -14,6 +14,7 @@ import { SpinnerHypnotic } from '../animation/Spinners.styled';
 import ImageItem from '../components/ImageItem';
 import { useData } from '../context/DataProvider';
 import favs from '../image/icons/logs/fav.svg';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 const SearchBreed = () => {
         const goBack = useGoBack();
@@ -76,7 +77,7 @@ const SearchBreed = () => {
                 goBack();
         };
         return (
-                <>
+                <AnimationWrapper>
                         {' '}
                         <Nav onSearchAPI={handleSearchBreed} search={search} setSearch={setSearch} api />
                         <Wrapper>
@@ -107,7 +108,7 @@ const SearchBreed = () => {
                                         </ImageGallery>
                                 )}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

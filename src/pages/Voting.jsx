@@ -1,5 +1,6 @@
 import { Children, useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -14,6 +15,8 @@ import like from '../image/icons/logs/like.svg';
 import dislike from '../image/icons/logs/dislike.svg';
 import favs from '../image/icons/logs/fav.svg';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
+import { slideUpDown } from '../animation/page';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Voting = () => {
         // state for fetch 1 image per time
@@ -113,7 +116,7 @@ const Voting = () => {
         };
 
         return (
-                <>
+                <AnimationWrapper>
                         <Nav onSearch={handleSearch} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
@@ -132,7 +135,7 @@ const Voting = () => {
                                 )}
                                 {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

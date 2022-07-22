@@ -14,6 +14,7 @@ import Controls from '../components/UI/Controls/Controls';
 import useGoBack from '../hooks/useGoBack';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 import { NoUserLogs } from '../components/UserLogs';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 // TODO Design limit functionality from API
 // TODO Design pagination functionality from API
@@ -99,7 +100,7 @@ const Breeds = () => {
         }, []);
 
         return (
-                <>
+                <AnimationWrapper>
                         <Nav onSearch={handleSearch} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" mt={2} mb={2}>
@@ -144,7 +145,7 @@ const Breeds = () => {
                                 )}
                                 {/* Check if no breeds were found */}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 

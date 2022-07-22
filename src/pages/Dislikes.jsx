@@ -11,11 +11,11 @@ import IconButton from '../components/UI/Buttons/IconButton';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
-import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { useData } from '../context/DataProvider';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
+import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Likes = () => {
         const [search, setSearch] = useState('');
@@ -86,7 +86,7 @@ const Likes = () => {
         };
 
         return (
-                <>
+                <AnimationWrapper>
                         <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
@@ -125,7 +125,7 @@ const Likes = () => {
                                 )}
                                 {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
-                </>
+                </AnimationWrapper>
         );
 };
 
