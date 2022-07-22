@@ -139,6 +139,7 @@ const Gallery = () => {
                                                                 <ImageItem
                                                                         image={url}
                                                                         index={index}
+                                                                        deleteItem
                                                                         onEvent={() => handleFav(id)}
                                                                 />
                                                         ))

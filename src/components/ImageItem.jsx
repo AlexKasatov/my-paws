@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { BtnBreed } from '../theme/buttons.styled';
 import IconButton from './UI/Buttons/IconButton';
 
-const ImageItem = ({ index, name, image, onOpenInfo, onEvent }) => (
+const ImageItem = ({ index, name, image, onOpenInfo, onEvent, deleteItem }) => (
         <section id={`item-${index}`}>
                 <img style={{ objectFit: 'cover', height: '100%' }} src={image?.url || image} alt={name} />
                 {onOpenInfo && (
@@ -11,7 +10,7 @@ const ImageItem = ({ index, name, image, onOpenInfo, onEvent }) => (
                                 {name}
                         </BtnBreed>
                 )}
-                <IconButton likeOut onEvent={onEvent} />
+                {deleteItem ? <IconButton likeOut onEvent={onEvent} /> : <IconButton close onEvent={onEvent} />}
         </section>
 );
 
