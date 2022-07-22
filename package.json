@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/AlexKasatov/pets-paw",
   "name": "cat-app",
   "version": "0.1.5",
   "private": true,
@@ -22,11 +23,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "standard-version"
+    "release": "standard-version",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
+
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +68,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "standard-version": "^9.5.0",
     "stylelint": "^14.9.1",

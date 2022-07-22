@@ -3,9 +3,9 @@ import AnimatedRoutes from './AnimatedRoutes';
 
 const PageRouter = () => (
         // ! Change BrowserRouter to HashRouter to enable hash routing for github pages
-        <Router>
+        <HashRouter>
                 <AnimatedRoutes />
-        </Router>
+        </HashRouter>
 );
 
 export default PageRouter;
