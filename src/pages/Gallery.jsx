@@ -156,9 +156,7 @@ const Gallery = () => {
                                                 )}
                                         </ImageGallery>
                                 )}
-
-                                {isLoading ? !breeds.length : <NoUserLogs />}
-
+                                {/* POPUP FOR UPLOAD IMAGES  */}
                                 {popup && <Popup onEvent={handlePopup} />}
                         </Wrapper>
                 </>

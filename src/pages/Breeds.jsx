@@ -144,7 +144,6 @@ const Breeds = () => {
                                         </ImageGrid>
                                 )}
                                 {/* Check if no breeds were found */}
-                                {isLoading ? !breeds.length : <NoUserLogs />}
                         </Wrapper>
                 </>
         );

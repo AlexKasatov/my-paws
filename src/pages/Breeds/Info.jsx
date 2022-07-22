@@ -6,12 +6,13 @@ import useFetch from '../../hooks/useFetch';
 import HttpService from '../../service/http.service';
 import { BtnPrimary } from '../../theme/buttons.styled';
 import IconButton from '../../components/UI/Buttons/IconButton';
-import { FlexGapM } from '../../theme/layout.styled';
+import { FlexGapM, Flex } from '../../theme/layout.styled';
 import useGoBack from '../../hooks/useGoBack';
 import PageLink from '../../components/UI/Navigation/PageLink';
 import ImageCard from '../../components/UI/Cards/ImageCard';
-import Spiner from '../../animation/Spiner';
 import InfoDesc from '../../components/UI/Cards/InfoDesc';
+import { SpinnerHypnotic } from '../../animation/Spinners.styled';
+import { NoUserLogs } from '../../components/UserLogs';
 
 const Info = () => {
         const goBack = useGoBack();
@@ -47,12 +48,12 @@ const Info = () => {
                                                         {breed[0].breeds[0].id.toUpperCase()}
                                                 </BtnPrimary>
                                         )}
-
-                                        {/* selects */}
                                 </FlexGapM>
 
                                 {isLoading ? (
-                                        <Spiner />
+                                        <Flex justifyContent="center" mt="10rem" mb="10rem">
+                                                <SpinnerHypnotic />
+                                        </Flex>
                                 ) : (
                                         <div>
                                                 {breed &&
@@ -61,8 +62,7 @@ const Info = () => {
                                                         )}
                                         </div>
                                 )}
-
-                                {isLoading ? <Spiner /> : breed && <InfoDesc data={breed[0].breeds[0]} />}
+                                {breed && <InfoDesc data={breed[0].breeds[0]} />}
                         </Wrapper>
                 </>
         );
