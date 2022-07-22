@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageSimpleGrid, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -17,18 +18,21 @@ import { useData } from '../context/DataProvider';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 
 const Likes = () => {
+        const [search, setSearch] = useState('');
         const [likes, setLikes] = useState([]);
         const [filtredLikes, setFiltredLikes] = useState([]);
         const [likedImg, setLikedImg] = useState([]);
         const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
         const [isLikedImgError, setIsLikedImgError] = useState('');
-
+        // fetch all liked images from API
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes();
                 setLikes(response);
         });
         // state from context to manage user logs
         const { userLogs } = useData();
+
+        const navigate = useNavigate();
 
         // return filtred array of liked images
         useMemo(() => {
@@ -69,9 +73,11 @@ const Likes = () => {
                         });
         }, [likedImagesPromises]);
 
-        // TODO fix it later ( add to fetch function )
-        const handleSearch = (search, breed) => {};
-        // ==========================================================
+        // go to search breed page
+        const handleSearchBreed = () => {
+                const searchValue = search?.value || '';
+                navigate(`/search/${searchValue}`);
+        };
 
         const goBack = useGoBack();
         const handleGoBack = () => {
@@ -80,7 +86,7 @@ const Likes = () => {
 
         return (
                 <>
-                        <Nav onSearch={handleSearch} api />
+                        <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />

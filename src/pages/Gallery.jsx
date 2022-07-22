@@ -31,13 +31,8 @@ const Gallery = () => {
 
         // states for fetching data
         const [breeds, setBreeds] = useState([]);
-        const [filtredBreeds, setFiltredBreeds] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit, breedId) => {
+        const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit) => {
                 const response = await HttpService.getImagesForGallery(id, type, order, limit);
-                console.log(
-                        '🚀 ~ file: Gallery.jsx ~ line 33 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
 
                 setBreeds(response);
         });
