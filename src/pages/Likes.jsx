@@ -80,7 +80,7 @@ const Likes = () => {
 
         return (
                 <>
-                        <Nav onSearch={handleSearch} />
+                        <Nav onSearch={handleSearch} api />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />

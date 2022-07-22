@@ -3,16 +3,8 @@ import pMinDelay from 'p-min-delay';
 
 import { Suspense } from 'react';
 import Spiner from '../animation/Spiner';
-// import Breeds from '../pages/Breeds';
-// import Dislikes from '../pages/Dislikes';
-// import Fav from '../pages/Fav';
-// import Gallery from '../pages/Gallery';
-// import Likes from '../pages/Likes';
-// import NotFound from '../pages/NotFound';
-// import Search from '../pages/Search';
-// import Voting from '../pages/Voting';
-// import Info from '../pages/Breeds/Info';
 
+const SearchBreed = lazy(() => import('../pages/SearchBreed'));
 const Info = loadable(() => import('../pages/Breeds/Info'));
 const Voting = lazy(() => import('../pages/Voting'));
 const NotFound = lazy(() => import('../pages/NotFound'));
@@ -51,5 +43,6 @@ export const publicRoutes = [
         { index: false, path: '/dislike', element: <Dislikes />, replace: false },
         { index: false, path: '/fav', element: <Fav />, replace: false },
         { index: false, path: '/voting', element: <Voting />, replace: false },
+        { index: false, path: '/search/:id', element: <SearchBreed />, replace: false },
         { index: false, path: '*', element: <NotFound />, replace: false },
 ];
