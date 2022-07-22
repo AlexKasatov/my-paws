@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import heroImg from '../image/main/girl-and-pet.webp';
 import { Flex } from '../theme/layout.styled';
+import { slideRight } from '../animation/page';
 
 export const BackgroundBox = styled.div`
         width: 680px;
@@ -20,7 +22,15 @@ export const BackgroundBox = styled.div`
         }
 `;
 const Home = () => (
-        <Flex flexDirection="column" ml={5}>
+        <Flex
+                flexDirection="column"
+                ml={5}
+                as={motion.div}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                variants={slideRight}
+        >
                 <BackgroundBox>
                         <img src={heroImg} alt="hero-img" />
                 </BackgroundBox>

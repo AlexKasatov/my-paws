@@ -29,3 +29,9 @@ export const buttonSlide = {
         enter: { y: 0, opacity: 1, transition: { delay: 0.1, type: 'spring', stiffness: 100 } },
         exit: { y: 50, opacity: 0, transition: { type: 'linear' } },
 };
+
+export const slideRight = {
+        hidden: { x: 50, opacity: 0, transition: { delay: 0.1, type: 'spring', stiffness: 100 } },
+        enter: { x: 0, opacity: 1, transition: { delay: 0.5, type: 'spring', stiffness: 100 } },
+        exit: { x: 50, opacity: 0, transition: { type: 'linear' } },
+};
