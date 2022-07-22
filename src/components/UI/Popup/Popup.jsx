@@ -11,6 +11,10 @@ import HttpService from '../../../service/http.service';
 import useUpload from '../../../hooks/useUpload';
 import { buttonSlide } from '../../../animation/page';
 
+function handleFile(files) {
+        alert(`Number of files: ${files.length}`);
+}
+
 const Popup = ({ onEvent }) => {
         // state for uploaded image by user on frontend
         const [value, setValue] = useState('');
@@ -18,14 +22,15 @@ const Popup = ({ onEvent }) => {
         const [imgUrl, setImgUrl] = useState('');
         // state for response from API
         const [upload, setUpload] = useState('');
+        // drag state
+        const [dragActive, setDragActive] = useState(false);
+
+        // * state for check if image is uploaded ( in development )
         const [approved, setApproved] = useState(undefined);
+        // *
 
         const [uploadImage, isLoading, isError] = useUpload(async (formData) => {
                 const response = await HttpService.uploadImage(formData);
-                console.log(
-                        '🚀 ~ file: Popup.jsx ~ line 25 ~ const[uploadImage,isLoading,isError]=useUpload ~ response',
-                        response
-                );
                 setUpload(response);
                 setApproved(isError);
         });
@@ -36,6 +41,33 @@ const Popup = ({ onEvent }) => {
                 formData.append('file', value);
                 // API call to upload image
                 uploadImage(formData);
+        };
+
+        // DRAG AND DROP
+
+        // handle drag events
+        const handleDrag = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.type === 'dragenter' || e.type === 'dragover') {
+                        setDragActive(true);
+                } else if (e.type === 'dragleave') {
+                        setDragActive(false);
+                }
+        };
+        // triggers when file is dropped
+        const handleDrop = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setDragActive(false);
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                        handleFile(e.dataTransfer.files);
+                        // update the state with the file url for preview on UI before upload on API call
+                        const [file] = e.dataTransfer.files;
+                        setImgUrl(URL.createObjectURL(file));
+                        // update state for file object
+                        setValue(e.dataTransfer.files[0]);
+                }
         };
 
         return (
@@ -73,6 +105,9 @@ const Popup = ({ onEvent }) => {
                                 </Flex>
 
                                 <ImagePlaceholder
+                                        dragActive={dragActive}
+                                        handleDrop={handleDrop}
+                                        handleDrag={handleDrag}
                                         isLoading={isLoading}
                                         imgUrl={imgUrl}
                                         setImgUrl={setImgUrl}
