@@ -203,3 +203,16 @@ export const BtnSort = styled(BtnIconPrimary)`
                 background-color: ${({ theme }) => theme.colors.body};
         }
 `;
+
+// Pagination buttons
+
+export const BtnPagination = styled.button`
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        padding: 0.3rem;
+        border-radius: 100%;
+        border: none;
+        transition: ${({ theme }) => theme.transition};
+        ${color}
+`;

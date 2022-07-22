@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Wrapper } from '../../components/UI/Wrappers/Wrappers.styled';
 import useFetch from '../../hooks/useFetch';
 import HttpService from '../../service/http.service';
-import { BtnPrimary } from '../../theme/buttons.styled';
+import { BtnPrimary, BtnPagination } from '../../theme/buttons.styled';
 import IconButton from '../../components/UI/Buttons/IconButton';
 import { FlexGapM, Flex } from '../../theme/layout.styled';
 import useGoBack from '../../hooks/useGoBack';
@@ -12,13 +12,13 @@ import PageLink from '../../components/UI/Navigation/PageLink';
 import ImageCard from '../../components/UI/Cards/ImageCard';
 import InfoDesc from '../../components/UI/Cards/InfoDesc';
 import { SpinnerHypnotic } from '../../animation/Spinners.styled';
-import { NoUserLogs } from '../../components/UserLogs';
 
 const Info = () => {
         const goBack = useGoBack();
         const [breed, setBreed] = useState('');
+        const [currentImg, setCurrentImg] = useState(0);
 
-        const { id } = useParams();
+        const { id } = useParams(); // need to get chosen breed
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const res = await HttpService.getImageByBreedId(id, 5);
                 setBreed(res);
@@ -29,6 +29,19 @@ const Info = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
         const handleGoBack = () => goBack();
+
+        // slider handlers
+        const handleImgRigth = () => {
+                if (currentImg < breed.length - 1) {
+                        setCurrentImg((prev) => prev + 1);
+                }
+        };
+
+        const handleImgLeft = () => {
+                if (currentImg > 0) {
+                        setCurrentImg((prev) => prev - 1);
+                }
+        };
 
         return (
                 <>
@@ -56,12 +69,63 @@ const Info = () => {
                                         </Flex>
                                 ) : (
                                         <div>
-                                                {breed &&
-                                                        Children.toArray(
-                                                                breed.map((item) => <ImageCard url={item?.url} />)
-                                                        )}
+                                                {breed && (
+                                                        // Children.toArray(
+                                                        //         breed.map((item) => <ImageCard url={item?.url} />)
+                                                        // )}
+
+                                                        <ImageCard url={breed[currentImg]?.url} />
+                                                )}
+
+                                                {breed && (
+                                                        <FlexGapM
+                                                                backgroundColor="pageMain"
+                                                                border="none"
+                                                                margin="0 auto"
+                                                                position="absolute"
+                                                                top="485px"
+                                                                width="90px"
+                                                                py="1rem"
+                                                                px="3.2rem"
+                                                                right="-310px"
+                                                                borderRadius="20px"
+                                                                left="170px"
+                                                                alignItems="center"
+                                                                justifyContent="center"
+                                                                mt="2rem"
+                                                                mb="2rem"
+                                                        >
+                                                                {Children.toArray(
+                                                                        breed.map((item, index) => (
+                                                                                <BtnPagination
+                                                                                        backgroundColor={
+                                                                                                index === currentImg
+                                                                                                        ? 'primary'
+                                                                                                        : 'secondary'
+                                                                                        }
+                                                                                        type="button"
+                                                                                        onClick={() =>
+                                                                                                setCurrentImg(index)
+                                                                                        }
+                                                                                />
+                                                                        ))
+                                                                )}
+                                                        </FlexGapM>
+                                                )}
                                         </div>
                                 )}
+
+                                {/* Image Pagination buttons */}
+                                {/* <button disabled={!currentImg} onClick={handleImgLeft} type="button">
+                                        left
+                                </button>
+                                <button
+                                        disabled={currentImg === breed.length - 1}
+                                        onClick={handleImgRigth}
+                                        type="button"
+                                >
+                                        right
+                                </button> */}
                                 {breed && <InfoDesc data={breed[0].breeds[0]} />}
                         </Wrapper>
                 </>

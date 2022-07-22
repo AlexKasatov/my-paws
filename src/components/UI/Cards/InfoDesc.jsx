@@ -35,7 +35,7 @@ const InfoDesc = ({ data }) => (
                         <HeadingBase lineHeight="52px" fontWeight="500" fontSize="36px" color="textBase">
                                 {data.name}
                         </HeadingBase>
-                        <HeadingBase lineHeight="29px" fontWeight="500" fontSize="20px" color="textSupport">
+                        <HeadingBase lineHeight="25px   " fontWeight="500" fontSize="20px" color="textSupport">
                                 {data.description}
                         </HeadingBase>
                 </InfoHeadingWrapper>

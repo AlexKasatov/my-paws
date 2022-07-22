@@ -5,6 +5,9 @@ export const Flex = styled.div`
         ${flexbox}
         ${layout}
         ${space}
+        ${border}
+        ${position}
+        ${color}
         display: flex;
 `;
 
@@ -257,6 +260,7 @@ export const ImageSimpleGrid = styled.div`
         height: 100%;
 
         section {
+                background-color: ${(props) => props.theme.colors.primary};
                 border-radius: 20px;
                 position: relative;
         }
