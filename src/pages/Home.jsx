@@ -10,7 +10,7 @@ export const BackgroundBox = styled.div`
         border-radius: 20px;
         margin: 30px 0;
         img {
-                width: 895px;
+                width: 780px;
                 height: 1024px;
                 margin-top: -110px;
                 margin-left: -50px;

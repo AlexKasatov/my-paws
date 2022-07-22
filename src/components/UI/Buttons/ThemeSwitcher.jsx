@@ -5,11 +5,12 @@ import { useMode } from '../../../context/ModeProvider';
 
 const Switcher = styled.button`
         cursor: pointer;
+        margin-right: 2.5rem;
         width: 28px;
         height: 28px;
         border-radius: 50%;
         border: none;
-        background-color: ${(props) => props.theme.colors.pageSecondary};
+        background-color: ${(props) => props.theme.colors.pageMain};
 `;
 
 const Light = () => (
