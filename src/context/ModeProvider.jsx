@@ -8,21 +8,22 @@ export const ContextMode = createContext();
 export const useMode = () => useContext(ContextMode);
 
 const ModeProvider = ({ children }) => {
-        const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'light');
+        // const [mode, setMode] = useState(() => localStorage.getItem('mode') || 'light');
+        const [mode, setMode] = useState(() => localStorage.getItem('mode') || true);
 
         useEffect(() => {
                 localStorage.setItem('mode', mode);
         }, [mode]);
 
         const toggleTheme = () => {
-                setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+                setMode((prev) => !prev);
         };
 
         const value = useMemo(() => ({ mode, setMode, toggleTheme }), [mode]);
 
         return (
                 <ContextMode.Provider value={value}>
-                        <ThemeProvider theme={mode === 'light' ? ligthMode : darkMode}>{children}</ThemeProvider>
+                        <ThemeProvider theme={mode ? ligthMode : darkMode}>{children}</ThemeProvider>
                 </ContextMode.Provider>
         );
 };

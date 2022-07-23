@@ -1,11 +1,13 @@
 import styled from 'styled-components';
-
-import React from 'react';
+import Switch from 'react-switch';
+import { useMemo, useEffect } from 'react';
 import { useMode } from '../../../context/ModeProvider';
+import { useToggle } from '../../../hooks/useToggle';
+import { Flex } from '../../../theme/layout.styled';
 
-const Switcher = styled.button`
+const SwitchIcon = styled.button`
         cursor: pointer;
-        margin-right: 2.5rem;
+        margin-right: 1rem;
         width: 28px;
         height: 28px;
         border-radius: 50%;
@@ -35,7 +37,25 @@ const Dark = () => (
 const ThemeSwitcher = () => {
         const { mode, toggleTheme } = useMode();
 
-        return <Switcher onClick={toggleTheme}>{mode === 'light' ? <Light /> : <Dark />}</Switcher>;
+        return (
+                <Flex>
+                        <SwitchIcon onClick={toggleTheme}>{mode ? <Light /> : <Dark />}</SwitchIcon>
+                        <Switch
+                                offColor="#533B3C"
+                                onColor="#FBE0DC"
+                                onHandleColor="#FF868E"
+                                offHandleColor="#FF868E"
+                                handleDiameter={16}
+                                width={44}
+                                uncheckedIcon={false}
+                                checkedIcon={false}
+                                onChange={toggleTheme}
+                                boxShadow="none"
+                                activeBoxShadow="none"
+                                checked={mode}
+                        />
+                </Flex>
+        );
 };
 
 export default ThemeSwitcher;
