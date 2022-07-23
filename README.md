@@ -1,5 +1,11 @@
 <div id="top"></div>
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -8,9 +14,8 @@
   </a>
 
 <h3 align="center">PetPaws</h3>
-
   <p align="center">
-    project_description
+    Cat Lovers App
     <br />
     <a href="https://github.com/AlexKasatov/pets-paw" target="_blank" ><strong>Explore the docs »</strong></a>
     <br />
@@ -120,7 +125,6 @@ Also, in CHANGELOG.MD are all my commits to developing this app.
   - [ ] Delete likes & dislike.
   - [x] Search works on all pages.
   - [x] Show new user logs at the top.
-  - [x]
   - [x] Upload image from file.
   - [x] Upload image from drag-and-drop.
   - [x] Error & load handle with toastify.
@@ -189,14 +193,6 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
