@@ -20,7 +20,7 @@ const Header = () => (
         <HeaderStyled>
                 <ContainerMenu>
                         {/* Logo & Theme Switcher */}
-                        <Flex marginY={3} justifyContent="space-between" alignItems="center">
+                        <Flex marginY="30px" justifyContent="space-between" alignItems="center">
                                 <Logo />
                                 <ThemeSwitcher />
                         </Flex>

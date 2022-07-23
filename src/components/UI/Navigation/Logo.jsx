@@ -33,7 +33,7 @@ const Logo = () => {
                 <Link to="/">
                         <FlexGapM alignItems="center" justifyContent="flex-start" flexWrap="no-wrap">
                                 <Symbol />
-                                <Logotype fill={mode === 'light' ? '#1D1D1D' : 'white'} />
+                                <Logotype fill={mode ? '#1D1D1D' : 'white'} />
                         </FlexGapM>
                 </Link>
         );
