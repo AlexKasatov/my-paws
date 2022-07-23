@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { border, color } from 'styled-system';
+import { motion } from 'framer-motion';
 import { ChoiseWrapper } from '../Wrappers/ChoiceWrapper.styled';
+import { slideUpDown } from '../../../animation/page';
 
 const ChoiceBtn = styled.button`
         ${color}
@@ -71,7 +73,7 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
         };
 
         return (
-                <ChoiseWrapper>
+                <ChoiseWrapper as={motion.section} initial="hidden" animate="enter" exit="exit" variants={slideUpDown}>
                         <ChoiceBtn
                                 // onVote accept simple id as arg ( not image_id), ( 1 for likes, 0 for dislikes)
                                 onClick={() => onVote(cat[0].id, 1)}

@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import loadable, { lazy } from '@loadable/component';
+import pMinDelay from 'p-min-delay';
 import styled from 'styled-components';
-import ChoiceSection from '../Buttons/ChoiceSection';
+// import ChoiceSection from '../Buttons/ChoiceSection';
 import { SpinnerHypnotic } from '../../../animation/Spinners.styled';
 import { FlexGapM } from '../../../theme/layout.styled';
+
+const ChoiceSection = loadable(() => pMinDelay(import('../Buttons/ChoiceSection'), 2000));
 
 export const ImageVoteSection = styled.div`
         display: flex;

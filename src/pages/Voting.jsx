@@ -1,5 +1,6 @@
 import { Children, useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM } from '../theme/layout.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
@@ -17,13 +18,14 @@ import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Voting = () => {
+        const [search, setSearch] = useState('');
         // state for fetch 1 image per time
         const [cat, setCat] = useState('');
         // state for save voting history
         const [voteState, setVoteState] = useState('');
         // state from context to manage user logs
         const { userLogs, setUserLogs, userToken } = useData();
-
+        const navigate = useNavigate();
         // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
                 const response = await HttpService.getImages(limit);
@@ -104,9 +106,11 @@ const Voting = () => {
                 ]);
         };
 
-        // TODO fix it later ( add to fetch function )
-        const handleSearch = (search, breed) => {};
-        // ==========================================================
+        // go to search breed page
+        const handleSearchBreed = () => {
+                const searchValue = search?.value || '';
+                navigate(`/search/${searchValue}`);
+        };
 
         const goBack = useGoBack();
         const handleGoBack = () => {
@@ -115,7 +119,7 @@ const Voting = () => {
 
         return (
                 <AnimationWrapper>
-                        <Nav onSearch={handleSearch} />
+                        <Nav search={search} setSearch={setSearch} api onSearchAPI={handleSearchBreed} />
                         <Wrapper>
                                 <FlexGapM alignItems="center" justifyContent="flex-start" mt={2} mb={2}>
                                         <IconButton onGoBack={handleGoBack} back />
