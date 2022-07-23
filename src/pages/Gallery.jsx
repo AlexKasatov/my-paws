@@ -32,7 +32,7 @@ const Gallery = () => {
 
         // states for fetching data
         const [breeds, setBreeds] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async (id, type, order, limit) => {
+        const [fetch, isLoading] = useFetch(async (id, type, order, limit) => {
                 const response = await HttpService.getImagesForGallery(id, type, order, limit);
                 setBreeds(response);
         });
@@ -41,7 +41,7 @@ const Gallery = () => {
         const { setUserLogs, userToken } = useData();
 
         // Add to favs
-        const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
+        const [fav] = useFetch(async (id) => {
                 await HttpService.addFavourites(id, userToken);
         });
 

@@ -12,7 +12,7 @@ export const useData = () => useContext(ContextData);
 
 const DataProvider = ({ children }) => {
         const [breeds, setBreeds] = useState('');
-        const [fetch, isLoading, isError] = useFetch(async (parameters) => {
+        const [fetch] = useFetch(async (parameters) => {
                 const response = await HttpService.getBreeds(parameters);
                 setBreeds(response);
         });

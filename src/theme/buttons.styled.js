@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
+import { border, color, flexbox, layout, position, space, typography, width, height } from 'styled-system';
 
 // MAIN BUTTON
 export const Btn = styled.button`

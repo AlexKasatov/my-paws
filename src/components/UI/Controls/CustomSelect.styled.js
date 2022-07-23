@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
 import Select from 'react-select';
 
 export const CustomSelect = styled(Select).attrs((props) => ({

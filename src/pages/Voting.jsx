@@ -27,19 +27,19 @@ const Voting = () => {
         const { userLogs, setUserLogs, userToken } = useData();
         const navigate = useNavigate();
         // Fetch image for voting
-        const [fetch, isLoading, isError] = useFetch(async (limit) => {
+        const [fetch, isLoading] = useFetch(async (limit) => {
                 const response = await HttpService.getImages(limit);
                 setCat(response);
         });
 
         // Vote like or dislike
-        const [vote, isVoteLoading, isVoteError] = useFetch(async (id, value) => {
+        const [vote] = useFetch(async (id, value) => {
                 const response = await HttpService.vote(id, value, userToken);
                 setVoteState(response);
         });
 
         // Add to favs
-        const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
+        const [fav] = useFetch(async (id) => {
                 const response = await HttpService.addFavourites(id, userToken);
                 setVoteState(response);
         });

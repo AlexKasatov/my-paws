@@ -23,12 +23,12 @@ const Fav = () => {
         const navigate = useNavigate();
         const { userLogs, setUserLogs, userToken } = useData();
 
-        const [fetch, isLoading, isError] = useFetch(async () => {
+        const [fetch, isLoading] = useFetch(async () => {
                 const response = await HttpService.getFavourites(userToken);
                 setFav(response);
         });
         // remove img from favs
-        const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
+        const [remove] = useFetch(async (id) => {
                 await HttpService.deleteFavourites(id);
         });
 

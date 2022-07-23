@@ -79,19 +79,7 @@ const Update = ({ fill }) => (
         </svg>
 );
 
-const IconButton = ({
-        back,
-        forward,
-        search,
-        close,
-        likeOut,
-        likeFill,
-        update,
-        loading,
-        onGoBack,
-        onEvent,
-        disableState,
-}) => {
+const IconButton = ({ back, forward, search, close, likeOut, likeFill, update, loading, onGoBack, onEvent }) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 // TODO - add router Links

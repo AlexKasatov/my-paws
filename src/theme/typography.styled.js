@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { border, color, compose, flexbox, layout, position, space, typography, width, height } from 'styled-system';
+import { color, space, typography } from 'styled-system';
 
 export const HeadingBase = styled.h1`
         ${typography}
@@ -48,6 +48,5 @@ export const Label = styled.span`
         font-size: 10px;
         line-height: 18px;
         color: #8c8c8c;
-        /* margin-left: 1rem; */
         padding: 1rem;
 `;

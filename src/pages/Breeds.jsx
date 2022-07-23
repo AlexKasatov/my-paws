@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState, useEffect, Children, useMemo, useCallback } from 'react';
+import { useState, useEffect, Children, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
@@ -13,7 +13,6 @@ import SortButton from '../components/UI/Buttons/SortButton';
 import Controls from '../components/UI/Controls/Controls';
 import useGoBack from '../hooks/useGoBack';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
-import { NoUserLogs } from '../components/UserLogs';
 import AnimationWrapper from '../animation/AnimationWrapper';
 
 // TODO Design limit functionality from API
@@ -27,7 +26,7 @@ const Breeds = () => {
         const [limit, setLimt] = useState(''); // limit of images per breed
         const [filtredBreeds, setFiltredBreeds] = useState(breeds); // filtred breeds
 
-        const [fetch, isLoading, isError] = useFetch(async (limitArg) => {
+        const [fetch, isLoading] = useFetch(async (limitArg) => {
                 const response = await HttpService.getBreeds(limitArg);
 
                 setBreeds(response);

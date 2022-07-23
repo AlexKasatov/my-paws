@@ -28,7 +28,7 @@ const Likes = () => {
         // state from context to manage user logs
         const { userLogs, setUserLogs, userToken } = useData();
         // fetch all liked images from API
-        const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
+        const [fetchLike, isLikeLoading] = useFetch(async () => {
                 const response = await HttpService.getVotes(userToken);
                 setLikes(response);
         });

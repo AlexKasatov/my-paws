@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { useParams, useNavigate } from 'react-router-dom';
-import { Children, useState, useEffect, useMemo } from 'react';
+import { Children, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
@@ -26,10 +26,6 @@ const SearchBreed = () => {
         // hook for fetch breeds
         const [fetch, isLoading, isError] = useFetch(async () => {
                 const response = await HttpService.getImagesForGallery(id);
-                console.log(
-                        '🚀 ~ file: SearchBreed.jsx ~ line 24 ~ const[fetch,isLoading,isError]=useFetch ~ response',
-                        response
-                );
                 setBreeds(response);
         });
 
@@ -37,7 +33,7 @@ const SearchBreed = () => {
         const { setUserLogs, userToken } = useData();
 
         // Add to favs
-        const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
+        const [fav] = useFetch(async (id) => {
                 await HttpService.addFavourites(id, userToken);
         });
 

@@ -17,11 +17,11 @@ export default class HttpService {
         }
 
         // get single breed data by ID
-        static async getImageByBreedId(id, limit) {
+        static async getImageByBreedId(id) {
                 const res = await axios(`images/search`, {
                         params: {
                                 breed_id: id,
-                                limit,
+                                limit: 5,
                         },
                 });
                 return res.data;
@@ -32,21 +32,6 @@ export default class HttpService {
                 const res = await axios(`images/search`, {
                         params: {
                                 limit,
-                        },
-                });
-                return res.data;
-        }
-
-        // get image by id
-        static async getImagesById(id) {
-                const res = await axios(`images/${id}`);
-                return res.data;
-        }
-
-        static async getVotedImages() {
-                const res = await axios(`images/search`, {
-                        params: {
-                                include_votes: true,
                         },
                 });
                 return res.data;

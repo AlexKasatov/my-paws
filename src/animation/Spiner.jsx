@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const SpinerStyled = styled.div`
-        /*? 16px maybe */
         display: inline-block;
         margin-right: 0.5rem;
         width: 16px;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import Switch from 'react-switch';
-import { useMemo, useEffect } from 'react';
 import { useMode } from '../../../context/ModeProvider';
-import { useToggle } from '../../../hooks/useToggle';
 import { Flex } from '../../../theme/layout.styled';
 
 const SwitchIcon = styled.button`

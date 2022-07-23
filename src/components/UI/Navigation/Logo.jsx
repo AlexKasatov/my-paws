@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMode } from '../../../context/ModeProvider';
 import { FlexGapM } from '../../../theme/layout.styled';
