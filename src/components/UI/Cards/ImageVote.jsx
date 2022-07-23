@@ -32,21 +32,6 @@ const ImageVote = ({ cat, onVote, onFav, isLoading }) => (
         <ImageVoteSection>
                 {isLoading ? <SpinnerHypnotic mt="8rem" /> : <img src={cat[0]?.url} alt="cat" />}
                 <FlexGapM
-                        // backgroundColor="none"
-                        // border="none"
-                        // margin="0 auto"
-                        // position="absolute"
-                        // top="455px"
-                        // width="90px"
-                        // py="1rem"
-                        // px="3.2rem"
-                        // right="-310px"
-                        // borderRadius="20px"
-                        // left="170px"
-                        // alignItems="center"
-                        // justifyContent="center"
-                        // mt="2rem"
-                        // mb="2rem"
                         backgroundColor="none"
                         border="none"
                         margin="0 auto"
@@ -54,7 +39,6 @@ const ImageVote = ({ cat, onVote, onFav, isLoading }) => (
                         top="55%"
                         left="65%"
                         width="90px"
-                        // transform="translate(-70%, -100%)"
                         py="1rem"
                         px="3.2rem"
                         borderRadius="20px"
@@ -69,8 +53,3 @@ const ImageVote = ({ cat, onVote, onFav, isLoading }) => (
 );
 
 export default ImageVote;
-
-// display: none;
-// top: 50%;
-// left: 50%;
-// transform: translate(-50%, -100%);
