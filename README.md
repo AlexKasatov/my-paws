@@ -1,5 +1,14 @@
 <div id="top"></div>
 
+<<<<<<< HEAD
+=======
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+>>>>>>> 85e9cee6e19792756736c5109cbf432170f4e775
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
