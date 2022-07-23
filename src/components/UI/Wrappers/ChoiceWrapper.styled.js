@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const ChoiseWrapper = styled.section`
-        display: inline-block;
-        position: absolute;
-        top: 500px;
-        left: 60%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
 `;

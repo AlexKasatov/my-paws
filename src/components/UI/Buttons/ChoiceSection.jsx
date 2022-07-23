@@ -5,12 +5,12 @@ import { border, color } from 'styled-system';
 import { ChoiseWrapper } from '../Wrappers/ChoiceWrapper.styled';
 
 const ChoiceBtn = styled.button`
-        ${border}
         ${color}
-
+        border: 4px solid ${({ theme }) => theme.colors.pageMain};
         cursor: pointer;
         width: 80px;
         height: 80px;
+        ${border}
 `;
 
 const Like = ({ fill }) => (
@@ -78,7 +78,6 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
                                 onMouseEnter={() => setLike('#97EAB9')}
                                 onMouseLeave={() => setLike('#FFFFFF')}
                                 bg={like === '#FFFFFF' ? 'teal' : 'teal30'}
-                                border="4px solid white"
                                 borderBottomLeftRadius="25px"
                                 borderTopLeftRadius="25px"
                         >
@@ -90,7 +89,8 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
                                 onMouseEnter={() => setFav('#FF868E')}
                                 onMouseLeave={() => setFav('#FFFFFF')}
                                 bg={fav === '#FFFFFF' ? 'primary' : 'secondary'}
-                                border="4px solid white"
+                                borderRight="none"
+                                borderLeft="none"
                         >
                                 {favClicked ? <FavClicked /> : <Fav fill={fav} />}
                         </ChoiceBtn>
@@ -100,7 +100,6 @@ const ChoiceSection = ({ cat, onVote, onFav }) => {
                                 onMouseEnter={() => setDislike('#FFD280')}
                                 onMouseLeave={() => setDislike('#FFFFFF')}
                                 bg={dislike === '#FFFFFF' ? 'yellow' : 'yellow30'}
-                                border="4px solid white"
                                 borderBottomRightRadius="25px"
                                 borderTopRightRadius="25px"
                         >
