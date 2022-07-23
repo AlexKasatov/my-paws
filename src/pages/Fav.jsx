@@ -28,7 +28,7 @@ const Fav = () => {
                 setFav(response);
         });
         // remove img from favs
-        const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
+        const [remove] = useFetch(async (id) => {
                 await HttpService.deleteFavourites(id);
         });
 

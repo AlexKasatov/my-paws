@@ -76,6 +76,12 @@ export default class HttpService {
                 return res.data;
         }
 
+        // delete from favourites
+        static async deleteVote(id) {
+                const res = await axios.delete(`votes/${id}`);
+                return res.data;
+        }
+
         // add to favourites
         static async addFavourites(id, sub_id) {
                 const res = await axios.post(`favourites`, {
