@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/AlexKasatov/pets-paw/compare/v0.1.6...v0.1.7) (2022-07-23)
+
+
+### Features
+
+* add search for voting page ([bd2f057](https://github.com/AlexKasatov/pets-paw/commit/bd2f05733a3ec3fbaf16641cb2882066f668438c))
+* add search to Info page ([e34b40c](https://github.com/AlexKasatov/pets-paw/commit/e34b40c23ae43f1ad512d42ecabeecbec0660075))
+* add theme switcher ([0162287](https://github.com/AlexKasatov/pets-paw/commit/0162287fcd12420381103c9410c436eca96dc2ba))
+* add user-token to identify user logs ([fa9ef71](https://github.com/AlexKasatov/pets-paw/commit/fa9ef71ce0d210d341cdd0b40a1631817a64ebd0))
+* new added like & dislike go first in user's logs ([bd351a8](https://github.com/AlexKasatov/pets-paw/commit/bd351a80da1306cb724a0adc277e7a0ccb097912))
+* testing deploy with vercel ([cb00f0e](https://github.com/AlexKasatov/pets-paw/commit/cb00f0e2a23b0cf7c8047dd1577af5c8b0f66803))
+
+
+### Bug Fixes
+
+* add pagiation buttons for info breed's image ([68b52fd](https://github.com/AlexKasatov/pets-paw/commit/68b52fdcf4100984dff7b7e070e4e319204055c5))
+* deployment bugs, eslint ([5171d6f](https://github.com/AlexKasatov/pets-paw/commit/5171d6f484b06b503a3b17e3eefc995f758b2511))
+* fix display liked & disliked images ([4b4b155](https://github.com/AlexKasatov/pets-paw/commit/4b4b15582c6609ddadd8041a9b0e3da521d3fe71))
+* fix space, UI issues ([25af164](https://github.com/AlexKasatov/pets-paw/commit/25af164efc276674327f2da755607aacf160c70c))
+* fix UI go back btn & sort btns ([c1cb16e](https://github.com/AlexKasatov/pets-paw/commit/c1cb16ece1b2b02a5f43533494bcc17abe09e25f))
+* fix UI of pagination buttons for info page ([2f68edd](https://github.com/AlexKasatov/pets-paw/commit/2f68eddd2f13bbf8153883004a6e4068364f6bd2))
+* fix UI voting section position bugs ([ff75d47](https://github.com/AlexKasatov/pets-paw/commit/ff75d47f2bf684302d0bc8d9d3bc271e0b4d8481))
+* fix vote (choice) section UI ([31e60c7](https://github.com/AlexKasatov/pets-paw/commit/31e60c7593e144f5a4a47290853db3def43c88c9))
+* update adding to favs ([0e17d89](https://github.com/AlexKasatov/pets-paw/commit/0e17d899117d131beed540327c1ce6881d3e97ec))
+* update adding to likes & dislikes ([b15444b](https://github.com/AlexKasatov/pets-paw/commit/b15444bd9e032b6bac83f1a27e79331c1f1f7792))
+
 ### [0.1.6](https://github.com/AlexKasatov/pets-paw/compare/v0.1.5...v0.1.6) (2022-07-22)
 
 
