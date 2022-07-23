@@ -62,6 +62,8 @@ const Info = () => {
                                                         {breed[0].breeds[0].id.toUpperCase()}
                                                 </BtnPrimary>
                                         )}
+                                        <IconButton back onEvent={handleImgLeft} />
+                                        <IconButton forward onEvent={handleImgRigth} />
                                 </FlexGapM>
 
                                 {isLoading ? (
@@ -70,13 +72,7 @@ const Info = () => {
                                         </Flex>
                                 ) : (
                                         <div>
-                                                {breed && (
-                                                        // Children.toArray(
-                                                        //         breed.map((item) => <ImageCard url={item?.url} />)
-                                                        // )}
-
-                                                        <ImageCard url={breed[currentImg]?.url} />
-                                                )}
+                                                {breed && <ImageCard url={breed[currentImg]?.url} />}
 
                                                 {breed && (
                                                         <FlexGapM
@@ -117,6 +113,7 @@ const Info = () => {
                                 )}
 
                                 {/* Image Pagination buttons */}
+                                {/* Old code for test */}
                                 {/* <button disabled={!currentImg} onClick={handleImgLeft} type="button">
                                         left
                                 </button>

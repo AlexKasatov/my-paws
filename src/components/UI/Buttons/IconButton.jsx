@@ -16,6 +16,19 @@ const ArrowBack = ({ fill }) => (
         </svg>
 );
 
+const ArrowForward = ({ fill }) => (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill={fill} xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#clip0_1630_360)">
+                        <path d="M15.29 9.0099L6.69031 0.4104C6.14331 -0.1369 5.25631 -0.136901 4.70951 0.410399C4.16271 0.957299 4.16271 1.8442 4.70951 2.3909L12.319 10.0001L4.70981 17.609C4.16291 18.1561 4.16291 19.0429 4.70981 19.5897C5.25661 20.1368 6.14351 20.1368 6.69051 19.5897L15.2902 10.9902C15.5636 10.7166 15.7002 10.3585 15.7002 10.0002C15.7002 9.6417 15.5634 9.2833 15.29 9.0099Z" />
+                </g>
+                <defs>
+                        <clipPath id="clip0_1630_360">
+                                <rect width="20" height="20" fill="white" transform="translate(20 20) rotate(-180)" />
+                        </clipPath>
+                </defs>
+        </svg>
+);
+
 const Search = ({ fill }) => (
         <svg width="20" height="20" viewBox="0 0 20 20" fill={fill} xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.3613 18.2168L14.6012 13.2662C15.8251 11.8113 16.4957 9.98069 16.4957 8.07499C16.4957 3.62251 12.8732 0 8.4207 0C3.96821 0 0.345703 3.62251 0.345703 8.07499C0.345703 12.5275 3.96821 16.15 8.4207 16.15C10.0922 16.15 11.6851 15.6458 13.047 14.6888L17.8432 19.677C18.0436 19.8852 18.3133 20 18.6022 20C18.8757 20 19.1352 19.8957 19.3321 19.7061C19.7506 19.3034 19.764 18.6357 19.3613 18.2168ZM8.4207 2.10652C11.7118 2.10652 14.3892 4.78391 14.3892 8.07499C14.3892 11.3661 11.7118 14.0435 8.4207 14.0435C5.12961 14.0435 2.45222 11.3661 2.45222 8.07499C2.45222 4.78391 5.12961 2.10652 8.4207 2.10652Z" />
@@ -66,11 +79,23 @@ const Update = ({ fill }) => (
         </svg>
 );
 
-const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, onGoBack, onEvent }) => {
+const IconButton = ({
+        back,
+        forward,
+        search,
+        close,
+        likeOut,
+        likeFill,
+        update,
+        loading,
+        onGoBack,
+        onEvent,
+        disableState,
+}) => {
         const [fill, setFill] = useState('#FF868E');
         return (
                 // TODO - add router Links
-                search || back ? (
+                search || back || forward ? (
                         <BtnIconSecondary
                                 onClick={onGoBack || onEvent}
                                 onMouseEnter={() => setFill('#FFFFFF')}
@@ -78,6 +103,7 @@ const IconButton = ({ back, search, close, likeOut, likeFill, update, loading, o
                         >
                                 {back && <ArrowBack fill={fill} />}
                                 {search && <Search fill={fill} />}
+                                {forward && <ArrowForward fill={fill} />}
                         </BtnIconSecondary>
                 ) : (
                         <BtnIconPrimary
