@@ -54,7 +54,7 @@
 
 <!-- ! past project url here -->
 
-[![Product Name Screen Shot][product-screenshot]](https://alexkasatov.github.io/wtw-app/#/)
+[![Product Name Screen Shot][product-screenshot]](https://pets-83bm6kbkl-alexkasatov.vercel.app/)
 
 #### [View the demo](https://alexkasatov.github.io/wtw-app/#/)
 
