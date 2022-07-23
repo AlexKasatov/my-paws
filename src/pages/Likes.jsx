@@ -116,6 +116,7 @@ const Likes = () => {
                                         </ImageSimpleGrid>
                                 )}
                                 {/* TODO User logs */}
+
                                 {Children.toArray(
                                         userLogs
                                                 .filter(({ type }) => type === 'like')
@@ -128,6 +129,7 @@ const Likes = () => {
                                                         />
                                                 ))
                                 )}
+
                                 {!userLogs.length && <NoUserLogs />}
                         </Wrapper>
                 </AnimationWrapper>

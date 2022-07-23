@@ -16,12 +16,11 @@ const DataProvider = ({ children }) => {
                 const response = await HttpService.getBreeds(parameters);
                 setBreeds(response);
         });
-        const [userToken, setUserToken] = useLocalStorage('userToken', '');
+        const [userToken, setUserToken] = useLocalStorage('userToken', uuid());
         const [userLogs, setUserLogs] = useLocalStorage('logs', []);
 
         useEffect(() => {
                 fetch();
-                setUserToken(uuid());
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
