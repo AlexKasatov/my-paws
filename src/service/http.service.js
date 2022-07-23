@@ -71,8 +71,10 @@ export default class HttpService {
         }
 
         // get voted data  likes & dislikes (images aren't included)
-        static async getVotes() {
-                const res = await axios(`votes`);
+        static async getVotes(sub_id) {
+                const res = await axios(`votes`, {
+                        sub_id,
+                });
                 return res.data;
         }
 

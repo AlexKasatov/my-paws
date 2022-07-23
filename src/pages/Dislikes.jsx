@@ -23,15 +23,16 @@ const Likes = () => {
         const [dislikes, setDisLikes] = useState([]);
         const [filtredDisikes, setFiltredDisikes] = useState([]);
         const [dislikedImg, setDisikedImg] = useState([]);
+        // used for handling loading & erros Promise.all dislikes in useEffect
         const [isDisikedImgLoading, setIsDislikedImgLoading] = useState(false);
         const [isDisikedImgError, setIsDislikedImgError] = useState('');
+        // state from context to manage user logs
+        const { userLogs, userToken } = useData();
         // hook for fetch vote history
         const [fetchDisLike, isDislikeLoading, isDisLikeError] = useFetch(async () => {
-                const response = await HttpService.getVotes();
+                const response = await HttpService.getVotes(userToken);
                 setDisLikes(response);
         });
-        // state from context to manage user logs
-        const { userLogs } = useData();
 
         const navigate = useNavigate();
 

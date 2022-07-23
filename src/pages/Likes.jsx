@@ -23,15 +23,16 @@ const Likes = () => {
         const [likes, setLikes] = useState([]);
         const [filtredLikes, setFiltredLikes] = useState([]);
         const [likedImg, setLikedImg] = useState([]);
+        // used for handling loading & erros Promise.all dislikes in useEffect
         const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
         const [isLikedImgError, setIsLikedImgError] = useState('');
+        // state from context to manage user logs
+        const { userLogs, userToken } = useData();
         // fetch all liked images from API
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
-                const response = await HttpService.getVotes();
+                const response = await HttpService.getVotes(userToken);
                 setLikes(response);
         });
-        // state from context to manage user logs
-        const { userLogs } = useData();
 
         const navigate = useNavigate();
 

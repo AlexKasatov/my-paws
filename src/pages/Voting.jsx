@@ -1,8 +1,7 @@
 import { Children, useState, useEffect, useMemo } from 'react';
 import { toast } from 'react-toastify';
-import { motion } from 'framer-motion';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
-import { FlexGapM, ImageGallery, Flex } from '../theme/layout.styled';
+import { FlexGapM } from '../theme/layout.styled';
 import IconButton from '../components/UI/Buttons/IconButton';
 import { BtnPrimary } from '../theme/buttons.styled';
 import Nav from '../components/Nav';
@@ -15,7 +14,6 @@ import like from '../image/icons/logs/like.svg';
 import dislike from '../image/icons/logs/dislike.svg';
 import favs from '../image/icons/logs/fav.svg';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
-import { slideUpDown } from '../animation/page';
 import AnimationWrapper from '../animation/AnimationWrapper';
 
 const Voting = () => {
@@ -34,7 +32,7 @@ const Voting = () => {
 
         // Vote like or dislike
         const [vote, isVoteLoading, isVoteError] = useFetch(async (id, value) => {
-                const response = await HttpService.vote(id, value);
+                const response = await HttpService.vote(id, value, userToken);
                 setVoteState(response);
         });
 
