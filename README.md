@@ -1,10 +1,17 @@
 <div id="top"></div>
 
+# <<<<<<< HEAD
+
+# <<<<<<< HEAD
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+
+> > > > > > > 85e9cee6e19792756736c5109cbf432170f4e775
+> > > > > > > 6d42e4247993f63543a88073b62f74ccc5c8cbb6
 
 <!-- PROJECT LOGO -->
 <br />
@@ -14,8 +21,9 @@
   </a>
 
 <h3 align="center">PetPaws</h3>
+
   <p align="center">
-    Cat Lovers App
+    Cat Lover App
     <br />
     <a href="https://github.com/AlexKasatov/pets-paw" target="_blank" ><strong>Explore the docs »</strong></a>
     <br />
@@ -127,6 +135,7 @@ Also, in CHANGELOG.MD are all my commits to developing this app.
   - [x] Show new user logs at the top.
   - [x] Upload image from file.
   - [x] Upload image from drag-and-drop.
+  - [x] Gallery Page
   - [x] Error & load handle with toastify.
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
