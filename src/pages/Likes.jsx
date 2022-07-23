@@ -3,7 +3,6 @@
 import { useState, useEffect, Children, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
 import { FlexGapM, ImageSimpleGrid, Flex } from '../theme/layout.styled';
 import Nav from '../components/Nav';
@@ -17,15 +16,12 @@ import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { useData } from '../context/DataProvider';
 import { SpinnerHypnotic } from '../animation/Spinners.styled';
 import AnimationWrapper from '../animation/AnimationWrapper';
-import removeIcon from '../image/icons/logs/delete.svg';
 
 const Likes = () => {
         const [search, setSearch] = useState('');
         const [likes, setLikes] = useState([]);
-        console.log('🚀 ~ file: Likes.jsx ~ line 25 ~ Likes ~ likes', likes);
         const [filtredLikes, setFiltredLikes] = useState([]);
         const [likedImg, setLikedImg] = useState([]);
-        console.log('🚀 ~ file: Likes.jsx ~ line 28 ~ Likes ~ likedImg', likedImg);
         // used for handling loading & erros Promise.all dislikes in useEffect
         const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
         const [isLikedImgError, setIsLikedImgError] = useState('');
@@ -35,11 +31,6 @@ const Likes = () => {
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes(userToken);
                 setLikes(response);
-        });
-
-        // remove img from favs
-        const [remove] = useFetch(async (id) => {
-                await HttpService.deleteVote(id);
         });
 
         const navigate = useNavigate();
@@ -89,27 +80,6 @@ const Likes = () => {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [userLogs]);
 
-        // remove img from likes
-        const handleRemoveLike = async (id) => {
-                // ? used image_id
-                // send delete req to API & remove img from vote (likes)
-                await remove(id);
-                toast.success('Image removed from likes', {
-                        position: 'bottom-left',
-                });
-                // remove img from fav state
-                setLikes(likes.filter((item) => item.image_id !== id));
-
-                // get current time
-                const time = new Date();
-                const currentTime = `${time.getHours()}:${time.getMinutes()}`;
-                // update user logs
-                setUserLogs((prev) => [
-                        ...prev,
-                        { id, type: 'like', value: 'removed from Likes', currentTime, icon: removeIcon },
-                ]);
-        };
-
         // go to search breed page
         const handleSearchBreed = () => {
                 const searchValue = search?.value || '';
@@ -140,15 +110,7 @@ const Likes = () => {
                                         <ImageSimpleGrid flexDirection="column">
                                                 {Children.toArray(
                                                         likedImg.map((image, index) => (
-                                                                <ImageItem
-                                                                        onEvent={() =>
-                                                                                handleRemoveLike(
-                                                                                        likes.map((item) => item.id)
-                                                                                )
-                                                                        }
-                                                                        key={index}
-                                                                        image={image}
-                                                                />
+                                                                <ImageItem key={index} image={image} />
                                                         ))
                                                 )}
                                         </ImageSimpleGrid>
