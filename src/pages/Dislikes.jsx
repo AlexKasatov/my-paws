@@ -27,7 +27,7 @@ const Likes = () => {
         const [isDisikedImgLoading, setIsDislikedImgLoading] = useState(false);
         const [isDisikedImgError, setIsDislikedImgError] = useState('');
         // state from context to manage user logs
-        const { userLogs, userToken } = useData();
+        const { userLogs, setUserLogs, userToken } = useData();
         // hook for fetch vote history
         const [fetchDisLike, isDislikeLoading, isDisLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes(userToken);
@@ -46,6 +46,12 @@ const Likes = () => {
                 fetchDisLike();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
+
+        // Reverse array of user logs to show newest first
+        useMemo(() => {
+                setUserLogs(userLogs.reverse());
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [userLogs]);
 
         // create Promises array of disliked images
         const dislikedImagesPromises = useMemo(() => {

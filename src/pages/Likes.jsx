@@ -11,7 +11,6 @@ import IconButton from '../components/UI/Buttons/IconButton';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import useGoBack from '../hooks/useGoBack';
-import Spiner from '../animation/Spiner';
 import ImageItem from '../components/ImageItem';
 import UserLogs, { NoUserLogs } from '../components/UserLogs';
 import { useData } from '../context/DataProvider';
@@ -27,7 +26,7 @@ const Likes = () => {
         const [isLikedImgLoading, setIsLikedImgLoading] = useState(false);
         const [isLikedImgError, setIsLikedImgError] = useState('');
         // state from context to manage user logs
-        const { userLogs, userToken } = useData();
+        const { userLogs, setUserLogs, userToken } = useData();
         // fetch all liked images from API
         const [fetchLike, isLikeLoading, isLikeError] = useFetch(async () => {
                 const response = await HttpService.getVotes(userToken);
@@ -75,6 +74,12 @@ const Likes = () => {
                         });
         }, [likedImagesPromises]);
 
+        // Reverse array of user logs to show newest first
+        useMemo(() => {
+                setUserLogs(userLogs.reverse());
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [userLogs]);
+
         // go to search breed page
         const handleSearchBreed = () => {
                 const searchValue = search?.value || '';
@@ -110,8 +115,6 @@ const Likes = () => {
                                                 )}
                                         </ImageSimpleGrid>
                                 )}
-                                {/* TODO FIX THIS SPINNER */}
-                                {!likedImagesPromises.length && <Spiner />}
                                 {/* TODO User logs */}
                                 {Children.toArray(
                                         userLogs

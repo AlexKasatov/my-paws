@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useState, useEffect, Children } from 'react';
+import { useState, useEffect, Children, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../components/UI/Wrappers/Wrappers.styled';
@@ -56,6 +56,12 @@ const Fav = () => {
                         { id, type: 'fav', value: 'removed from Favourites', currentTime, icon: removeIcon },
                 ]);
         };
+
+        // Reverse array of user logs to show newest first
+        useMemo(() => {
+                setUserLogs(userLogs.reverse());
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [userLogs]);
 
         // go to search breed page
         const handleSearchBreed = () => {
