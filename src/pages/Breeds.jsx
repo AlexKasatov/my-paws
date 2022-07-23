@@ -108,9 +108,6 @@ const Breeds = () => {
                                         <IconButton onGoBack={handleGoBack} back />
                                         <BtnPrimary fontSize="20px">BREEDS</BtnPrimary>
 
-                                        {/* selects */}
-
-                                        {/* All Breeds */}
                                         {/* Limit Breeds */}
                                         <Controls
                                                 breedOptions={allBreeds}

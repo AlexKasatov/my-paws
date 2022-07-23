@@ -3,16 +3,6 @@ import { border, color, compose, flexbox, layout, position, space, typography, w
 
 // MAIN BUTTON
 export const Btn = styled.button`
-        ${border}
-        ${space}
-        ${layout}
-        ${typography}
-        ${color}
-        ${width}
-        ${height}
-        ${position}
-        ${flexbox}
-
         cursor: pointer;
         background-color: ${({ theme }) => theme.colors.pageMain};
         border: none;
@@ -49,6 +39,16 @@ export const Btn = styled.button`
         svg {
                 margin-right: 10px;
         }
+
+        ${border}
+        ${space}
+        ${layout}
+        ${typography}
+        ${color}
+        ${width}
+        ${height}
+        ${position}
+        ${flexbox}
 `;
 
 // BUTTON WITH PRIMARY BACKGROUND COLOR WITH NO ACTION
@@ -187,12 +187,15 @@ export const BtnIconPrimary = styled.button`
 // Button for search || back
 export const BtnIconSecondary = styled(BtnIconPrimary)`
         background-color: ${({ theme }) => theme.colors.secondary};
-        width: 40px;
+        min-width: 40px;
         height: 40px;
+        ${width}
 `;
 
 // Btn for sort icons
 export const BtnSort = styled(BtnIconPrimary)`
+        width: 40px;
+        height: 40px;
         background-color: ${({ theme }) => theme.colors.body};
         &:hover {
                 border: 2px solid ${({ theme }) => theme.colors.secondary};
