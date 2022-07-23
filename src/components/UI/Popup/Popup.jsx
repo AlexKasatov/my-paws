@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Flex } from '../../../theme/layout.styled';
 import IconButton from '../Buttons/IconButton';
 import { PopupWrapper, PopupBox } from './Popup.styled';
@@ -10,6 +10,7 @@ import { BtnPrimaryActive } from '../../../theme/buttons.styled';
 import HttpService from '../../../service/http.service';
 import useUpload from '../../../hooks/useUpload';
 import { slideUpDown } from '../../../animation/page';
+import { useData } from '../../../context/DataProvider';
 
 // Open the alert window with message of numbers uploaded images
 // function handleFile(files) {
@@ -25,9 +26,12 @@ const Popup = ({ onEvent }) => {
         const [upload, setUpload] = useState('');
         // drag state
         const [dragActive, setDragActive] = useState(false);
+        // user id
+        const { userToken } = useData();
 
         const [uploadImage, isLoading, isError] = useUpload(async (formData) => {
-                const response = await HttpService.uploadImage(formData);
+                const response = await HttpService.uploadImage(formData, userToken);
+
                 setUpload(response);
         });
 

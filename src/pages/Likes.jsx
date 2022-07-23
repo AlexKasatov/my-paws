@@ -109,6 +109,7 @@ const Likes = () => {
                                                 )}
                                         </ImageSimpleGrid>
                                 )}
+                                {/* TODO FIX THIS SPINNER */}
                                 {!likedImagesPromises.length && <Spiner />}
                                 {/* TODO User logs */}
                                 {Children.toArray(

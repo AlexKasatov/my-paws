@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect, useMemo, useContext } from 'react';
+import uuid from 'react-uuid';
 import useFetch from '../hooks/useFetch';
 import HttpService from '../service/http.service';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -15,10 +16,12 @@ const DataProvider = ({ children }) => {
                 const response = await HttpService.getBreeds(parameters);
                 setBreeds(response);
         });
+        const [userToken, setUserToken] = useLocalStorage('userToken', '');
         const [userLogs, setUserLogs] = useLocalStorage('logs', []);
 
         useEffect(() => {
                 fetch();
+                setUserToken(uuid());
                 // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
@@ -38,7 +41,7 @@ const DataProvider = ({ children }) => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
         const value = useMemo(
-                () => ({ breeds, setBreeds, breedOptions, userLogs, setUserLogs }),
+                () => ({ breeds, userToken, setBreeds, breedOptions, userLogs, setUserLogs }),
                 [breeds, userLogs, setUserLogs, breedOptions]
         );
 

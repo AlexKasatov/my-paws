@@ -61,10 +61,11 @@ export default class HttpService {
         }
 
         // like or dislike image
-        static async vote(id, value) {
+        static async vote(id, value, sub_id) {
                 const res = await axios.post(`votes`, {
                         image_id: id,
                         value,
+                        sub_id,
                 });
                 return res.data;
         }
@@ -76,9 +77,10 @@ export default class HttpService {
         }
 
         // add to favourites
-        static async addFavourites(id) {
+        static async addFavourites(id, sub_id) {
                 const res = await axios.post(`favourites`, {
                         image_id: id,
+                        sub_id,
                 });
                 return res.data;
         }
@@ -95,12 +97,20 @@ export default class HttpService {
                 return res.data;
         }
 
-        static async uploadImage(formData) {
-                const res = await axios.post('images/upload', formData, {
-                        headers: { 'Content-Type': 'multipart/form-data' },
-                });
+        // upload image to API for recognition
+        static async uploadImage(formData, sub_id) {
+                const res = await axios.post(
+                        'images/upload',
+                        formData,
+                        {
+                                headers: { 'Content-Type': 'multipart/form-data' },
+                        },
+                        {
+                                params: {
+                                        sub_id,
+                                },
+                        }
+                );
                 return res.data;
         }
 }
-
-// https://api.thecatapi.com/v1/images/search?breed_ids=abys&limit=5
