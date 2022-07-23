@@ -37,13 +37,13 @@ const Gallery = () => {
                 setBreeds(response);
         });
 
+        // state from context to manage user logs
+        const { setUserLogs, userToken } = useData();
+
         // Add to favs
         const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
-                await HttpService.addFavourites(id);
+                await HttpService.addFavourites(id, userToken);
         });
-
-        // state from context to manage user logs
-        const { setUserLogs } = useData();
 
         const handleSearch = () => {
                 const searchValue = search?.value || '';

@@ -20,17 +20,17 @@ import AnimationWrapper from '../animation/AnimationWrapper';
 const Fav = () => {
         const [search, setSearch] = useState('');
         const [fav, setFav] = useState([]);
-        const [fetch, isLoading, isError] = useFetch(async () => {
-                const response = await HttpService.getFavourites();
+        const navigate = useNavigate();
+        const { userLogs, setUserLogs, userToken } = useData();
 
+        const [fetch, isLoading, isError] = useFetch(async () => {
+                const response = await HttpService.getFavourites(userToken);
                 setFav(response);
         });
         // remove img from favs
         const [remove, isRemoveLoading, isremoveError] = useFetch(async (id) => {
                 await HttpService.deleteFavourites(id);
         });
-        const navigate = useNavigate();
-        const { userLogs, setUserLogs } = useData();
 
         useEffect(() => {
                 fetch();

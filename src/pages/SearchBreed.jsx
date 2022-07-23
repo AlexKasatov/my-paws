@@ -34,11 +34,11 @@ const SearchBreed = () => {
         });
 
         // state from context to manage user logs
-        const { setUserLogs } = useData();
+        const { setUserLogs, userToken } = useData();
 
         // Add to favs
         const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
-                await HttpService.addFavourites(id);
+                await HttpService.addFavourites(id, userToken);
         });
 
         // fetch all breeds

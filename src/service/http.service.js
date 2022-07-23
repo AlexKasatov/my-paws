@@ -92,8 +92,12 @@ export default class HttpService {
         }
 
         // get favourites data (images included)
-        static async getFavourites() {
-                const res = await axios('favourites');
+        static async getFavourites(sub_id) {
+                const res = await axios('favourites', {
+                        params: {
+                                sub_id,
+                        },
+                });
                 return res.data;
         }
 

@@ -24,7 +24,7 @@ const Voting = () => {
         // state for save voting history
         const [voteState, setVoteState] = useState('');
         // state from context to manage user logs
-        const { userLogs, setUserLogs } = useData();
+        const { userLogs, setUserLogs, userToken } = useData();
 
         // Fetch image for voting
         const [fetch, isLoading, isError] = useFetch(async (limit) => {
@@ -40,7 +40,7 @@ const Voting = () => {
 
         // Add to favs
         const [fav, isFavLoading, isFavError] = useFetch(async (id) => {
-                const response = await HttpService.addFavourites(id);
+                const response = await HttpService.addFavourites(id, userToken);
                 setVoteState(response);
         });
 
